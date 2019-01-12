@@ -1,0 +1,94 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-user-ddn-favorites-heading" jhiTranslate="wlApp.userDdnFavorites.home.createOrEditLabel">Create or edit a User Ddn Favorites</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!userDdnFavorites.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="userDdnFavorites.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userDdnFavorites.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                        [(ngModel)]="userDdnFavorites.createdBy" required/>
+                    <div [hidden]="!(editForm.controls.createdBy?.dirty && editForm.controls.createdBy?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.createdBy?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userDdnFavorites.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                        [(ngModel)]="userDdnFavorites.lastModifiedBy" required/>
+                    <div [hidden]="!(editForm.controls.lastModifiedBy?.dirty && editForm.controls.lastModifiedBy?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastModifiedBy?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userDdnFavorites.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.createdDate?.dirty && editForm.controls.createdDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.createdDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.createdDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userDdnFavorites.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="lastModifiedDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.lastModifiedDate?.dirty && editForm.controls.lastModifiedDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastModifiedDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.lastModifiedDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userDdnFavorites.ddn" for="field_ddn">Ddn</label>
+                    <select class="form-control" id="field_ddn" name="ddn" [(ngModel)]="userDdnFavorites.ddn" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="logisticsDdnOption.id === userDdnFavorites.ddn?.id ? userDdnFavorites.ddn : logisticsDdnOption" *ngFor="let logisticsDdnOption of logisticsddns; trackBy: trackLogisticsDdnById">{{logisticsDdnOption.title}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userDdnFavorites.userInfo" for="field_userInfo">User Info</label>
+                    <select class="form-control" id="field_userInfo" name="userInfo" [(ngModel)]="userDdnFavorites.userInfo" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userInfoOption.id === userDdnFavorites.userInfo?.id ? userDdnFavorites.userInfo : userInfoOption" *ngFor="let userInfoOption of userinfos; trackBy: trackUserInfoById">{{userInfoOption.fullname}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+
+{
+    "wlApp": {
+        "goods" : {
+            "home": {
+                "title": "商品管理",
+                "createLabel": "创建",
+                "createOrEditLabel": "商品信息",
+                "search": "请输入关键字"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "商品信息"
+            },
+           "name": "商品名称",
+           "cover": "商品图片",
+           "introduce": "介绍说明",
+           "payment": "实际金额",
+           "integral": "支付积分",
+           "total": "总数",
+           "peopleCount": "兑换人数",
+            "status": "状态",
+            "createdBy": "Created By",
+            "lastModifiedBy": "Last Modified By",
+            "createdDate": "Created Date",
+            "lastModifiedDate": "Last Modified Date",
+            "help": {
+                "name": "商品名称",
+                "cover": "商品图片",
+                "introduce": "介绍说明",
+                "payment": "实际金额",
+                "integral": "支付积分（个）",
+                "total": "总数",
+                "peopleCount": "兑换人数",
+                "status": "状态"
+            }
+        }
+    }
+}

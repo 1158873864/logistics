@@ -1,0 +1,105 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wlApp.logisticsDdn.home.title">Logistics Ddns</span>
+        <button class="btn btn-primary float-right jh-create-entity create-logistics-ddn" [routerLink]="['/logistics-ddn/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="wlApp.logisticsDdn.home.createLabel">
+            Create new Logistics Ddn
+            </span>
+        </button>
+    </h2>
+    <span  class="batch-upload" style="margin-right: 10px;height:20px">
+            <fa-icon [icon]="'tasks'"></fa-icon>
+            <span class="d-none d-md-inline">批量导入专线</span>
+    </span>
+    <span  class="batch-upload-pics" style="margin-right: 10px;height:20px">
+            <fa-icon [icon]="'tasks'"></fa-icon>
+            <span class="d-none d-md-inline">批量导入图片</span>
+    </span>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'wlApp.logisticsDdn.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="logisticsDdns">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th jhiSortBy="title"><span jhiTranslate="wlApp.logisticsDdn.title">Title</span> </th>
+            <th width="60px" jhiSortBy="managerFullname"><span jhiTranslate="wlApp.logisticsDdn.managerFullname">Manager Fullname</span> </th>
+            <th width="100px" jhiSortBy="managerMobilePhone"><span jhiTranslate="wlApp.logisticsDdn.managerMobilePhone">Manager Mobile Phone</span> </th>
+                <th width="100px" jhiSortBy="managerPhone"><span jhiTranslate="wlApp.logisticsDdn.managerPhone">Manager Phone</span> </th>
+                <th width="100px"><span>业务电话</span></th>
+            <th width="100px" jhiSortBy="locationCity"><span jhiTranslate="wlApp.logisticsDdn.locationCity">Location City</span> </th>
+            <th jhiSortBy="coverCity"><span jhiTranslate="wlApp.logisticsDdn.coverCity">Cover City</span> </th>
+            <th width="150px" jhiSortBy="throughCity"><span jhiTranslate="wlApp.logisticsDdn.throughCity">Through City</span> </th>
+            <th jhiSortBy="specialTransport"><span jhiTranslate="wlApp.logisticsDdn.specialTransport">Special Transport</span> </th>
+            <th jhiSortBy="good"><span jhiTranslate="wlApp.logisticsDdn.good">Good</span> </th>
+            <th jhiSortBy="status"><span jhiTranslate="wlApp.logisticsDdn.status">Status</span> </th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let logisticsDdn of logisticsDdns ;trackBy: trackId;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{logisticsDdn.title}}</td>
+                <td>{{logisticsDdn.managerFullname}}</td>
+                <td>{{logisticsDdn.managerMobilePhone}}</td>
+                <td>{{logisticsDdn.managerPhone}}</td>
+                <td>{{logisticsDdn.businessPhone}}</td>
+                <td>{{logisticsDdn.locationCity}}</td>
+                <td>{{logisticsDdn.coverCity}}</td>
+                <td>{{logisticsDdn.throughCity}}</td>
+                <td>{{logisticsDdn.specialTransport ? '是' : '否'}}</td>
+                <td>{{logisticsDdn.good ? '是' : '否'}}</td>
+                <td jhiTranslate="{{'wlApp.Status.' + logisticsDdn.status}}">{{logisticsDdn.status}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/logistics-ddn', logisticsDdn.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/logistics-ddn', logisticsDdn.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'logistics-ddn/'+ logisticsDdn.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="logisticsDdns && logisticsDdns.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

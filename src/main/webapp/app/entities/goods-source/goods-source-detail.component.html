@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="goodsSource">
+            <h2><span jhiTranslate="wlApp.goodsSource.detail.title">Goods Source</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.goodsSource.name" [ngbTooltip]="'wlApp.goodsSource.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{goodsSource.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.start" [ngbTooltip]="'wlApp.goodsSource.help.start' | translate">Start</span></dt>
+                <dd>
+                    <span>{{goodsSource.start}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.end" [ngbTooltip]="'wlApp.goodsSource.help.end' | translate">End</span></dt>
+                <dd>
+                    <span>{{goodsSource.end}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.ton" [ngbTooltip]="'wlApp.goodsSource.help.ton' | translate">Ton</span></dt>
+                <dd>
+                    <span>{{goodsSource.ton}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.volume" [ngbTooltip]="'wlApp.goodsSource.help.volume' | translate">Volume</span></dt>
+                <dd>
+                    <span>{{goodsSource.volume}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.goodsSourcePacking" [ngbTooltip]="'wlApp.goodsSource.help.goodsSourcePacking' | translate">Goods Source Packing</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.GoodsSourcePacking.' + goodsSource.goodsSourcePacking}}">{{goodsSource.goodsSourcePacking}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.mobilePhone" [ngbTooltip]="'wlApp.goodsSource.help.mobilePhone' | translate">Mobile Phone</span></dt>
+                <dd>
+                    <span>{{goodsSource.mobilePhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.goodsSourceFreight" [ngbTooltip]="'wlApp.goodsSource.help.goodsSourceFreight' | translate">Goods Source Freight</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.GoodsSourceFreight.' + goodsSource.goodsSourceFreight}}">{{goodsSource.goodsSourceFreight}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.goodsSourceProperty" [ngbTooltip]="'wlApp.goodsSource.help.goodsSourceProperty' | translate">Goods Source Property</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.GoodsSourceProperty.' + goodsSource.goodsSourceProperty}}">{{goodsSource.goodsSourceProperty}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.effectiveDate" [ngbTooltip]="'wlApp.goodsSource.help.effectiveDate' | translate">Effective Date</span></dt>
+                <dd>
+                    <span>{{goodsSource.effectiveDate  | date:'yyyy-MM-dd'}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.layTime" [ngbTooltip]="'wlApp.goodsSource.help.layTime' | translate">Lay Time</span></dt>
+                <dd>
+                    <span>{{goodsSource.layTime  | date:'yyyy-MM-dd'}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + goodsSource.status}}">{{goodsSource.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsSource.userInfo">User Info</span></dt>
+                <dd>
+                    <div *ngIf="goodsSource.userInfo">
+                        <a [routerLink]="['../user-info', goodsSource.userInfo?.id, 'view' ]" >{{goodsSource.userInfo?.fullname}}</a>
+                    </div>
+                    <div *ngIf="goodsSource.userInfo === undefined || goodsSource.userInfo === null || goodsSource.userInfo === ''">
+                        管理员
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/goods-source', goodsSource.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

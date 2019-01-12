@@ -1,0 +1,108 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wlApp.goodsSource.home.title">Goods Sources</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-goods-source" [routerLink]="['/goods-source/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="wlApp.goodsSource.home.createLabel">
+            Create new Goods Source
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'wlApp.goodsSource.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="goodsSources">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th jhiSortBy="name"><span jhiTranslate="wlApp.goodsSource.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="start"><span jhiTranslate="wlApp.goodsSource.start">Start</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="end"><span jhiTranslate="wlApp.goodsSource.end">End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ton"><span jhiTranslate="wlApp.goodsSource.ton">Ton</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="volume"><span jhiTranslate="wlApp.goodsSource.volume">Volume</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="goodsSourcePacking"><span jhiTranslate="wlApp.goodsSource.goodsSourcePacking">Goods Source Packing</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mobilePhone"><span jhiTranslate="wlApp.goodsSource.mobilePhone">Mobile Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="goodsSourceFreight"><span jhiTranslate="wlApp.goodsSource.goodsSourceFreight">Goods Source Freight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="goodsSourceProperty"><span jhiTranslate="wlApp.goodsSource.goodsSourceProperty">Goods Source Property</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="effectiveDate"><span jhiTranslate="wlApp.goodsSource.effectiveDate">Effective Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="layTime"><span jhiTranslate="wlApp.goodsSource.layTime">Lay Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span jhiTranslate="wlApp.goodsSource.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="userInfo.fullname"><span jhiTranslate="wlApp.goodsSource.userInfo">User Info</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let goodsSource of goodsSources ;trackBy: trackId;let i = index;">
+                <td>{{i+1}}</td>
+                <td>{{goodsSource.name}}</td>
+                <td>{{goodsSource.start}}</td>
+                <td>{{goodsSource.end}}</td>
+                <td>{{goodsSource.ton}}</td>
+                <td>{{goodsSource.volume}}</td>
+                <td jhiTranslate="{{'wlApp.GoodsSourcePacking.' + goodsSource.goodsSourcePacking}}">{{goodsSource.goodsSourcePacking}}</td>
+                <td>{{goodsSource.mobilePhone}}</td>
+                <td jhiTranslate="{{'wlApp.GoodsSourceFreight.' + goodsSource.goodsSourceFreight}}">{{goodsSource.goodsSourceFreight}}</td>
+                <td jhiTranslate="{{'wlApp.GoodsSourceProperty.' + goodsSource.goodsSourceProperty}}">{{goodsSource.goodsSourceProperty}}</td>
+                <td>{{goodsSource.effectiveDate | date:'yyyy-MM-dd'}}</td>
+                <td>{{goodsSource.layTime | date:'yyyy-MM-dd'}}</td>
+                <td jhiTranslate="{{'wlApp.Status.' + goodsSource.status}}">{{goodsSource.status}}</td>
+                <td>
+                    <div *ngIf="goodsSource.userInfo">
+                        <a [routerLink]="['../user-info', goodsSource.userInfo?.id, 'view' ]" >{{goodsSource.userInfo?.fullname}}</a>
+                    </div>
+                    <div *ngIf="goodsSource.userInfo === undefined || goodsSource.userInfo === null || goodsSource.userInfo === ''">
+                        管理员
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/goods-source', goodsSource.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/goods-source', goodsSource.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'goods-source/'+ goodsSource.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="goodsSources && goodsSources.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

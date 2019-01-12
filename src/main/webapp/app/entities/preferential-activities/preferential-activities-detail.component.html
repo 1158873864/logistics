@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="preferentialActivities">
+            <h2><span jhiTranslate="wlApp.preferentialActivities.detail.title">Preferential Activities</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.preferentialActivities.name" [ngbTooltip]="'wlApp.preferentialActivities.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{preferentialActivities.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.preferentialActivities.cover" [ngbTooltip]="'wlApp.preferentialActivities.help.cover' | translate">Cover</span></dt>
+                <dd>
+                    <span><img style="max-height: 400px;" src="/api/static/{{preferentialActivities.cover}}" class="img-rounded"/></span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.preferentialActivities.startDate" [ngbTooltip]="'wlApp.preferentialActivities.help.startDate' | translate">Start Date</span></dt>
+                <dd>
+                    <span>{{preferentialActivities.startDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.preferentialActivities.endDate" [ngbTooltip]="'wlApp.preferentialActivities.help.endDate' | translate">End Date</span></dt>
+                <dd>
+                    <span>{{preferentialActivities.endDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.preferentialActivities.content" [ngbTooltip]="'wlApp.preferentialActivities.help.content' | translate">Content</span></dt>
+                <dd>
+                    <div [innerHTML]="preferentialActivities.content | safeHtml"></div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.preferentialActivities.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + preferentialActivities.status}}">{{preferentialActivities.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/preferential-activities', preferentialActivities.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

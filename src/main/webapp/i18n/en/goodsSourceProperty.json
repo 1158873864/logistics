@@ -1,0 +1,12 @@
+{
+    "wlApp": {
+        "GoodsSourceProperty" : {
+            "null": "",
+            "ZH": "重货",
+            "QH": "轻货",
+            "SB": "设备",
+            "HG": "化工",
+            "OTHER": "其他"
+        }
+    }
+}

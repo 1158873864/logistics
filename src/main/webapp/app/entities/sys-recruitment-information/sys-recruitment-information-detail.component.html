@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sysRecruitmentInformation">
+            <h2><span jhiTranslate="wlApp.sysRecruitmentInformation.detail.title">Sys Recruitment Information</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.category" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.category' | translate">Category</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.category}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.categoryName" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.categoryName' | translate">Category Name</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.categoryName}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.nature" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.nature' | translate">Nature</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.nature}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.salaryStart" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.salaryStart' | translate">Salary Start</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.salaryStart}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.salaryEnd" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.salaryEnd' | translate">Salary End</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.salaryEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.addrCity" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.addrCity' | translate">Addr City</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.addrCity}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.experience" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.experience' | translate">Experience</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.experience}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.education" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.education' | translate">Education</span></dt>
+                <dd>
+                    <span>{{sysRecruitmentInformation.education}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.sysRecruitmentInformation.description" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.description' | translate">Description</span></dt>
+                <dd>
+                    <div [innerHTML]="sysRecruitmentInformation.description | safeHtml"></div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sys-recruitment-information', sysRecruitmentInformation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

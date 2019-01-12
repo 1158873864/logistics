@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  mysql-service:
+        image: mysql:5.7.20
+        volumes:
+          - ./mysql/data:/var/lib/mysql
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=recruit
+        ports:
+            - 5709:3306
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+  elasticsearch:
+        image: elasticsearch:5.6.5
+        volumes:
+          - ./es/data/:/usr/share/elasticsearch/data/
+        ports:
+            - 9200:9200
+            - 9300:9300
+        command: -Enetwork.host=0.0.0.0 -Ediscovery.type=single-node
+        environment:
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  recruit:
+    build: ./app
+    environment:
+          - SPRING_PROFILES_ACTIVE=prod,swagger
+          - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-service:3306/recruit?useUnicode=true&characterEncoding=utf8&useSSL=false
+          - SPRING_DATASOURCE_PASSWORD=root
+          - SERVER_PORT=8080
+          - SPRING_MVC_LOCALE=zh_CN
+          - LANG=zh_CN.UTF-8
+          - APP_SLEEP=10
+          - SPRING_DATA_JEST_URI=http://elasticsearch:9200
+          - APPLICATION_WECHATSERVERURL=http://wechat.lehuobuluo.com
+          - APPLICATION_STATICRESOURCEPATH=/opt/upload
+    ports:
+      - 80:8080
+    volumes:
+          - ./data/upload/:/opt/upload/
+    depends_on:
+      - mysql-service
+      - elasticsearch

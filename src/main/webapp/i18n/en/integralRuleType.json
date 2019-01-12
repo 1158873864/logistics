@@ -1,0 +1,9 @@
+{
+    "wlApp": {
+        "IntegralRuleType" : {
+            "null": "",
+            "INC": "+",
+            "REDUCE": "-"
+        }
+    }
+}

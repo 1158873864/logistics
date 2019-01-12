@@ -1,0 +1,53 @@
+
+{
+    "wlApp": {
+        "logisticsDdn" : {
+            "home": {
+                "title": "专线管理",
+                "createLabel": "创建",
+                "createOrEditLabel": "专线信息",
+                "search": "请输入关键字"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "专线信息"
+            },
+            "title": "名称",
+            "managerFullname": "经理",
+            "managerMobilePhone": "手机",
+            "managerPhone": "查货电话",
+            "locationCity": "所在城市",
+            "address": "地址",
+            "pic": "展示图",
+            "coverCity": "覆盖城市",
+            "throughCity": "直达城市",
+            "www": "网站",
+            "specialTransport": "特种运输",
+            "good": "好专线",
+            "status": "状态",
+            "createdBy": "Created By",
+            "lastModifiedBy": "Last Modified By",
+            "createdDate": "Created Date",
+            "lastModifiedDate": "Last Modified Date",
+            "help": {
+                "title": "专线名称",
+                "managerFullname": "经理名字",
+                "managerMobilePhone": "经理手机号码",
+                "managerPhone": "经理电话号码",
+                "locationCity": "专线所在城市",
+                "address": "专线地址",
+                "pic": "专线展示图",
+                "coverCity": "专线覆盖城市",
+                "throughCity": "直达城市",
+                "www": "网站",
+                "specialTransport": "是否特种运输",
+                "good": "是否好专线"
+            }
+        }
+    }
+}

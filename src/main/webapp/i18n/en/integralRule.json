@@ -1,0 +1,37 @@
+
+{
+    "wlApp": {
+        "integralRule" : {
+            "home": {
+                "title": "积分规则",
+                "createLabel": "Create a new Integral Rule",
+                "createOrEditLabel": "积分规则信息"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "Integral Rule"
+            },
+            "code": "编码",
+            "name": "规则名称",
+            "integralRuleType": "规则类型",
+            "value": "值",
+            "remark": "说明",
+            "createdBy": "Created By",
+            "lastModifiedBy": "Last Modified By",
+            "createdDate": "Created Date",
+            "lastModifiedDate": "Last Modified Date",
+            "help": {
+                "code": "编码",
+                "name": "名称",
+                "integralRuleType": "类型",
+                "value": "值",
+                "remark": "备注"
+            }
+        }
+    }
+}

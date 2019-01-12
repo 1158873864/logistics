@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="logisticsDdnWWW">
+            <h2><span jhiTranslate="wlApp.logisticsDdnWWW.detail.title">Logistics Ddn WWW</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.logisticsDdnWWW.logisticsDdn">Logistics Ddn</span></dt>
+                <dd>
+                    <div *ngIf="logisticsDdnWWW.logisticsDdn">
+                        <a [routerLink]="['/logistics-ddn', logisticsDdnWWW.logisticsDdn?.id, 'view']">{{logisticsDdnWWW.logisticsDdn?.title}}</a>
+                    </div>
+                </dd>
+                <dd>
+                    <div *ngIf="logisticsDdnWWW.logisticsDdn">
+                        {{logisticsDdnWWW.logisticsDdn?.managerFullname}}
+                    </div>
+                </dd>
+                <dt><span>联系人</span></dt>
+                <dd>
+                    <span>{{logisticsDdnWWW.contacts}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnWWW.name" [ngbTooltip]="'wlApp.logisticsDdnWWW.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{logisticsDdnWWW.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnWWW.mobilePhone" [ngbTooltip]="'wlApp.logisticsDdnWWW.help.mobilePhone' | translate">Mobile Phone</span></dt>
+                <dd>
+                    <span>{{logisticsDdnWWW.mobilePhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnWWW.phone" [ngbTooltip]="'wlApp.logisticsDdnWWW.help.phone' | translate">Phone</span></dt>
+                <dd>
+                    <span>{{logisticsDdnWWW.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnWWW.remark" [ngbTooltip]="'wlApp.logisticsDdnWWW.help.remark' | translate">Remark</span></dt>
+                <dd>
+                    <span>{{logisticsDdnWWW.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnWWW.status" [ngbTooltip]="'wlApp.logisticsDdnWWW.help.status' | translate">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + logisticsDdnWWW.status}}">{{logisticsDdnWWW.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/logistics-ddn-www', logisticsDdnWWW.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

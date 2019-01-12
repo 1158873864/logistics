@@ -1,0 +1,26 @@
+
+{
+    "wlApp": {
+        "topicComment" : {
+            "home": {
+                "title": "话题评论",
+                "createLabel": "评论信息",
+                "createOrEditLabel": "创建",
+                "search": "请输入关键字"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "评论信息"
+            },
+            "content": "内容",
+            "oDateTime": "操作时间",
+            "topic": "评论话题",
+            "userInfo": "评论用户"
+        }
+    }
+}

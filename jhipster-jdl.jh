@@ -1,0 +1,242 @@
+/**
+ * 状态
+ * @author Donny.
+ */
+enum Status{
+    // 启用,禁用
+    ENABLE, DISABLE
+}
+
+/**
+ * 物流专线
+ * @author Donny.
+ */
+entity LogisticsDdn {
+	/**专线名称*/
+	title String required maxlength(200),
+	/**经理名字*/
+	managerFullname String required maxlength(10),
+	/**经理手机号码*/
+	managerMobilePhone String required maxlength(15),
+	/**专线所在城市*/
+	locationCity String required maxlength(20),
+	/**专线地址*/
+	address String required maxlength(200),
+	/**专线展示图*/
+	pic String required maxlength(200),
+	/**专线覆盖城市*/
+	coverCity String required maxlength(100),
+	/**直达城市*/
+	throughCity String required maxlength(100),
+	/**网站*/
+	www String required maxlength(200),
+	/**是否特种运输*/
+	specialTransport Boolean required,
+	/**是否好专线*/
+	good Boolean required,
+	
+	status Status required,
+    createdBy String required,
+    lastModifiedBy String required,
+    createdDate Instant required,
+    lastModifiedDate Instant required
+}	
+/**
+ * 物流专线图片
+ * @author Donny.
+ */
+entity LogisticsDdnPic {
+	/**标题*/
+    title String required maxlength(200), 
+    /**图片*/
+    path String required maxlength(200), 
+    /**说明*/
+    remark String required maxlength(500),
+    /**状态*/
+    status Status required,
+    createdBy String required,
+    lastModifiedBy String required,
+    createdDate Instant required,
+    lastModifiedDate Instant required
+}
+
+/**
+ * 物流专线网点
+ * @author Donny.
+ */
+entity LogisticsDdnWWW {
+	/**名称*/
+    name String required maxlength(200), 
+    /**手机号*/
+    mobilePhone String required maxlength(20), 
+    /**电话号码*/
+    phone String required maxlength(20), 
+    /**说明*/
+    remark String required maxlength(500),
+    /**状态*/
+    status Status required,
+    createdBy String required,
+    lastModifiedBy String required,
+    createdDate Instant required,
+    lastModifiedDate Instant required
+}
+
+
+/**
+ * 货物包装
+ * @author Donny.
+ */
+enum GoodsSourcePacking {
+    // 木箱  |   木架   |   纸箱  |   托盘   |   裸装
+    MX, MJ, ZX, TP, KZH
+}
+
+/**
+ * 货物运价
+ * @author Donny.
+ */
+enum GoodsSourceFreight {
+    // 参考运价  |   电议
+    CKYJ, DY
+}
+
+/**
+ * 货源属性
+ * @author Donny.
+ */
+enum GoodsSourceProperty {
+    //重货  |   轻货  |  设备  |  化工  |  其他
+    ZH, QH, SB, HG, OTHER
+}
+
+/**
+ * 货源
+ * @author Donny.
+ */
+entity GoodsSource {
+	/**货源名称*/
+	name String required maxlength(200), 
+	/**货源路线起始*/
+	start String required maxlength(20), 
+	/**货源路线终点*/
+	end String required maxlength(20), 
+	/**吨数（吨）*/
+	ton String required maxlength(20),
+	/**体积（m³）*/
+	volume String required maxlength(20),
+	/**包装*/
+	goodsSourcePacking GoodsSourcePacking required,
+	/**发布人手机号码*/
+	mobilePhone String required maxlength(20),
+	/**运价*/
+	goodsSourceFreight GoodsSourceFreight required,
+	/**货源属性*/
+	goodsSourceProperty GoodsSourceProperty required,
+	/**货源有效时间*/
+	effectiveDate Instant required,
+	/**装货时间*/
+	layTime Instant required,
+	
+	status Status required,
+	
+	createdBy String required,
+    lastModifiedBy String required,
+    createdDate Instant required,
+    lastModifiedDate Instant required
+}
+
+/**
+ * 用户管理
+ * @author Donny.
+ */
+entity UserInfo {
+	/**头像*/
+    photo String required maxlength(200),
+	/**姓名*/
+    fullname String required maxlength(20),
+    /**昵称*/
+    nickName String required maxlength(20),
+    /**手机号*/
+    mobilePhone String required maxlength(20),
+    /**积分*/
+    integral Integer required,
+    /**注册时间*/
+    registerDate Instant required,
+    /**注册时长（月）*/
+    registerSum String required,
+    /**上次登录时间*/
+    lastLoginedDate Instant required,
+    /**发布货源数量（票） */
+    goodsSourceCount Integer required,
+    /**微信公众号OpenId */
+    openId String maxlength(200),
+    status Status required,
+    createdBy String required,
+    lastModifiedBy String required,
+    createdDate Instant required,
+    lastModifiedDate Instant required
+}
+
+/**
+ * 积分规则类型
+ * @author Donny.
+ */
+enum IntegralRuleType {
+    //增加减少
+    INC, REDUCE
+}
+
+/**
+ * 积分规则
+ * @author Donny.
+ */
+entity IntegralRule {
+	/**编码 */
+	code String required maxlength(40),
+	/**名称 */
+	name String required maxlength(40),
+    /**类型 */
+    integralRuleType IntegralRuleType required,
+    /**值 */
+    value Integer required,
+    /**备注 */
+	remark String required maxlength(300),
+    createdBy String required,
+    lastModifiedBy String required,
+    createdDate Instant required,
+    lastModifiedDate Instant required
+}
+
+/**
+ * 积分变化记录
+ * @author Donny.
+ */
+entity IntegralChangeRecord {
+	/**类型 */
+    integralRuleType IntegralRuleType required,
+	/**内容 */
+	name String required maxlength(200),
+     /**值 */
+    value Integer required,
+    createdBy String required,
+    lastModifiedBy String required,
+    createdDate Instant required,
+    lastModifiedDate Instant required
+}
+
+relationship OneToOne {
+	UserInfo{user(login)} to User
+}
+
+relationship ManyToOne {
+	GoodsSource{userInfo(fullname)} to UserInfo,
+	IntegralChangeRecord{userInfo(fullname)} to UserInfo,
+	LogisticsDdnPic{logisticsDdn(title)} to LogisticsDdn,
+	LogisticsDdnWWW{logisticsDdn(title)} to LogisticsDdn,
+	IntegralChangeRecord{integralRule(name)} to IntegralRule
+}
+
+paginate UserInfo, GoodsSource, LogisticsDdnPic, LogisticsDdn, LogisticsDdnWWW, IntegralRule, IntegralChangeRecord
+with pagination
+
+service all with serviceImpl

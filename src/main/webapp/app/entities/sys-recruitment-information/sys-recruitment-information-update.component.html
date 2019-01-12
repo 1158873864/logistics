@@ -1,0 +1,181 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-sys-recruitment-information-heading" jhiTranslate="wlApp.sysRecruitmentInformation.home.createOrEditLabel">Create or edit a Sys Recruitment Information</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="true">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="sysRecruitmentInformation.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.category" for="field_category" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.category' | translate">Category</label>
+                    <input type="text" class="form-control" name="category" id="field_category"
+                        [(ngModel)]="sysRecruitmentInformation.category" required maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.category?.dirty && editForm.controls.category?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.category?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.categoryName" for="field_categoryName" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.categoryName' | translate">Category Name</label>
+                    <input type="text" class="form-control" name="categoryName" id="field_categoryName"
+                        [(ngModel)]="sysRecruitmentInformation.categoryName" required maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.categoryName?.dirty && editForm.controls.categoryName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.categoryName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_peopleCount">招聘人数</label>
+                    <input type="number" class="form-control" name="peopleCount" id="field_peopleCount"
+                           [(ngModel)]="sysRecruitmentInformation.peopleCount" required/>
+                    <div [hidden]="!(editForm.controls.peopleCount?.dirty && editForm.controls.peopleCount?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.peopleCount?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.peopleCount?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.nature" for="field_nature" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.nature' | translate">Nature</label>
+                    <select class="form-control" name="nature" id="field_nature"
+                            [(ngModel)]="sysRecruitmentInformation.nature" required>
+                        <option value="全职">全职</option>
+                        <option value="兼职">兼职</option>
+                        <option value="实习">实习</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.nature?.dirty && editForm.controls.nature?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nature?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.salaryStart" for="field_salaryStart" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.salaryStart' | translate">Salary Start</label>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" name="salaryStart" id="field_salaryStart"
+                                   [(ngModel)]="sysRecruitmentInformation.salaryStart" required maxlength="20"/>K
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" name="salaryEnd" id="field_salaryEnd"
+                                   [(ngModel)]="sysRecruitmentInformation.salaryEnd" required maxlength="20"/>K
+                        </div>
+                        <div class="col-md-5">
+                        </div>
+                    </div>
+
+
+                    <div [hidden]="!(editForm.controls.salaryStart?.dirty && editForm.controls.salaryStart?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.salaryStart?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                    <div [hidden]="!(editForm.controls.salaryEnd?.dirty && editForm.controls.salaryEnd?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.salaryEnd?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.addrCity" for="field_addrCity" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.addrCity' | translate">Addr City</label>
+                    <input type="text" class="form-control" name="addrCity" id="field_addrCity"
+                        [(ngModel)]="sysRecruitmentInformation.addrCity" required maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.addrCity?.dirty && editForm.controls.addrCity?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.addrCity?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.experience" for="field_experience" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.experience' | translate">Experience</label>
+                    <select class="form-control" name="experience" id="field_experience"
+                            [(ngModel)]="sysRecruitmentInformation.experience" required>
+                        <option value="不限">不限</option>
+                        <option value="应届毕业生">应届毕业生</option>
+                        <option value="1-2年">1-2年</option>
+                        <option value="2-3年">2-3年</option>
+                        <option value="3-5年">3-5年</option>
+                        <option value="5-8年">5-8年</option>
+                        <option value="8年以上">8年以上</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.experience?.dirty && editForm.controls.experience?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.experience?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.education" for="field_education" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.education' | translate">Education</label>
+                    <select  class="form-control" name="education" id="field_education"
+                             [(ngModel)]="sysRecruitmentInformation.education" required>
+                        <option value="不限">不限</option>
+                        <option value="大专">大专</option>
+                        <option value="本科">本科</option>
+                        <option value="硕士">硕士</option>
+                        <option value="博士">博士</option>
+                        <option value="其他">其他</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.education?.dirty && editForm.controls.education?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.education?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.description" for="field_description" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.description' | translate">Description</label>
+                    <input [hidden]="true" type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="sysRecruitmentInformation.description"/>
+                    <div id="description-editor">
+                        <div [innerHTML]="sysRecruitmentInformation.description | safeHtml"></div>
+                    </div>
+                    <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.description?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.sysRecruitmentInformation.status" for="field_status" [ngbTooltip]="'wlApp.sysRecruitmentInformation.help.status' | translate">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="sysRecruitmentInformation.status" id="field_status"  required>
+                        <option value="ENABLE">{{'wlApp.Status.ENABLE' | translate}}</option>
+                        <option value="DISABLE">{{'wlApp.Status.DISABLE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.education?.dirty && editForm.controls.education?.invalid)">
+                        <small class="form-text text-danger"
+                               [hidden]="!editForm.controls.education?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

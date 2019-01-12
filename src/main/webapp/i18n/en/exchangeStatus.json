@@ -1,0 +1,10 @@
+{
+    "wlApp": {
+        "ExchangeStatus" : {
+            "null": "",
+            "PROCESSING": "处理中",
+            "FAIL": "兑换失败",
+            "SUCCESS": "兑换成功"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+
+{
+    "wlApp": {
+        "integralChangeRecord" : {
+            "home": {
+                "title": "积分收支记录",
+                "createLabel": "Create a new Integral Change Record",
+                "createOrEditLabel": "Create or edit a Integral Change Record"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "Integral Change Record"
+            },
+            "integralRuleType": "类型",
+            "name": "说明",
+            "value": "值",
+            "createdBy": "Created By",
+            "lastModifiedBy": "Last Modified By",
+            "createdDate": "Created Date",
+            "lastModifiedDate": "Last Modified Date",
+            "integralRule": "Integral Rule",
+            "user": "操作用户",
+            "help": {
+                "integralRuleType": "类型",
+                "name": "内容",
+                "value": "值"
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wlApp.logisticsDdnPic.home.title">Logistics Ddn Pics</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-logistics-ddn-pic" [routerLink]="['/logistics-ddn-pic/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="wlApp.logisticsDdnPic.home.createLabel">
+            Create new Logistics Ddn Pic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'wlApp.logisticsDdnPic.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="logisticsDdnPics">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th jhiSortBy="title"><span jhiTranslate="wlApp.logisticsDdnPic.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="logisticsDdn.title"><span jhiTranslate="wlApp.logisticsDdnPic.logisticsDdn">Logistics Ddn</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="path"><span jhiTranslate="wlApp.logisticsDdnPic.path">Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remark"><span jhiTranslate="wlApp.logisticsDdnPic.remark">Remark</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span jhiTranslate="wlApp.logisticsDdnPic.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let logisticsDdnPic of logisticsDdnPics ;trackBy: trackId;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{logisticsDdnPic.title}}</td>
+                <td>
+                    <div *ngIf="logisticsDdnPic.logisticsDdn">
+                        <a [routerLink]="['../logistics-ddn', logisticsDdnPic.logisticsDdn?.id, 'view' ]" >{{logisticsDdnPic.logisticsDdn?.title}}</a>
+                    </div>
+                </td>
+                <td><img style="max-height: 40px;" src="/api/static/{{logisticsDdnPic.path}}" class="img-rounded"/></td>
+
+                <td>{{logisticsDdnPic.remark}}</td>
+                <td jhiTranslate="{{'wlApp.Status.' + logisticsDdnPic.status}}">{{logisticsDdnPic.status}}</td>
+
+
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/logistics-ddn-pic', logisticsDdnPic.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/logistics-ddn-pic', logisticsDdnPic.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'logistics-ddn-pic/'+ logisticsDdnPic.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="logisticsDdnPics && logisticsDdnPics.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="topicComment">
+            <h2><span jhiTranslate="wlApp.topicComment.detail.title">Topic Comment</span> {{topicComment.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.topicComment.content">Content</span></dt>
+                <dd>
+                    <span>{{topicComment.content}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topicComment.oDateTime">O Date Time</span></dt>
+                <dd>
+                    <span>{{topicComment.oDateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topicComment.topic">Topic</span></dt>
+                <dd>
+                    <div *ngIf="topicComment.topic">
+                        <a [routerLink]="['/topic', topicComment.topic?.id, 'view']">{{topicComment.topic?.title}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topicComment.userInfo">User Info</span></dt>
+                <dd>
+                    <div *ngIf="topicComment.userInfo">
+                        <a [routerLink]="['/user-info', topicComment.userInfo?.id, 'view']">{{topicComment.userInfo?.fullname}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/topic-comment', topicComment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

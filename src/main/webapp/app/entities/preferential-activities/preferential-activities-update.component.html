@@ -1,0 +1,109 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-preferential-activities-heading" jhiTranslate="wlApp.preferentialActivities.home.createOrEditLabel">Create or edit a Preferential Activities</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="true">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="preferentialActivities.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.preferentialActivities.name" for="field_name" [ngbTooltip]="'wlApp.preferentialActivities.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="preferentialActivities.name" required/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.preferentialActivities.cover" for="field_cover" [ngbTooltip]="'wlApp.preferentialActivities.help.cover' | translate">Cover</label>
+                    <input type="text" class="form-control" name="cover" id="field_cover"
+                        [(ngModel)]="preferentialActivities.cover" required maxlength="200" [hidden]="true"/>
+                    <br/>
+                    <img style="max-height: 220px;" src="/api/static/{{preferentialActivities.cover}}" onerror="this.src='/content/images/default.jpeg'" class="img-rounded"/>
+                    <br/>
+                    <br/>
+                    <div id="picker">上传封面图片</div>
+                    <div [hidden]="!(editForm.controls.cover?.dirty && editForm.controls.cover?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cover?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cover?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.preferentialActivities.startDate" for="field_startDate" [ngbTooltip]="'wlApp.preferentialActivities.help.startDate' | translate">Start Date</label>
+                    <div class="d-flex">
+                        <input id="field_startDate" type="datetime-local" class="form-control" name="startDate" [(ngModel)]="startDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.startDate?.dirty && editForm.controls.startDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.startDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.startDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.preferentialActivities.endDate" for="field_endDate" [ngbTooltip]="'wlApp.preferentialActivities.help.endDate' | translate">End Date</label>
+                    <div class="d-flex">
+                        <input id="field_endDate" type="datetime-local" class="form-control" name="endDate" [(ngModel)]="endDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.endDate?.dirty && editForm.controls.endDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.endDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.endDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.preferentialActivities.content" for="field_content" [ngbTooltip]="'wlApp.preferentialActivities.help.content' | translate">Content</label>
+                    <input type="text" class="form-control" name="content" id="field_content"
+                        [(ngModel)]="preferentialActivities.content" [hidden]="true"/>
+                    <div id="description-editor">
+                        <div [innerHTML]="preferentialActivities.content | safeHtml"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.preferentialActivities.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="preferentialActivities.status" id="field_status"  required>
+                        <option value="ENABLE">{{'wlApp.Status.ENABLE' | translate}}</option>
+                        <option value="DISABLE">{{'wlApp.Status.DISABLE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

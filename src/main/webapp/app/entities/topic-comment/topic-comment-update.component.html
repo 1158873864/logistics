@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-topic-comment-heading" jhiTranslate="wlApp.topicComment.home.createOrEditLabel">Create or edit a Topic Comment</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!topicComment.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="topicComment.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.topicComment.content" for="field_content">Content</label>
+                    <input type="text" class="form-control" name="content" id="field_content"
+                        [(ngModel)]="topicComment.content" required maxlength="500"/>
+                    <div [hidden]="!(editForm.controls.content?.dirty && editForm.controls.content?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.content?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.content?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
+                        This field cannot be longer than 500 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.topicComment.oDateTime" for="field_oDateTime">O Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_oDateTime" type="datetime-local" class="form-control" name="oDateTime" [(ngModel)]="oDateTime"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.oDateTime?.dirty && editForm.controls.oDateTime?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.oDateTime?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.oDateTime?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.topicComment.topic" for="field_topic">Topic</label>
+                    <select class="form-control" id="field_topic" name="topic" [(ngModel)]="topicComment.topic" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="topicOption.id === topicComment.topic?.id ? topicComment.topic : topicOption" *ngFor="let topicOption of topics; trackBy: trackTopicById">{{topicOption.title}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.topicComment.userInfo" for="field_userInfo">User Info</label>
+                    <select class="form-control" id="field_userInfo" name="userInfo" [(ngModel)]="topicComment.userInfo" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userInfoOption.id === topicComment.userInfo?.id ? topicComment.userInfo : userInfoOption" *ngFor="let userInfoOption of userinfos; trackBy: trackUserInfoById">{{userInfoOption.fullname}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

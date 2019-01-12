@@ -1,0 +1,246 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-user-info-heading" jhiTranslate="wlApp.userInfo.home.createOrEditLabel">Create or edit a User Info</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!userInfo.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="userInfo.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.photo" for="field_photo" [ngbTooltip]="'wlApp.userInfo.help.photo' | translate">Photo</label>
+                    <input type="text" class="form-control" name="photo" id="field_photo"
+                        [(ngModel)]="userInfo.photo" required maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.photo?.dirty && editForm.controls.photo?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.photo?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.photo?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.fullname" for="field_fullname" [ngbTooltip]="'wlApp.userInfo.help.fullname' | translate">Fullname</label>
+                    <input type="text" class="form-control" name="fullname" id="field_fullname"
+                        [(ngModel)]="userInfo.fullname" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.fullname?.dirty && editForm.controls.fullname?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fullname?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fullname?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.nickName" for="field_nickName" [ngbTooltip]="'wlApp.userInfo.help.nickName' | translate">Nick Name</label>
+                    <input type="text" class="form-control" name="nickName" id="field_nickName"
+                        [(ngModel)]="userInfo.nickName" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.nickName?.dirty && editForm.controls.nickName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nickName?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.nickName?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.mobilePhone" for="field_mobilePhone" [ngbTooltip]="'wlApp.userInfo.help.mobilePhone' | translate">Mobile Phone</label>
+                    <input type="text" class="form-control" name="mobilePhone" id="field_mobilePhone"
+                        [(ngModel)]="userInfo.mobilePhone" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.mobilePhone?.dirty && editForm.controls.mobilePhone?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mobilePhone?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mobilePhone?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.integral" for="field_integral" [ngbTooltip]="'wlApp.userInfo.help.integral' | translate">Integral</label>
+                    <input type="number" class="form-control" name="integral" id="field_integral"
+                        [(ngModel)]="userInfo.integral" required/>
+                    <div [hidden]="!(editForm.controls.integral?.dirty && editForm.controls.integral?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.integral?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.integral?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.registerDate" for="field_registerDate" [ngbTooltip]="'wlApp.userInfo.help.registerDate' | translate">Register Date</label>
+                    <div class="d-flex">
+                        <input id="field_registerDate" type="datetime-local" class="form-control" name="registerDate" [(ngModel)]="registerDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.registerDate?.dirty && editForm.controls.registerDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.registerDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.registerDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.registerSum" for="field_registerSum" [ngbTooltip]="'wlApp.userInfo.help.registerSum' | translate">Register Sum</label>
+                    <input type="text" class="form-control" name="registerSum" id="field_registerSum"
+                        [(ngModel)]="userInfo.registerSum" required/>
+                    <div [hidden]="!(editForm.controls.registerSum?.dirty && editForm.controls.registerSum?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.registerSum?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.lastLoginedDate" for="field_lastLoginedDate" [ngbTooltip]="'wlApp.userInfo.help.lastLoginedDate' | translate">Last Logined Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastLoginedDate" type="datetime-local" class="form-control" name="lastLoginedDate" [(ngModel)]="lastLoginedDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.lastLoginedDate?.dirty && editForm.controls.lastLoginedDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastLoginedDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.lastLoginedDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.goodsSourceCount" for="field_goodsSourceCount" [ngbTooltip]="'wlApp.userInfo.help.goodsSourceCount' | translate">Goods Source Count</label>
+                    <input type="number" class="form-control" name="goodsSourceCount" id="field_goodsSourceCount"
+                        [(ngModel)]="userInfo.goodsSourceCount" required/>
+                    <div [hidden]="!(editForm.controls.goodsSourceCount?.dirty && editForm.controls.goodsSourceCount?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.goodsSourceCount?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.goodsSourceCount?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.openId" for="field_openId" [ngbTooltip]="'wlApp.userInfo.help.openId' | translate">Open Id</label>
+                    <input type="text" class="form-control" name="openId" id="field_openId"
+                        [(ngModel)]="userInfo.openId" maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.openId?.dirty && editForm.controls.openId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.openId?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="userInfo.status" id="field_status"  required>
+                        <option value="ENABLE">{{'wlApp.Status.ENABLE' | translate}}</option>
+                        <option value="DISABLE">{{'wlApp.Status.DISABLE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.createdBy" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                        [(ngModel)]="userInfo.createdBy" required/>
+                    <div [hidden]="!(editForm.controls.createdBy?.dirty && editForm.controls.createdBy?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.createdBy?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                        [(ngModel)]="userInfo.lastModifiedBy" required/>
+                    <div [hidden]="!(editForm.controls.lastModifiedBy?.dirty && editForm.controls.lastModifiedBy?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastModifiedBy?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.createdDate" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.createdDate?.dirty && editForm.controls.createdDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.createdDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.createdDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" [(ngModel)]="lastModifiedDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.lastModifiedDate?.dirty && editForm.controls.lastModifiedDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.lastModifiedDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.lastModifiedDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.userInfo.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="userInfo.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === userInfo.user?.id ? userInfo.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

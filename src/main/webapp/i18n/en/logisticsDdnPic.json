@@ -1,0 +1,37 @@
+
+{
+    "wlApp": {
+        "logisticsDdnPic" : {
+            "home": {
+                "title": "专线图片",
+                "createLabel": "创建",
+                "createOrEditLabel": "专线图片信息",
+                "search": "请输入关键字"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "专线图片信息"
+            },
+            "title": "标题",
+            "path": "图片",
+            "remark": "说明",
+            "status": "状态",
+            "createdBy": "Created By",
+            "lastModifiedBy": "Last Modified By",
+            "createdDate": "Created Date",
+            "lastModifiedDate": "Last Modified Date",
+            "logisticsDdn": "所属专线",
+            "help": {
+                "title": "标题",
+                "path": "图片",
+                "remark": "说明",
+                "status": "状态"
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="member">
+            <h2><span jhiTranslate="wlApp.member.detail.title">Member</span> {{member.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.member.startDate" [ngbTooltip]="'wlApp.member.help.startDate' | translate">Start Date</span></dt>
+                <dd>
+                    <span>{{member.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.member.endDate" [ngbTooltip]="'wlApp.member.help.endDate' | translate">End Date</span></dt>
+                <dd>
+                    <span>{{member.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.member.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{member.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.member.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{member.lastModifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.member.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{member.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.member.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{member.lastModifiedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.member.userInfo">User Info</span></dt>
+                <dd>
+                    <div *ngIf="member.userInfo">
+                        <a [routerLink]="['/user-info', member.userInfo?.id, 'view']">{{member.userInfo?.fullname}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/member', member.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

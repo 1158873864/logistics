@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userDdnFavorites">
+            <h2><span jhiTranslate="wlApp.userDdnFavorites.detail.title">User Ddn Favorites</span> {{userDdnFavorites.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.userDdnFavorites.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{userDdnFavorites.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userDdnFavorites.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{userDdnFavorites.lastModifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userDdnFavorites.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{userDdnFavorites.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userDdnFavorites.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{userDdnFavorites.lastModifiedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userDdnFavorites.ddn">Ddn</span></dt>
+                <dd>
+                    <div *ngIf="userDdnFavorites.ddn">
+                        <a [routerLink]="['/logistics-ddn', userDdnFavorites.ddn?.id, 'view']">{{userDdnFavorites.ddn?.title}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userDdnFavorites.userInfo">User Info</span></dt>
+                <dd>
+                    <div *ngIf="userDdnFavorites.userInfo">
+                        <a [routerLink]="['/user-info', userDdnFavorites.userInfo?.id, 'view']">{{userDdnFavorites.userInfo?.fullname}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-ddn-favorites', userDdnFavorites.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="integralChangeRecord">
+            <h2><span jhiTranslate="wlApp.integralChangeRecord.detail.title">Integral Change Record</span> {{integralChangeRecord.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.integralRuleType" [ngbTooltip]="'wlApp.integralChangeRecord.help.integralRuleType' | translate">Integral Rule Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.IntegralRuleType.' + integralChangeRecord.integralRuleType}}">{{integralChangeRecord.integralRuleType}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.name" [ngbTooltip]="'wlApp.integralChangeRecord.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{integralChangeRecord.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.value" [ngbTooltip]="'wlApp.integralChangeRecord.help.value' | translate">Value</span></dt>
+                <dd>
+                    <span>{{integralChangeRecord.value}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{integralChangeRecord.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{integralChangeRecord.lastModifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{integralChangeRecord.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{integralChangeRecord.lastModifiedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.integralRule">Integral Rule</span></dt>
+                <dd>
+                    <div *ngIf="integralChangeRecord.integralRule">
+                        <a [routerLink]="['/integral-rule', integralChangeRecord.integralRule?.id, 'view']">{{integralChangeRecord.integralRule?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralChangeRecord.user">User</span></dt>
+                <dd>
+                    {{integralChangeRecord.userInfo?.fullname}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/integral-change-record', integralChangeRecord.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

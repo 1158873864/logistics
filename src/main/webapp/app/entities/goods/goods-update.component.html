@@ -1,0 +1,126 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-goods-heading" jhiTranslate="wlApp.goods.home.createOrEditLabel">Create or edit a Goods</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="true">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="goods.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goods.name" for="field_name" [ngbTooltip]="'wlApp.goods.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="goods.name" required maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goods.cover" for="field_cover" [ngbTooltip]="'wlApp.goods.help.cover' | translate">Cover</label>
+                    <input type="text" class="form-control" name="cover" id="field_cover"
+                        [(ngModel)]="goods.cover" required maxlength="200" [hidden]="true"/>
+                    <br/>
+                    <img style="max-height: 220px;" src="/api/static/{{goods.cover}}" onerror="this.src='/content/images/default.jpeg'" class="img-rounded"/>
+                    <br/>
+                    <br/>
+                    <div id="picker">上传封面图片</div>
+                    <div [hidden]="!(editForm.controls.cover?.dirty && editForm.controls.cover?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cover?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.cover?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goods.introduce" for="field_introduce" [ngbTooltip]="'wlApp.goods.help.introduce' | translate">Introduce</label>
+                    <input type="text" class="form-control" name="introduce" id="field_introduce"
+                        [(ngModel)]="goods.introduce" [hidden]="true"/>
+                    <div id="div-content">
+                        <div [innerHTML]="goods.introduce | safeHtml"></div>
+                    </div>
+                    <div [hidden]="!(editForm.controls.introduce?.dirty && editForm.controls.introduce?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.introduce?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goods.payment" for="field_payment" [ngbTooltip]="'wlApp.goods.help.payment' | translate">Payment</label>
+                    <input type="text" class="form-control" name="payment" id="field_payment"
+                        [(ngModel)]="goods.payment" required/>
+                    <div [hidden]="!(editForm.controls.payment?.dirty && editForm.controls.payment?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.payment?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goods.integral" for="field_integral" [ngbTooltip]="'wlApp.goods.help.integral' | translate">Integral</label>
+                    <input type="number" class="form-control" name="integral" id="field_integral"
+                        [(ngModel)]="goods.integral" required/>
+                    <div [hidden]="!(editForm.controls.integral?.dirty && editForm.controls.integral?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.integral?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.integral?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goods.total" for="field_total" [ngbTooltip]="'wlApp.goods.help.total' | translate">Total</label>
+                    <input type="number" class="form-control" name="total" id="field_total"
+                        [(ngModel)]="goods.total" required/>
+                    <div [hidden]="!(editForm.controls.total?.dirty && editForm.controls.total?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.total?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.total?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goods.status" for="field_status" [ngbTooltip]="'wlApp.goods.help.status' | translate">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="goods.status" id="field_status"  required>
+                        <option value="ENABLE">{{'wlApp.Status.ENABLE' | translate}}</option>
+                        <option value="DISABLE">{{'wlApp.Status.DISABLE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

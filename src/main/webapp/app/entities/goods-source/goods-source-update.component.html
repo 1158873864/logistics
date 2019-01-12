@@ -1,0 +1,205 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-goods-source-heading" jhiTranslate="wlApp.goodsSource.home.createOrEditLabel">Create or edit a Goods Source</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="true">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="goodsSource.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.name" for="field_name" [ngbTooltip]="'wlApp.goodsSource.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="goodsSource.name" required maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.start" for="field_start" [ngbTooltip]="'wlApp.goodsSource.help.start' | translate">Start</label>
+                    <input type="text" class="form-control" name="start" id="field_start"
+                        [(ngModel)]="goodsSource.start" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.start?.dirty && editForm.controls.start?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.start?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.start?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.end" for="field_end" [ngbTooltip]="'wlApp.goodsSource.help.end' | translate">End</label>
+                    <input type="text" class="form-control" name="end" id="field_end"
+                        [(ngModel)]="goodsSource.end" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.end?.dirty && editForm.controls.end?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.end?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.end?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.ton" for="field_ton" [ngbTooltip]="'wlApp.goodsSource.help.ton' | translate">Ton</label>
+                    <input type="text" class="form-control" name="ton" id="field_ton"
+                        [(ngModel)]="goodsSource.ton" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.ton?.dirty && editForm.controls.ton?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ton?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ton?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.volume" for="field_volume" [ngbTooltip]="'wlApp.goodsSource.help.volume' | translate">Volume</label>
+                    <input type="text" class="form-control" name="volume" id="field_volume"
+                        [(ngModel)]="goodsSource.volume" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.volume?.dirty && editForm.controls.volume?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.volume?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.volume?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.goodsSourcePacking" for="field_goodsSourcePacking" [ngbTooltip]="'wlApp.goodsSource.help.goodsSourcePacking' | translate">Goods Source Packing</label>
+                    <select class="form-control" name="goodsSourcePacking" [(ngModel)]="goodsSource.goodsSourcePacking" id="field_goodsSourcePacking"  required>
+                        <option value="MX">{{'wlApp.GoodsSourcePacking.MX' | translate}}</option>
+                        <option value="MJ">{{'wlApp.GoodsSourcePacking.MJ' | translate}}</option>
+                        <option value="ZX">{{'wlApp.GoodsSourcePacking.ZX' | translate}}</option>
+                        <option value="TP">{{'wlApp.GoodsSourcePacking.TP' | translate}}</option>
+                        <option value="KZH">{{'wlApp.GoodsSourcePacking.KZH' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.goodsSourcePacking?.dirty && editForm.controls.goodsSourcePacking?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.goodsSourcePacking?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.mobilePhone" for="field_mobilePhone" [ngbTooltip]="'wlApp.goodsSource.help.mobilePhone' | translate">Mobile Phone</label>
+                    <input type="text" class="form-control" name="mobilePhone" id="field_mobilePhone"
+                        [(ngModel)]="goodsSource.mobilePhone" required maxlength="20"/>
+                    <div [hidden]="!(editForm.controls.mobilePhone?.dirty && editForm.controls.mobilePhone?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mobilePhone?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mobilePhone?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.goodsSourceFreight" for="field_goodsSourceFreight" [ngbTooltip]="'wlApp.goodsSource.help.goodsSourceFreight' | translate">Goods Source Freight</label>
+                    <select class="form-control" name="goodsSourceFreight" [(ngModel)]="goodsSource.goodsSourceFreight" id="field_goodsSourceFreight"  required>
+                        <option value="CKYJ">{{'wlApp.GoodsSourceFreight.CKYJ' | translate}}</option>
+                        <option value="DY">{{'wlApp.GoodsSourceFreight.DY' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.goodsSourceFreight?.dirty && editForm.controls.goodsSourceFreight?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.goodsSourceFreight?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.goodsSourceProperty" for="field_goodsSourceProperty" [ngbTooltip]="'wlApp.goodsSource.help.goodsSourceProperty' | translate">Goods Source Property</label>
+                    <select class="form-control" name="goodsSourceProperty" [(ngModel)]="goodsSource.goodsSourceProperty" id="field_goodsSourceProperty"  required>
+                        <option value="ZH">{{'wlApp.GoodsSourceProperty.ZH' | translate}}</option>
+                        <option value="QH">{{'wlApp.GoodsSourceProperty.QH' | translate}}</option>
+                        <option value="SB">{{'wlApp.GoodsSourceProperty.SB' | translate}}</option>
+                        <option value="HG">{{'wlApp.GoodsSourceProperty.HG' | translate}}</option>
+                        <option value="OTHER">{{'wlApp.GoodsSourceProperty.OTHER' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.goodsSourceProperty?.dirty && editForm.controls.goodsSourceProperty?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.goodsSourceProperty?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.effectiveDate" for="field_effectiveDate" [ngbTooltip]="'wlApp.goodsSource.help.effectiveDate' | translate">Effective Date</label>
+                    <div class="d-flex">
+                        <input id="field_effectiveDate" type="datetime-local" class="form-control" name="effectiveDate" [(ngModel)]="effectiveDate"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.effectiveDate?.dirty && editForm.controls.effectiveDate?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.effectiveDate?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.effectiveDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.layTime" for="field_layTime" [ngbTooltip]="'wlApp.goodsSource.help.layTime' | translate">Lay Time</label>
+                    <div class="d-flex">
+                        <input id="field_layTime" type="datetime-local" class="form-control" name="layTime" [(ngModel)]="layTime"
+                        required/>
+                    </div>
+                    <div [hidden]="!(editForm.controls.layTime?.dirty && editForm.controls.layTime?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.layTime?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.layTime?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.goodsSource.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="goodsSource.status" id="field_status"  required>
+                        <option value="ENABLE">{{'wlApp.Status.ENABLE' | translate}}</option>
+                        <option value="DISABLE">{{'wlApp.Status.DISABLE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

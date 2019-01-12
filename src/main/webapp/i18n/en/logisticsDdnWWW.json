@@ -1,0 +1,39 @@
+
+{
+    "wlApp": {
+        "logisticsDdnWWW" : {
+            "home": {
+                "title": "专线网点",
+                "createLabel": "创建",
+                "createOrEditLabel": "专线网点信息",
+                "search": "请输入关键字"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "专线网点信息"
+            },
+            "name": "名称",
+            "mobilePhone": "手机号",
+            "phone": "电话号码",
+            "remark": "地址",
+            "status": "状态",
+            "createdBy": "Created By",
+            "lastModifiedBy": "Last Modified By",
+            "createdDate": "Created Date",
+            "lastModifiedDate": "Last Modified Date",
+            "logisticsDdn": "所属专线",
+            "help": {
+                "name": "名称",
+                "mobilePhone": "手机号",
+                "phone": "电话号码",
+                "remark": "地址",
+                "status": "状态"
+            }
+        }
+    }
+}

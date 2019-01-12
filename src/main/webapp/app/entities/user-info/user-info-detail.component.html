@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userInfo">
+            <h2><span jhiTranslate="wlApp.userInfo.detail.title">User Info</span> {{userInfo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.userInfo.photo" [ngbTooltip]="'wlApp.userInfo.help.photo' | translate">Photo</span></dt>
+                <dd>
+                    <span>{{userInfo.photo}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.fullname" [ngbTooltip]="'wlApp.userInfo.help.fullname' | translate">Fullname</span></dt>
+                <dd>
+                    <span>{{userInfo.fullname}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.nickName" [ngbTooltip]="'wlApp.userInfo.help.nickName' | translate">Nick Name</span></dt>
+                <dd>
+                    <span>{{userInfo.nickName}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.mobilePhone" [ngbTooltip]="'wlApp.userInfo.help.mobilePhone' | translate">Mobile Phone</span></dt>
+                <dd>
+                    <span>{{userInfo.mobilePhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.integral" [ngbTooltip]="'wlApp.userInfo.help.integral' | translate">Integral</span></dt>
+                <dd>
+                    <span>{{userInfo.integral}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.registerDate" [ngbTooltip]="'wlApp.userInfo.help.registerDate' | translate">Register Date</span></dt>
+                <dd>
+                    <span>{{userInfo.registerDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.registerSum" [ngbTooltip]="'wlApp.userInfo.help.registerSum' | translate">Register Sum</span></dt>
+                <dd>
+                    <span>{{userInfo.registerSum}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.lastLoginedDate" [ngbTooltip]="'wlApp.userInfo.help.lastLoginedDate' | translate">Last Logined Date</span></dt>
+                <dd>
+                    <span>{{userInfo.lastLoginedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.goodsSourceCount" [ngbTooltip]="'wlApp.userInfo.help.goodsSourceCount' | translate">Goods Source Count</span></dt>
+                <dd>
+                    <span>{{userInfo.goodsSourceCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.openId" [ngbTooltip]="'wlApp.userInfo.help.openId' | translate">Open Id</span></dt>
+                <dd>
+                    <span>{{userInfo.openId}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + userInfo.status}}">{{userInfo.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{userInfo.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{userInfo.lastModifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{userInfo.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{userInfo.lastModifiedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.userInfo.user">User</span></dt>
+                <dd>
+                    {{userInfo.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-info', userInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

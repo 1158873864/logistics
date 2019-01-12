@@ -1,0 +1,101 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wlApp.goodsExchange.home.title">Goods Exchanges</span>
+        <button [hidden]="true" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-goods-exchange" [routerLink]="['/goods-exchange/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="wlApp.goodsExchange.home.createLabel">
+            Create new Goods Exchange
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'wlApp.goodsExchange.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="goodsExchanges">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th jhiSortBy="mobilePhone"><span jhiTranslate="wlApp.goodsExchange.mobilePhone">Mobile Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fullname"><span jhiTranslate="wlApp.goodsExchange.fullname">Fullname</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="address"><span jhiTranslate="wlApp.goodsExchange.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="oddNumbers"><span jhiTranslate="wlApp.goodsExchange.oddNumbers">Odd Numbers</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="exchangeCount"><span jhiTranslate="wlApp.goodsExchange.exchangeCount">Exchange Count</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="exchangeStatus"><span jhiTranslate="wlApp.goodsExchange.exchangeStatus">Exchange Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remark"><span jhiTranslate="wlApp.goodsExchange.remark">Remark</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="goods.name"><span jhiTranslate="wlApp.goodsExchange.goods">Goods</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="userInfo.fullname"><span jhiTranslate="wlApp.goodsExchange.userInfo">User Info</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let goodsExchange of goodsExchanges ;trackBy: trackId;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{goodsExchange.mobilePhone}}</td>
+                <td>{{goodsExchange.fullname}}</td>
+                <td>{{goodsExchange.address}}</td>
+                <td>{{goodsExchange.oddNumbers}}</td>
+                <td>{{goodsExchange.exchangeCount}}</td>
+                <td jhiTranslate="{{'wlApp.ExchangeStatus.' + goodsExchange.exchangeStatus}}">{{goodsExchange.exchangeStatus}}</td>
+                <td>{{goodsExchange.remark}}</td>
+                <td>
+                    <div *ngIf="goodsExchange.goods">
+                        <a [routerLink]="['../goods', goodsExchange.goods?.id, 'view' ]" >{{goodsExchange.goods?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="goodsExchange.userInfo">
+                        <a [routerLink]="['../user-info', goodsExchange.userInfo?.id, 'view' ]" >{{goodsExchange.userInfo?.fullname}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/goods-exchange', goodsExchange.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/goods-exchange', goodsExchange.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'goods-exchange/'+ goodsExchange.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="goodsExchanges && goodsExchanges.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="goods">
+            <h2><span jhiTranslate="wlApp.goods.detail.title">Goods</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.goods.name" [ngbTooltip]="'wlApp.goods.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{goods.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goods.cover" [ngbTooltip]="'wlApp.goods.help.cover' | translate">Cover</span></dt>
+                <dd>
+                    <span><img style="max-height: 400px;" src="/api/static/{{goods.cover}}" class="img-rounded"/></span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goods.introduce" [ngbTooltip]="'wlApp.goods.help.introduce' | translate">Introduce</span></dt>
+                <dd>
+                    <span><div [innerHTML]="goods.introduce | safeHtml"></div></span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goods.payment" [ngbTooltip]="'wlApp.goods.help.payment' | translate">Payment</span></dt>
+                <dd>
+                    <span>{{goods.payment}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goods.integral" [ngbTooltip]="'wlApp.goods.help.integral' | translate">Integral</span></dt>
+                <dd>
+                    <span>{{goods.integral}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goods.total" [ngbTooltip]="'wlApp.goods.help.total' | translate">Total</span></dt>
+                <dd>
+                    <span>{{goods.total}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goods.peopleCount" [ngbTooltip]="'wlApp.goods.help.peopleCount' | translate">People Count</span></dt>
+                <dd>
+                    <span>{{goods.peopleCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goods.status" [ngbTooltip]="'wlApp.goods.help.status' | translate">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + goods.status}}">{{goods.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/goods', goods.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

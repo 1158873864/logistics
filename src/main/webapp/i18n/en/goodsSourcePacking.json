@@ -1,0 +1,12 @@
+{
+    "wlApp": {
+        "GoodsSourcePacking" : {
+            "null": "",
+            "MX": "木箱",
+            "MJ": "木架",
+            "ZX": "纸箱",
+            "TP": "托盘",
+            "KZH": "裸装"
+        }
+    }
+}

@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="goodsExchange">
+            <h2><span jhiTranslate="wlApp.goodsExchange.detail.title">Goods Exchange</span> {{goodsExchange.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.goodsExchange.mobilePhone" [ngbTooltip]="'wlApp.goodsExchange.help.mobilePhone' | translate">Mobile Phone</span></dt>
+                <dd>
+                    <span>{{goodsExchange.mobilePhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.fullname" [ngbTooltip]="'wlApp.goodsExchange.help.fullname' | translate">Fullname</span></dt>
+                <dd>
+                    <span>{{goodsExchange.fullname}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.address" [ngbTooltip]="'wlApp.goodsExchange.help.address' | translate">Address</span></dt>
+                <dd>
+                    <span>{{goodsExchange.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.oddNumbers" [ngbTooltip]="'wlApp.goodsExchange.help.oddNumbers' | translate">Odd Numbers</span></dt>
+                <dd>
+                    <span>{{goodsExchange.oddNumbers}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.exchangeCount" [ngbTooltip]="'wlApp.goodsExchange.help.exchangeCount' | translate">Exchange Count</span></dt>
+                <dd>
+                    <span>{{goodsExchange.exchangeCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.exchangeStatus" [ngbTooltip]="'wlApp.goodsExchange.help.exchangeStatus' | translate">Exchange Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.ExchangeStatus.' + goodsExchange.exchangeStatus}}">{{goodsExchange.exchangeStatus}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.remark" [ngbTooltip]="'wlApp.goodsExchange.help.remark' | translate">Remark</span></dt>
+                <dd>
+                    <span>{{goodsExchange.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{goodsExchange.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{goodsExchange.lastModifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{goodsExchange.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{goodsExchange.lastModifiedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.goods">Goods</span></dt>
+                <dd>
+                    <div *ngIf="goodsExchange.goods">
+                        <a [routerLink]="['/goods', goodsExchange.goods?.id, 'view']">{{goodsExchange.goods?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.goodsExchange.userInfo">User Info</span></dt>
+                <dd>
+                    <div *ngIf="goodsExchange.userInfo">
+                        <a [routerLink]="['/user-info', goodsExchange.userInfo?.id, 'view']">{{goodsExchange.userInfo?.fullname}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/goods-exchange', goodsExchange.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

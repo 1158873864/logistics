@@ -1,0 +1,9 @@
+{
+    "wlApp": {
+        "Status" : {
+            "null": "",
+            "ENABLE": "启用",
+            "DISABLE": "禁用"
+        }
+    }
+}

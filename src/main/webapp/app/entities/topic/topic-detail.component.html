@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="topic">
+            <h2><span jhiTranslate="wlApp.topic.detail.title">Topic</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.topic.title" [ngbTooltip]="'wlApp.topic.help.title' | translate">Title</span></dt>
+                <dd>
+                    <span>{{topic.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.content" [ngbTooltip]="'wlApp.topic.help.content' | translate">Content</span></dt>
+                <dd>
+                    <span><div [innerHTML]="topic.content | safeHtml"></div></span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.published" [ngbTooltip]="'wlApp.topic.help.published' | translate">Published</span></dt>
+                <dd>
+                    <span>{{topic.published  | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.fabulousCount" [ngbTooltip]="'wlApp.topic.help.fabulousCount' | translate">Fabulous Count</span></dt>
+                <dd>
+                    <span>{{topic.fabulousCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.commentCount" [ngbTooltip]="'wlApp.topic.help.commentCount' | translate">Comment Count</span></dt>
+                <dd>
+                    <span>{{topic.commentCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.forwardCount" [ngbTooltip]="'wlApp.topic.help.forwardCount' | translate">Forward Count</span></dt>
+                <dd>
+                    <span>{{topic.forwardCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.viewedCount" [ngbTooltip]="'wlApp.topic.help.viewedCount' | translate">Viewed Count</span></dt>
+                <dd>
+                    <span>{{topic.viewedCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.forwarded" [ngbTooltip]="'wlApp.topic.help.forwarded' | translate">Forwarded</span></dt>
+                <dd>
+                    <span>{{topic.forwarded}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + topic.status}}">{{topic.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.userInfo">User Info</span></dt>
+                <dd>
+                    <div *ngIf="topic.userInfo">
+                        <a [routerLink]="['/user-info', topic.userInfo?.id, 'view']">{{topic.userInfo?.fullname}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topic.source">Source</span></dt>
+                <dd>
+                    <div *ngIf="topic.source">
+                        <a [routerLink]="['/topic', topic.source?.id, 'view']">{{topic.source?.title}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/topic', topic.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

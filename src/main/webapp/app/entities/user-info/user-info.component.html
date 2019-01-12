@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wlApp.userInfo.home.title">User Infos</span>
+        <button id="jh-create-entity" [hidden]="true" class="btn btn-primary float-right jh-create-entity create-user-info" [routerLink]="['/user-info/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="wlApp.userInfo.home.createLabel">
+            Create new User Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'wlApp.userInfo.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="userInfos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th jhiSortBy="photo"><span jhiTranslate="wlApp.userInfo.photo">Photo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fullname"><span jhiTranslate="wlApp.userInfo.fullname">Fullname</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="nickName"><span jhiTranslate="wlApp.userInfo.nickName">Nick Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mobilePhone"><span jhiTranslate="wlApp.userInfo.mobilePhone">Mobile Phone</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="integral"><span jhiTranslate="wlApp.userInfo.integral">Integral</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="registerDate"><span jhiTranslate="wlApp.userInfo.registerDate">Register Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="registerSum"><span jhiTranslate="wlApp.userInfo.registerSum">Register Sum</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastLoginedDate"><span jhiTranslate="wlApp.userInfo.lastLoginedDate">Last Logined Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="goodsSourceCount"><span jhiTranslate="wlApp.userInfo.goodsSourceCount">Goods Source Count</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="status"><span jhiTranslate="wlApp.userInfo.status">Status</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userInfo of userInfos ;trackBy: trackId;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{userInfo.photo}}</td>
+                <td>{{userInfo.fullname}}</td>
+                <td>{{userInfo.nickName}}</td>
+                <td>{{userInfo.mobilePhone}}</td>
+                <td>{{userInfo.integral}}</td>
+                <td>{{userInfo.registerDate | date:'yyyy-MM-dd'}}</td>
+                <td>{{userInfo.registerSum}}</td>
+                <td>{{userInfo.lastLoginedDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{userInfo.goodsSourceCount}}</td>
+                <td jhiTranslate="{{'wlApp.Status.' + userInfo.status}}">{{userInfo.status}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/user-info', userInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/user-info', userInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'user-info/'+ userInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="userInfos && userInfos.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

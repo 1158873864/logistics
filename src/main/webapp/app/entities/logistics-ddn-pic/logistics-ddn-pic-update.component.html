@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-logistics-ddn-pic-heading" jhiTranslate="wlApp.logisticsDdnPic.home.createOrEditLabel">Create or edit a Logistics Ddn Pic</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="true">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="logisticsDdnPic.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.logisticsDdnPic.logisticsDdn" for="field_logisticsDdn">Logistics Ddn</label>
+                    <select class="form-control" id="field_logisticsDdn" name="logisticsDdn" [(ngModel)]="logisticsDdnPic.logisticsDdn" required>
+                        <option [ngValue]="logisticsDdnOption.id === logisticsDdnPic.logisticsDdn?.id ? logisticsDdnPic.logisticsDdn : logisticsDdnOption" *ngFor="let logisticsDdnOption of logisticsddns; trackBy: trackLogisticsDdnById">{{logisticsDdnOption.title}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.logisticsDdnPic.title" for="field_title" [ngbTooltip]="'wlApp.logisticsDdnPic.help.title' | translate">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="logisticsDdnPic.title" required maxlength="200"/>
+                    <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.title?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.logisticsDdnPic.path" for="field_path" [ngbTooltip]="'wlApp.logisticsDdnPic.help.path' | translate">Path</label>
+                    <input type="text" class="form-control" name="path" id="field_path"
+                        [(ngModel)]="logisticsDdnPic.path" required maxlength="200" [hidden]="true"/>
+                    <br/>
+                    <img style="max-height: 220px;" src="/api/static/{{logisticsDdnPic.path}}" onerror="this.src='/content/images/default.jpeg'" class="img-rounded"/>
+                    <br/>
+                    <br/>
+                    <div id="picker">专线展示图</div>
+                    <div [hidden]="!(editForm.controls.path?.dirty && editForm.controls.path?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.path?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.path?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 200 }">
+                        This field cannot be longer than 200 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.logisticsDdnPic.remark" for="field_remark" [ngbTooltip]="'wlApp.logisticsDdnPic.help.remark' | translate">Remark</label>
+                    <input type="text" class="form-control" name="remark" id="field_remark"
+                        [(ngModel)]="logisticsDdnPic.remark" required maxlength="500"/>
+                    <div [hidden]="!(editForm.controls.remark?.dirty && editForm.controls.remark?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.remark?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.remark?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 500 }">
+                        This field cannot be longer than 500 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wlApp.logisticsDdnPic.status" for="field_status" [ngbTooltip]="'wlApp.logisticsDdnPic.help.status' | translate">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="logisticsDdnPic.status" id="field_status"  required>
+                        <option value="ENABLE">{{'wlApp.Status.ENABLE' | translate}}</option>
+                        <option value="DISABLE">{{'wlApp.Status.DISABLE' | translate}}</option>
+                    </select>
+                    <div [hidden]="!(editForm.controls.status?.dirty && editForm.controls.status?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.status?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="topicViewed">
+            <h2><span jhiTranslate="wlApp.topicViewed.detail.title">Topic Viewed</span> {{topicViewed.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.topicViewed.oDateTime">O Date Time</span></dt>
+                <dd>
+                    <span>{{topicViewed.oDateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topicViewed.topic">Topic</span></dt>
+                <dd>
+                    <div *ngIf="topicViewed.topic">
+                        <a [routerLink]="['/topic', topicViewed.topic?.id, 'view']">{{topicViewed.topic?.title}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.topicViewed.userInfo">User Info</span></dt>
+                <dd>
+                    <div *ngIf="topicViewed.userInfo">
+                        <a [routerLink]="['/user-info', topicViewed.userInfo?.id, 'view']">{{topicViewed.userInfo?.fullname}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/topic-viewed', topicViewed.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

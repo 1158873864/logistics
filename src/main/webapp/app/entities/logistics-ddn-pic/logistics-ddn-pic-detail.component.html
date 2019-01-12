@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="logisticsDdnPic">
+            <h2><span jhiTranslate="wlApp.logisticsDdnPic.detail.title">Logistics Ddn Pic</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.logisticsDdnPic.logisticsDdn">Logistics Ddn</span></dt>
+                <dd>
+                    <div *ngIf="logisticsDdnPic.logisticsDdn">
+                        <a [routerLink]="['/logistics-ddn', logisticsDdnPic.logisticsDdn?.id, 'view']">{{logisticsDdnPic.logisticsDdn?.title}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnPic.title" [ngbTooltip]="'wlApp.logisticsDdnPic.help.title' | translate">Title</span></dt>
+                <dd>
+                    <span>{{logisticsDdnPic.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnPic.path" [ngbTooltip]="'wlApp.logisticsDdnPic.help.path' | translate">Path</span></dt>
+                <dd>
+                    <span><img src="/api/static/{{logisticsDdnPic.path}}" class="img-rounded"/></span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnPic.remark" [ngbTooltip]="'wlApp.logisticsDdnPic.help.remark' | translate">Remark</span></dt>
+                <dd>
+                    <span>{{logisticsDdnPic.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdnPic.status" [ngbTooltip]="'wlApp.logisticsDdnPic.help.status' | translate">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + logisticsDdnPic.status}}">{{logisticsDdnPic.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/logistics-ddn-pic', logisticsDdnPic.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

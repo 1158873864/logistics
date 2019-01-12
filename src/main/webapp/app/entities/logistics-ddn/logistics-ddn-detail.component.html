@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="logisticsDdn">
+            <h2><span jhiTranslate="wlApp.logisticsDdn.detail.title">Logistics Ddn</span></h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.logisticsDdn.title" [ngbTooltip]="'wlApp.logisticsDdn.help.title' | translate">Title</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.managerFullname" [ngbTooltip]="'wlApp.logisticsDdn.help.managerFullname' | translate">Manager Fullname</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.managerFullname}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.managerMobilePhone" [ngbTooltip]="'wlApp.logisticsDdn.help.managerMobilePhone' | translate">Manager Mobile Phone</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.managerMobilePhone}}</span>
+                </dd>
+                <dt><span>查货电话</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.managerPhone}}</span>
+                </dd>
+                <dt><span>业务电话</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.businessPhone}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.locationCity" [ngbTooltip]="'wlApp.logisticsDdn.help.locationCity' | translate">Location City</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.locationCity}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.address" [ngbTooltip]="'wlApp.logisticsDdn.help.address' | translate">Address</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.pic" [ngbTooltip]="'wlApp.logisticsDdn.help.pic' | translate">Pic</span></dt>
+                <dd>
+                    <span><img src="/api/static/{{logisticsDdn.pic}}" class="img-rounded" style="max-height: 400px;"/></span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.coverCity" [ngbTooltip]="'wlApp.logisticsDdn.help.coverCity' | translate">Cover City</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.coverCity}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.throughCity" [ngbTooltip]="'wlApp.logisticsDdn.help.throughCity' | translate">Through City</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.throughCity}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.www" [ngbTooltip]="'wlApp.logisticsDdn.help.www' | translate">Www</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.www}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.specialTransport" [ngbTooltip]="'wlApp.logisticsDdn.help.specialTransport' | translate">Special Transport</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.specialTransport ? '是' : '否'}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.good" [ngbTooltip]="'wlApp.logisticsDdn.help.good' | translate">Good</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.good ? '是' : '否'}}</span>
+                </dd>
+                <dt><span>是否往返</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.goThereAndback ? '是' : '否'}}</span>
+                </dd>
+                <dt><span>是否认证</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.auth ? '是' : '否'}}</span>
+                </dd>
+                <dt><span>是否首页收藏显示</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.home ? '是' : '否'}}</span>
+                </dd>
+                <dt><span>是否首页Banner显示</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.banner ? '是' : '否'}}</span>
+                </dd>
+                <dt><span>是否VIP专线</span></dt>
+                <dd>
+                    <span>{{logisticsDdn.vip ? '是' : '否'}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.logisticsDdn.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.Status.' + logisticsDdn.status}}">{{logisticsDdn.status}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/logistics-ddn', logisticsDdn.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

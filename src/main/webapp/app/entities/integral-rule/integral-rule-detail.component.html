@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="integralRule">
+            <h2><span jhiTranslate="wlApp.integralRule.detail.title">Integral Rule</span> {{integralRule.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wlApp.integralRule.code" [ngbTooltip]="'wlApp.integralRule.help.code' | translate">Code</span></dt>
+                <dd>
+                    <span>{{integralRule.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.name" [ngbTooltip]="'wlApp.integralRule.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{integralRule.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.integralRuleType" [ngbTooltip]="'wlApp.integralRule.help.integralRuleType' | translate">Integral Rule Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'wlApp.IntegralRuleType.' + integralRule.integralRuleType}}">{{integralRule.integralRuleType}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.value" [ngbTooltip]="'wlApp.integralRule.help.value' | translate">Value</span></dt>
+                <dd>
+                    <span>{{integralRule.value}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.remark" [ngbTooltip]="'wlApp.integralRule.help.remark' | translate">Remark</span></dt>
+                <dd>
+                    <span>{{integralRule.remark}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{integralRule.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{integralRule.lastModifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{integralRule.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wlApp.integralRule.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{integralRule.lastModifiedDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/integral-rule', integralRule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
