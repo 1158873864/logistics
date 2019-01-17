@@ -1,33 +1,33 @@
-2019-01-16 20:05:41.720 DEBUG 29867 --- [restartedMain] com.wl.app.config.AsyncConfiguration     : Creating Async Task Executor
-2019-01-16 20:05:42.406 DEBUG 29867 --- [restartedMain] c.ehcache.core.Ehcache-usersByLogin      : Initialize successful.
-2019-01-16 20:05:42.438 DEBUG 29867 --- [restartedMain] c.ehcache.core.Ehcache-usersByEmail      : Initialize successful.
-2019-01-16 20:05:42.441 DEBUG 29867 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.User  : Initialize successful.
-2019-01-16 20:05:42.445 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.Authority          : Initialize successful.
-2019-01-16 20:05:42.448 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.User.authorities   : Initialize successful.
-2019-01-16 20:05:42.451 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdn       : Initialize successful.
-2019-01-16 20:05:42.455 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnPic    : Initialize successful.
-2019-01-16 20:05:42.458 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnWWW    : Initialize successful.
-2019-01-16 20:05:42.461 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsSource        : Initialize successful.
-2019-01-16 20:05:42.463 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.UserInfo           : Initialize successful.
-2019-01-16 20:05:42.466 DEBUG 29867 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Member   : Initialize successful.
-2019-01-16 20:05:42.469 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.IntegralRule       : Initialize successful.
-2019-01-16 20:05:42.472 DEBUG 29867 --- [restartedMain] c.e.c.E.w.a.domain.IntegralChangeRecord  : Initialize successful.
-2019-01-16 20:05:42.474 DEBUG 29867 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Goods    : Initialize successful.
-2019-01-16 20:05:42.477 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsExchange      : Initialize successful.
-2019-01-16 20:05:42.479 DEBUG 29867 --- [restartedMain] c.e.c.E.w.a.d.SysRecruitmentInformation  : Initialize successful.
-2019-01-16 20:05:42.482 DEBUG 29867 --- [restartedMain] c.e.c.E.w.a.d.PreferentialActivities     : Initialize successful.
-2019-01-16 20:05:42.485 DEBUG 29867 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Topic    : Initialize successful.
-2019-01-16 20:05:42.488 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.TopicFabulous      : Initialize successful.
-2019-01-16 20:05:42.490 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.TopicComment       : Initialize successful.
-2019-01-16 20:05:42.493 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.TopicForward       : Initialize successful.
-2019-01-16 20:05:42.495 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.TopicViewed        : Initialize successful.
-2019-01-16 20:05:42.498 DEBUG 29867 --- [restartedMain] c.e.c.E.wl.app.domain.UserDdnFavorites   : Initialize successful.
-2019-01-16 20:05:42.502 DEBUG 29867 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.Area  : Initialize successful.
-2019-01-16 20:05:42.681 DEBUG 29867 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Registering JVM gauges
-2019-01-16 20:05:42.704 DEBUG 29867 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Monitoring the datasource
-2019-01-16 20:05:42.705 DEBUG 29867 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Initializing Metrics JMX reporting
-2019-01-16 20:05:43.841 DEBUG 29867 --- [restartedMain] c.wl.app.config.LiquibaseConfiguration   : Configuring Liquibase
-2019-01-16 20:05:45.010 ERROR 29867 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2019-01-17 17:51:40.187 DEBUG 33404 --- [restartedMain] com.wl.app.config.AsyncConfiguration     : Creating Async Task Executor
+2019-01-17 17:51:40.922 DEBUG 33404 --- [restartedMain] c.ehcache.core.Ehcache-usersByLogin      : Initialize successful.
+2019-01-17 17:51:40.958 DEBUG 33404 --- [restartedMain] c.ehcache.core.Ehcache-usersByEmail      : Initialize successful.
+2019-01-17 17:51:40.962 DEBUG 33404 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.User  : Initialize successful.
+2019-01-17 17:51:40.967 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.Authority          : Initialize successful.
+2019-01-17 17:51:40.971 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.User.authorities   : Initialize successful.
+2019-01-17 17:51:40.975 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdn       : Initialize successful.
+2019-01-17 17:51:40.981 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnPic    : Initialize successful.
+2019-01-17 17:51:40.986 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnWWW    : Initialize successful.
+2019-01-17 17:51:40.990 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsSource        : Initialize successful.
+2019-01-17 17:51:40.994 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.UserInfo           : Initialize successful.
+2019-01-17 17:51:40.997 DEBUG 33404 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Member   : Initialize successful.
+2019-01-17 17:51:41.001 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.IntegralRule       : Initialize successful.
+2019-01-17 17:51:41.006 DEBUG 33404 --- [restartedMain] c.e.c.E.w.a.domain.IntegralChangeRecord  : Initialize successful.
+2019-01-17 17:51:41.009 DEBUG 33404 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Goods    : Initialize successful.
+2019-01-17 17:51:41.011 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsExchange      : Initialize successful.
+2019-01-17 17:51:41.014 DEBUG 33404 --- [restartedMain] c.e.c.E.w.a.d.SysRecruitmentInformation  : Initialize successful.
+2019-01-17 17:51:41.017 DEBUG 33404 --- [restartedMain] c.e.c.E.w.a.d.PreferentialActivities     : Initialize successful.
+2019-01-17 17:51:41.020 DEBUG 33404 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Topic    : Initialize successful.
+2019-01-17 17:51:41.023 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.TopicFabulous      : Initialize successful.
+2019-01-17 17:51:41.026 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.TopicComment       : Initialize successful.
+2019-01-17 17:51:41.030 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.TopicForward       : Initialize successful.
+2019-01-17 17:51:41.032 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.TopicViewed        : Initialize successful.
+2019-01-17 17:51:41.034 DEBUG 33404 --- [restartedMain] c.e.c.E.wl.app.domain.UserDdnFavorites   : Initialize successful.
+2019-01-17 17:51:41.037 DEBUG 33404 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.Area  : Initialize successful.
+2019-01-17 17:51:41.269 DEBUG 33404 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Registering JVM gauges
+2019-01-17 17:51:41.296 DEBUG 33404 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Monitoring the datasource
+2019-01-17 17:51:41.298 DEBUG 33404 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Initializing Metrics JMX reporting
+2019-01-17 17:51:42.352 DEBUG 33404 --- [restartedMain] c.wl.app.config.LiquibaseConfiguration   : Configuring Liquibase
+2019-01-17 17:51:43.483 ERROR 33404 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -122,11 +122,11 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.discoverEndpoints(EndpointDiscoverer.java:122)
 	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.getEndpoints(EndpointDiscoverer.java:116)
 	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.servletEndpointRegistrar(ServletEndpointManagementContextConfiguration.java:75)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4.CGLIB$servletEndpointRegistrar$0(<generated>)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4$$FastClassBySpringCGLIB$$17589b.invoke(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab.CGLIB$servletEndpointRegistrar$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab$$FastClassBySpringCGLIB$$4f83c794.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4.servletEndpointRegistrar(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab.servletEndpointRegistrar(<generated>)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -179,7 +179,7 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:301)
 	... 129 common frames omitted
 
-2019-01-16 20:05:45.014 ERROR 29867 --- [restartedMain] i.g.j.c.liquibase.AsyncSpringLiquibase   : Liquibase could not start correctly, your database is NOT ready: Communications link failure
+2019-01-17 17:51:43.487 ERROR 33404 --- [restartedMain] i.g.j.c.liquibase.AsyncSpringLiquibase   : Liquibase could not start correctly, your database is NOT ready: Communications link failure
 
 The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
 
@@ -276,11 +276,11 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.discoverEndpoints(EndpointDiscoverer.java:122)
 	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.getEndpoints(EndpointDiscoverer.java:116)
 	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.servletEndpointRegistrar(ServletEndpointManagementContextConfiguration.java:75)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4.CGLIB$servletEndpointRegistrar$0(<generated>)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4$$FastClassBySpringCGLIB$$17589b.invoke(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab.CGLIB$servletEndpointRegistrar$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab$$FastClassBySpringCGLIB$$4f83c794.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4.servletEndpointRegistrar(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab.servletEndpointRegistrar(<generated>)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -333,7 +333,7 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:301)
 	... 129 common frames omitted
 
-2019-01-16 20:05:46.741 ERROR 29867 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2019-01-17 17:51:45.144 ERROR 33404 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -446,11 +446,11 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.discoverEndpoints(EndpointDiscoverer.java:122)
 	at org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer.getEndpoints(EndpointDiscoverer.java:116)
 	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.servletEndpointRegistrar(ServletEndpointManagementContextConfiguration.java:75)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4.CGLIB$servletEndpointRegistrar$0(<generated>)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4$$FastClassBySpringCGLIB$$17589b.invoke(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab.CGLIB$servletEndpointRegistrar$0(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab$$FastClassBySpringCGLIB$$4f83c794.invoke(<generated>)
 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
-	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$c6f9cdc4.servletEndpointRegistrar(<generated>)
+	at org.springframework.boot.actuate.autoconfigure.endpoint.web.ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration$$EnhancerBySpringCGLIB$$a89b4dab.servletEndpointRegistrar(<generated>)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -503,42 +503,23 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:301)
 	... 147 common frames omitted
 
-2019-01-16 20:05:57.902 DEBUG 29867 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering CORS filter
-2019-01-16 20:05:58.044  INFO 29867 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application configuration, using profiles: swagger
-2019-01-16 20:05:58.044 DEBUG 29867 --- [restartedMain] com.wl.app.config.WebConfigurer          : Initializing Metrics registries
-2019-01-16 20:05:58.047 DEBUG 29867 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Filter
-2019-01-16 20:05:58.047 DEBUG 29867 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Servlet
-2019-01-16 20:05:58.052  INFO 29867 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application fully configured
-2019-01-16 20:05:59.027 DEBUG 29867 --- [restartedMain] com.wl.app.security.jwt.TokenProvider    : Using a Base64-encoded JWT secret key
-2019-01-16 20:06:00.439 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:00.981 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:01.162 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:01.294 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:01.422 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:01.558 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:01.677 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:01.830 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.079 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.218 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.347 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.453 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.578 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.696 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.811 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:02.971 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:03.104 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:03.211 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:03.323 DEBUG 29867 --- [restartedMain] c.g.v.s.jest.mapper.DefaultErrorMapper   : Cannot execute jest action , response code : 404 , error : 404 Not Found , message : null
-2019-01-16 20:06:07.619 DEBUG 29867 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Starting Swagger
-2019-01-16 20:06:07.633 DEBUG 29867 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Started Swagger in 14 ms
-2019-01-16 20:06:09.399  INFO 29867 --- [restartedMain] com.wl.app.WlApp                         : 
+2019-01-17 17:51:54.761 DEBUG 33404 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering CORS filter
+2019-01-17 17:51:54.946  INFO 33404 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application configuration, using profiles: swagger
+2019-01-17 17:51:54.947 DEBUG 33404 --- [restartedMain] com.wl.app.config.WebConfigurer          : Initializing Metrics registries
+2019-01-17 17:51:54.950 DEBUG 33404 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Filter
+2019-01-17 17:51:54.951 DEBUG 33404 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Servlet
+2019-01-17 17:51:54.955  INFO 33404 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application fully configured
+2019-01-17 17:51:55.449 DEBUG 33404 --- [restartedMain] com.wl.app.security.jwt.TokenProvider    : Using a Base64-encoded JWT secret key
+2019-01-17 17:52:02.198 DEBUG 33404 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Starting Swagger
+2019-01-17 17:52:02.212 DEBUG 33404 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Started Swagger in 13 ms
+2019-01-17 17:52:03.793  INFO 33404 --- [restartedMain] com.wl.app.WlApp                         : 
 ----------------------------------------------------------
 	Application 'wl' is running! Access URLs:
 	Local: 		http://localhost:8080/
 	External: 	http://10.107.20.200:8080/
 	Profile(s): 	[swagger, dev]
 ----------------------------------------------------------
-2019-01-16 20:06:10.884 ERROR 29867 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2019-01-17 17:52:06.111 ERROR 33404 --- [RMI TCP Connection(6)-127.0.0.1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
 
@@ -596,7 +577,7 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1309)
 	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1401)
 	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:829)
-	at sun.reflect.GeneratedMethodAccessor171.invoke(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor169.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:357)
@@ -623,3 +604,97 @@ Caused by: java.net.ConnectException: Connection refused (Connection refused)
 	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:301)
 	... 62 common frames omitted
 
+2019-01-17 17:54:29.121 DEBUG 33453 --- [restartedMain] com.wl.app.config.AsyncConfiguration     : Creating Async Task Executor
+2019-01-17 17:54:29.659 DEBUG 33453 --- [restartedMain] c.ehcache.core.Ehcache-usersByLogin      : Initialize successful.
+2019-01-17 17:54:29.681 DEBUG 33453 --- [restartedMain] c.ehcache.core.Ehcache-usersByEmail      : Initialize successful.
+2019-01-17 17:54:29.685 DEBUG 33453 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.User  : Initialize successful.
+2019-01-17 17:54:29.690 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.Authority          : Initialize successful.
+2019-01-17 17:54:29.694 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.User.authorities   : Initialize successful.
+2019-01-17 17:54:29.697 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdn       : Initialize successful.
+2019-01-17 17:54:29.701 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnPic    : Initialize successful.
+2019-01-17 17:54:29.705 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnWWW    : Initialize successful.
+2019-01-17 17:54:29.708 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsSource        : Initialize successful.
+2019-01-17 17:54:29.711 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.UserInfo           : Initialize successful.
+2019-01-17 17:54:29.713 DEBUG 33453 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Member   : Initialize successful.
+2019-01-17 17:54:29.716 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.IntegralRule       : Initialize successful.
+2019-01-17 17:54:29.718 DEBUG 33453 --- [restartedMain] c.e.c.E.w.a.domain.IntegralChangeRecord  : Initialize successful.
+2019-01-17 17:54:29.720 DEBUG 33453 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Goods    : Initialize successful.
+2019-01-17 17:54:29.722 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsExchange      : Initialize successful.
+2019-01-17 17:54:29.725 DEBUG 33453 --- [restartedMain] c.e.c.E.w.a.d.SysRecruitmentInformation  : Initialize successful.
+2019-01-17 17:54:29.728 DEBUG 33453 --- [restartedMain] c.e.c.E.w.a.d.PreferentialActivities     : Initialize successful.
+2019-01-17 17:54:29.730 DEBUG 33453 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Topic    : Initialize successful.
+2019-01-17 17:54:29.733 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.TopicFabulous      : Initialize successful.
+2019-01-17 17:54:29.735 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.TopicComment       : Initialize successful.
+2019-01-17 17:54:29.737 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.TopicForward       : Initialize successful.
+2019-01-17 17:54:29.739 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.TopicViewed        : Initialize successful.
+2019-01-17 17:54:29.743 DEBUG 33453 --- [restartedMain] c.e.c.E.wl.app.domain.UserDdnFavorites   : Initialize successful.
+2019-01-17 17:54:29.746 DEBUG 33453 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.Area  : Initialize successful.
+2019-01-17 17:54:29.919 DEBUG 33453 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Registering JVM gauges
+2019-01-17 17:54:29.946 DEBUG 33453 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Monitoring the datasource
+2019-01-17 17:54:29.948 DEBUG 33453 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Initializing Metrics JMX reporting
+2019-01-17 17:54:31.660 DEBUG 33453 --- [restartedMain] c.wl.app.config.LiquibaseConfiguration   : Configuring Liquibase
+2019-01-17 17:54:31.941  WARN 33453 --- [wl-Executor-1] i.g.j.c.liquibase.AsyncSpringLiquibase   : Starting Liquibase asynchronously, your database might not be ready at startup!
+2019-01-17 17:54:36.371 DEBUG 33453 --- [wl-Executor-1] i.g.j.c.liquibase.AsyncSpringLiquibase   : Liquibase has updated your database in 4430 ms
+2019-01-17 17:54:41.250 DEBUG 33453 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering CORS filter
+2019-01-17 17:54:41.528  INFO 33453 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application configuration, using profiles: swagger
+2019-01-17 17:54:41.528 DEBUG 33453 --- [restartedMain] com.wl.app.config.WebConfigurer          : Initializing Metrics registries
+2019-01-17 17:54:41.531 DEBUG 33453 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Filter
+2019-01-17 17:54:41.532 DEBUG 33453 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Servlet
+2019-01-17 17:54:41.536  INFO 33453 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application fully configured
+2019-01-17 17:54:42.186 DEBUG 33453 --- [restartedMain] com.wl.app.security.jwt.TokenProvider    : Using a Base64-encoded JWT secret key
+2019-01-17 17:54:47.993 DEBUG 33453 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Starting Swagger
+2019-01-17 17:54:48.005 DEBUG 33453 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Started Swagger in 12 ms
+2019-01-17 17:54:49.401  INFO 33453 --- [restartedMain] com.wl.app.WlApp                         : 
+----------------------------------------------------------
+	Application 'wl' is running! Access URLs:
+	Local: 		http://localhost:8080/
+	External: 	http://10.107.20.200:8080/
+	Profile(s): 	[swagger, dev]
+----------------------------------------------------------
+2019-01-17 18:06:49.469 DEBUG 33700 --- [restartedMain] com.wl.app.config.AsyncConfiguration     : Creating Async Task Executor
+2019-01-17 18:06:50.142 DEBUG 33700 --- [restartedMain] c.ehcache.core.Ehcache-usersByLogin      : Initialize successful.
+2019-01-17 18:06:50.170 DEBUG 33700 --- [restartedMain] c.ehcache.core.Ehcache-usersByEmail      : Initialize successful.
+2019-01-17 18:06:50.175 DEBUG 33700 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.User  : Initialize successful.
+2019-01-17 18:06:50.179 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.Authority          : Initialize successful.
+2019-01-17 18:06:50.184 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.User.authorities   : Initialize successful.
+2019-01-17 18:06:50.188 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdn       : Initialize successful.
+2019-01-17 18:06:50.192 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnPic    : Initialize successful.
+2019-01-17 18:06:50.196 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.LogisticsDdnWWW    : Initialize successful.
+2019-01-17 18:06:50.200 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsSource        : Initialize successful.
+2019-01-17 18:06:50.202 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.UserInfo           : Initialize successful.
+2019-01-17 18:06:50.204 DEBUG 33700 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Member   : Initialize successful.
+2019-01-17 18:06:50.207 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.IntegralRule       : Initialize successful.
+2019-01-17 18:06:50.209 DEBUG 33700 --- [restartedMain] c.e.c.E.w.a.domain.IntegralChangeRecord  : Initialize successful.
+2019-01-17 18:06:50.211 DEBUG 33700 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Goods    : Initialize successful.
+2019-01-17 18:06:50.213 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.GoodsExchange      : Initialize successful.
+2019-01-17 18:06:50.216 DEBUG 33700 --- [restartedMain] c.e.c.E.w.a.d.SysRecruitmentInformation  : Initialize successful.
+2019-01-17 18:06:50.218 DEBUG 33700 --- [restartedMain] c.e.c.E.w.a.d.PreferentialActivities     : Initialize successful.
+2019-01-17 18:06:50.221 DEBUG 33700 --- [restartedMain] c.e.c.Ehcache-com.wl.app.domain.Topic    : Initialize successful.
+2019-01-17 18:06:50.223 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.TopicFabulous      : Initialize successful.
+2019-01-17 18:06:50.225 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.TopicComment       : Initialize successful.
+2019-01-17 18:06:50.228 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.TopicForward       : Initialize successful.
+2019-01-17 18:06:50.231 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.TopicViewed        : Initialize successful.
+2019-01-17 18:06:50.234 DEBUG 33700 --- [restartedMain] c.e.c.E.wl.app.domain.UserDdnFavorites   : Initialize successful.
+2019-01-17 18:06:50.236 DEBUG 33700 --- [restartedMain] c.e.core.Ehcache-com.wl.app.domain.Area  : Initialize successful.
+2019-01-17 18:06:50.455 DEBUG 33700 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Registering JVM gauges
+2019-01-17 18:06:50.481 DEBUG 33700 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Monitoring the datasource
+2019-01-17 18:06:50.483 DEBUG 33700 --- [restartedMain] com.wl.app.config.MetricsConfiguration   : Initializing Metrics JMX reporting
+2019-01-17 18:06:51.605 DEBUG 33700 --- [restartedMain] c.wl.app.config.LiquibaseConfiguration   : Configuring Liquibase
+2019-01-17 18:06:51.868  WARN 33700 --- [wl-Executor-1] i.g.j.c.liquibase.AsyncSpringLiquibase   : Starting Liquibase asynchronously, your database might not be ready at startup!
+2019-01-17 18:06:53.108 DEBUG 33700 --- [wl-Executor-1] i.g.j.c.liquibase.AsyncSpringLiquibase   : Liquibase has updated your database in 1237 ms
+2019-01-17 18:07:01.095 DEBUG 33700 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering CORS filter
+2019-01-17 18:07:01.464  INFO 33700 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application configuration, using profiles: swagger
+2019-01-17 18:07:01.465 DEBUG 33700 --- [restartedMain] com.wl.app.config.WebConfigurer          : Initializing Metrics registries
+2019-01-17 18:07:01.469 DEBUG 33700 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Filter
+2019-01-17 18:07:01.471 DEBUG 33700 --- [restartedMain] com.wl.app.config.WebConfigurer          : Registering Metrics Servlet
+2019-01-17 18:07:01.480  INFO 33700 --- [restartedMain] com.wl.app.config.WebConfigurer          : Web application fully configured
+2019-01-17 18:07:02.144 DEBUG 33700 --- [restartedMain] com.wl.app.security.jwt.TokenProvider    : Using a Base64-encoded JWT secret key
+2019-01-17 18:07:08.640 DEBUG 33700 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Starting Swagger
+2019-01-17 18:07:08.657 DEBUG 33700 --- [restartedMain] i.g.j.c.apidoc.SwaggerAutoConfiguration  : Started Swagger in 15 ms
+2019-01-17 18:07:10.181  INFO 33700 --- [restartedMain] com.wl.app.WlApp                         : 
+----------------------------------------------------------
+	Application 'wl' is running! Access URLs:
+	Local: 		http://localhost:8080/
+	External: 	http://10.107.20.200:8080/
+	Profile(s): 	[swagger, dev]
+----------------------------------------------------------
