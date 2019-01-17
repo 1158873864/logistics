@@ -211,21 +211,13 @@ public class AppResource {
 	
 	/**
 	 * 发送短信验证码
-	 * 
-	 * @param request
+	 * @param mobilePhone
 	 * @return
 	 */
 	@PostMapping("/msg/send-vcode")
 	@Timed
 	public ResponseEntity<Result> sendVCode(@RequestParam(required = true) String mobilePhone) {
 		Map<String, Object> result = new HashMap<>();
-		// 校验手机号是否已经注册
-		 Optional<User> existingUser = userRepository.findOneByLogin(mobilePhone);
-	        if (existingUser.isPresent()) {
-	            result.put("result", false);
-				result.put("msg", "手机号码已经被注册使用!");
-				return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
-	        }
 		String code = Sms.me().sendVerificationCode(mobilePhone);
 		if (code.equals(Sms.SEND_SUCCESS)) {
 			result.put("result", true);
@@ -241,16 +233,22 @@ public class AppResource {
     @Timed
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Result> registerAccount(@Valid @RequestBody RUserVM userVM) {
-    	Map<String, Object> result = new HashMap<>();
-        if (!checkPasswordLength(userVM.getPassword())) {
-        	result.put("result", false);
-			result.put("msg", "密码不合法!");
+		Map<String, Object> result = new HashMap<>();
+		Optional<User> existingUser = userRepository.findOneByLogin(userVM.getMobilePhone());
+		if (existingUser.isPresent()) {
+			result.put("result", false);
+			result.put("msg", "手机号码已经被注册使用!");
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
-        }
-        
+		}
+//        if (!checkPasswordLength(userVM.getPassword())) {
+//        	result.put("result", false);
+//			result.put("msg", "密码不合法!");
+//			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+//        }
+//
         boolean isSuccess = Sms.me().checkVerificationCode(userVM.getMobilePhone(), userVM.getVcode());
 		if (isSuccess) {
-			User user = userService.registerUser(userVM, userVM.getPassword());
+			User user = userService.registerUser(userVM,"");
 			result.put("result", true);
 			result.put("msg", "注册成功");
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
@@ -260,11 +258,33 @@ public class AppResource {
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}
     }
+
+    @PostMapping("/login")
+	@Timed
+	public ResponseEntity<Result> login(@Valid @RequestBody RUserVM userVM){
+		Map<String, Object> result = new HashMap<>();
+		Optional<User> existingUser = userRepository.findOneByLogin(userVM.getMobilePhone());
+		if (!existingUser.isPresent()) {
+			result.put("result", false);
+			result.put("msg", "手机号码未注册使用!");
+			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+		}
+		boolean isSuccess = Sms.me().checkVerificationCode(userVM.getMobilePhone(), userVM.getVcode());
+		if (isSuccess) {
+			result.put("result", true);
+			result.put("msg", "登陆成功");
+			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+		}else {
+			result.put("result", false);
+			result.put("msg", "验证码超时或者错误，请重试！");
+			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+		}
+	}
     
     /**
 	 * 发送业务短信
 	 * 
-	 * @param request
+	 * @param mobilePhone
 	 * @return
 	 */
 	@PostMapping("/msg/send-contact")

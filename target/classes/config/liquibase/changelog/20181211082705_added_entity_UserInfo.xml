@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity UserInfo.
+    -->
+    <changeSet id="20181211082705-1" author="jhipster">
+        <createTable tableName="user_info" remarks="用户管理 @author Donny.">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="photo" type="varchar(200)" remarks="头像">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="fullname" type="varchar(20)" remarks="姓名">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="nick_name" type="varchar(20)" remarks="昵称">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="mobile_phone" type="varchar(20)" remarks="手机号">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="integral" type="integer" remarks="积分">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="register_date" type="datetime" remarks="注册时间">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="register_sum" type="varchar(255)" remarks="注册时长（月）">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_logined_date" type="datetime" remarks="上次登录时间">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="goods_source_count" type="integer" remarks="发布货源数量（票）">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="open_id" type="varchar(200)" remarks="微信公众号OpenId">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="created_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_modified_date" type="datetime">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_user_info_user_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="user_info" columnName="register_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="user_info" columnName="last_logined_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="user_info" columnName="created_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="user_info" columnName="last_modified_date" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

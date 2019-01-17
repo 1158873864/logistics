@@ -1,0 +1,17 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.wl.app.config.ApplicationProperties",
+      "name": "application",
+      "type": "com.wl.app.config.ApplicationProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.wl.app.config.ApplicationProperties",
+      "name": "application.static-resource-path",
+      "type": "java.lang.String"
+    }
+  ]
+}
