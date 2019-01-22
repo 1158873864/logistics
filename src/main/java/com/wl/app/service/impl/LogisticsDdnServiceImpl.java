@@ -141,7 +141,9 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 						logisticsDdn.setManagerMobilePhone(isNull(logisticsDdnImportDTO.getManagerMobilePhone()));
 						logisticsDdn.setManagerPhone(isNull(logisticsDdnImportDTO.getManagerPhone()));
 						logisticsDdn.setBusinessPhone(isNull(logisticsDdnImportDTO.getBusinessPhone()));
-						logisticsDdn.setPic(isNull(logisticsDdnImportDTO.getPic()));
+						String[] pics=logisticsDdnImportDTO.getPic().split(",");
+						logisticsDdn.setPic(pics[0]);
+
 						logisticsDdn.setSpecialTransport(logisticsDdnImportDTO.getSpecialTransportBoolean());
 						logisticsDdn.setThroughCity(logisticsDdnImportDTO.getThroughCity());
 						logisticsDdn.setAuth(logisticsDdnImportDTO.getAuthBoolean());
@@ -152,6 +154,15 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 						logisticsDdn.setVip(false);
 						logisticsDdn.setStatus(logisticsDdnImportDTO.getStatusEnum());
 						this.save(logisticsDdn);
+						for(int i=1;i<pics.length;i++){
+							LogisticsDdnPic logisticsDdnPic = new LogisticsDdnPic();
+							logisticsDdnPic.setLogisticsDdn(logisticsDdn);
+							logisticsDdnPic.setPath(pics[i]);
+							logisticsDdnPic.setRemark("暂无");
+							logisticsDdnPic.setStatus(Status.ENABLE);
+							logisticsDdnPic.setTitle("暂无");
+							logisticsDdnPicService.save(logisticsDdnPic);
+						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

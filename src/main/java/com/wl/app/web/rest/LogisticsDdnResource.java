@@ -188,10 +188,10 @@ public class LogisticsDdnResource {
 		
 		List<String> pics = new ArrayList<>();
 		for(MultipartFile file : files){
-			String fileName = file.getOriginalFilename();
+			//String fileName = file.getOriginalFilename();
 			String path = storageService.store("logistics-ddn-pics",file);
 			pics.add(path);
-			logisticsDdnService.importDDNPics("","",path,false);
+			//logisticsDdnService.importDDNPics("","",path,false);
 		}
 		
         if(!pics.isEmpty()) {
