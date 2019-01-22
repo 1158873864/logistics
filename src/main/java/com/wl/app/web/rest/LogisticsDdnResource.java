@@ -189,15 +189,9 @@ public class LogisticsDdnResource {
 		List<String> pics = new ArrayList<>();
 		for(MultipartFile file : files){
 			String fileName = file.getOriginalFilename();
-			String ddnName = fileName.substring(0, fileName.indexOf("-"));
-			String ddnIndex = fileName.substring(fileName.indexOf("-")+1,fileName.lastIndexOf("-"));
-			String fullName = fileName.substring(fileName.lastIndexOf("-")+1,fileName.lastIndexOf("."));
 			String path = storageService.store("logistics-ddn-pics",file);
-			System.out.println(ddnName+","+ddnIndex+","+fullName);
 			pics.add(path);
-			if(ddnIndex!=null) {
-				logisticsDdnService.importDDNPics(ddnName,fullName,path,ddnIndex.equals("0"));
-			}
+			logisticsDdnService.importDDNPics("","",path,false);
 		}
 		
         if(!pics.isEmpty()) {

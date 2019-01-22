@@ -141,7 +141,7 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 						logisticsDdn.setManagerMobilePhone(isNull(logisticsDdnImportDTO.getManagerMobilePhone()));
 						logisticsDdn.setManagerPhone(isNull(logisticsDdnImportDTO.getManagerPhone()));
 						logisticsDdn.setBusinessPhone(isNull(logisticsDdnImportDTO.getBusinessPhone()));
-						logisticsDdn.setPic("");
+						logisticsDdn.setPic(isNull(logisticsDdnImportDTO.getPic()));
 						logisticsDdn.setSpecialTransport(logisticsDdnImportDTO.getSpecialTransportBoolean());
 						logisticsDdn.setThroughCity(logisticsDdnImportDTO.getThroughCity());
 						logisticsDdn.setAuth(logisticsDdnImportDTO.getAuthBoolean());

@@ -74,6 +74,12 @@ public class UserInfoServiceImpl implements UserInfoService {
         return userInfoRepository.findById(id);
     }
 
+    @Override
+    public Optional<UserInfo> findOneByMobilePhone(String mobilePhone) {
+        log.debug("Request to get UserInfo : {}", mobilePhone);
+        return userInfoRepository.getUserInfoByMobilePhone(mobilePhone);
+    }
+
     /**
      * Delete the userInfo by id.
      *

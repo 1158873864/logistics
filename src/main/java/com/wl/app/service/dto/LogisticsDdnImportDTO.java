@@ -21,6 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ExcelTarget("logisticsDdnImportDTO")
 public class LogisticsDdnImportDTO implements Serializable {
 
+	@Excel(name = "图片地址")
+	private String pic= "";
+
 	@Excel(name = "名称")
 	private String title = "";
 	
@@ -117,6 +120,14 @@ public class LogisticsDdnImportDTO implements Serializable {
 
     @Excel(name = "状态")
     private String status = "";
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 
 	public String getTitle() {
 		return title;

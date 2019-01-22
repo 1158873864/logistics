@@ -37,6 +37,16 @@ public interface UserInfoService {
      */
     Optional<UserInfo> findOne(Long id);
 
+
+    /**
+     * Get the "mobilephone" userInfo.
+     *
+     * @param mobilePhone the mobilePhone of the entity
+     * @return the entity
+     */
+    Optional<UserInfo> findOneByMobilePhone(String mobilePhone);
+
+
     /**
      * Delete the "id" userInfo.
      *

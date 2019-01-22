@@ -1,5 +1,8 @@
 package com.wl.app.web.rest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,33 +11,24 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.wl.app.domain.UserInfo;
+import com.wl.app.domain.*;
+import com.wl.app.service.*;
+import com.wl.app.service.impl.UserInfoServiceImpl;
+import com.wl.app.web.rest.util.HeaderUtil;
+import com.wl.app.web.rest.vm.UserDdnFavoritesVM;
+import io.github.jhipster.web.util.ResponseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.codahale.metrics.annotation.Timed;
-import com.wl.app.domain.Area;
-import com.wl.app.domain.LogisticsDdn;
-import com.wl.app.domain.User;
 import com.wl.app.domain.enumeration.Status;
 import com.wl.app.module.aliyun.Sms;
 import com.wl.app.repository.AreaRepository;
 import com.wl.app.repository.UserRepository;
-import com.wl.app.service.LogisticsDdnPicService;
-import com.wl.app.service.LogisticsDdnService;
-import com.wl.app.service.LogisticsDdnWWWService;
-import com.wl.app.service.UserService;
 import com.wl.app.service.dto.DdnBannerDTO;
 import com.wl.app.service.dto.DdnDTO;
 import com.wl.app.service.dto.ListActivityDTO;
@@ -50,6 +44,8 @@ import com.wl.app.web.rest.errors.ResultGenerator;
 import com.wl.app.web.rest.vm.ManagedUserVM;
 import com.wl.app.web.rest.vm.RUserVM;
 
+import static org.hibernate.id.IdentifierGenerator.ENTITY_NAME;
+
 /**
  * REST controller for managing the current user's account.
  */
@@ -59,13 +55,14 @@ public class AppResource {
 
 	private final UserRepository userRepository;
 	private final UserService userService;
+    private final UserInfoService userInfoService;
 	private final LogisticsDdnService logisticsDdnService;
 	private final LogisticsDdnWWWService logisticsDdnWWWService;
 	private final LogisticsDdnPicService logisticsDdnPicService;
 	private final AreaRepository areaRepository;
-
+	private final UserDdnFavoritesService userDdnFavoritesService;
 	public AppResource(UserRepository userRepository, UserService userService, LogisticsDdnService logisticsDdnService,
-			LogisticsDdnWWWService logisticsDdnWWWService, LogisticsDdnPicService logisticsDdnPicService,AreaRepository areaRepository) {
+			LogisticsDdnWWWService logisticsDdnWWWService, LogisticsDdnPicService logisticsDdnPicService,AreaRepository areaRepository,UserInfoService userInfoService,UserDdnFavoritesService userDdnFavoritesService) {
 		super();
 		this.userRepository = userRepository;
 		this.userService = userService;
@@ -73,7 +70,9 @@ public class AppResource {
 		this.logisticsDdnWWWService = logisticsDdnWWWService;
 		this.logisticsDdnPicService = logisticsDdnPicService;
 		this.areaRepository = areaRepository;
-	}
+        this.userInfoService =userInfoService;
+        this.userDdnFavoritesService=userDdnFavoritesService;
+    }
 
 	/**
 	 * 始发城市列表
@@ -277,8 +276,25 @@ public class AppResource {
 		if (isSuccess) {
 			result.put("result", true);
 			result.put("msg", "登陆成功");
-			UserInfo userInfo=new UserInfo();
-			userInfo.setMobilePhone(userVM.getMobilePhone());
+            UserInfo userInfo=new UserInfo();
+			Optional<UserInfo> optionalUserInfo= userInfoService.findOneByMobilePhone(userVM.getMobilePhone());
+            if(optionalUserInfo.isPresent()) {
+                userInfo=optionalUserInfo.get();
+				userInfo.setLastLoginedDate(Instant.now());
+            }else {
+            	userInfo.setFullname("");
+            	userInfo.setGoodsSourceCount(0);
+            	userInfo.setIntegral(0);
+            	userInfo.setLastLoginedDate(Instant.now());
+            	userInfo.setNickName("");
+            	userInfo.setOpenId("");
+            	userInfo.setPhoto("");
+            	userInfo.setRegisterDate(Instant.now());
+            	userInfo.setStatus(Status.ENABLE);
+            	userInfo.setRegisterSum("");
+                userInfo.setMobilePhone(userVM.getMobilePhone());
+            }
+            userInfoService.save(userInfo);
             result.put("userInfo",userInfo);
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}else {
@@ -321,4 +337,68 @@ public class AppResource {
             password.length() >= ManagedUserVM.PASSWORD_MIN_LENGTH &&
             password.length() <= ManagedUserVM.PASSWORD_MAX_LENGTH;
     }
+
+	@PostMapping("/user-ddn-favorites")
+	@Timed
+	public ResponseEntity<Result> addUserDdnFavorites(@Valid @RequestBody UserDdnFavoritesVM userDdnFavoritesvm) throws URISyntaxException {
+		Map<String, Object> re = new HashMap<>();
+		UserDdnFavorites userDdnFavorites=new UserDdnFavorites();
+		LogisticsDdn logisticsDdn=null;
+		UserInfo userInfo=null;
+		Optional<LogisticsDdn> optionalLogisticsDdn=logisticsDdnService.findOne(userDdnFavoritesvm.getDdn_id());
+		if(optionalLogisticsDdn.isPresent()){
+			logisticsDdn=optionalLogisticsDdn.get();
+		}
+		else{
+			re.put("result",false);
+			re.put("msg","专线不存在");
+			return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+		}
+		Optional<UserInfo> optionalUserInfoService=userInfoService.findOne(userDdnFavoritesvm.getUser_id());
+		if(optionalUserInfoService.isPresent()){
+			userInfo=optionalUserInfoService.get();
+		}
+		else{
+			re.put("result",false);
+			re.put("msg","用户不存在");
+			return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+		}
+		userDdnFavorites.setDdn(logisticsDdn);
+		userDdnFavorites.setUserInfo(userInfo);
+		userDdnFavoritesService.save(userDdnFavorites);
+        re.put("result",true);
+        re.put("msg","收藏成功");
+        re.put("userDdnFavorites",userDdnFavorites);
+		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+	}
+
+	@GetMapping("/user-ddn-favorites/{user_id}")
+	@Timed
+	public ResponseEntity<Result> getUserDdnFavorites(@PathVariable Long user_id) {
+		List<UserDdnFavorites> userDdnFavorites = userDdnFavoritesService.findByUserId(user_id);
+		Map<String, Object> re = new HashMap<>();
+		re.put("list",userDdnFavorites);
+		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+	}
+
+	@GetMapping("/user-ddn-favorites-one/{id}")
+	@Timed
+	public ResponseEntity<Result> getOneDdnFavorites(@PathVariable Long id) {
+		Optional<UserDdnFavorites> userDdnFavorites = userDdnFavoritesService.findOne(id);
+
+		Map<String, Object> re = new HashMap<>();
+		re.put("userDdnFavorites",userDdnFavorites.get());
+		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/user-ddn-favorites/{id}")
+	@Timed
+	public ResponseEntity<Result> deleteUserDdnFavorites(@PathVariable Long id) {
+		userDdnFavoritesService.delete(id);
+		Map<String, Object> re = new HashMap<>();
+		re.put("msg","删除成功");
+		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+	}
+
+
 }

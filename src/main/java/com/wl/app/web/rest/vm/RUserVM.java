@@ -7,12 +7,6 @@ public class RUserVM {
     @Size(min = 11, max = 15)
     private String mobilePhone;
 
-    public static final int PASSWORD_MIN_LENGTH = 4;
-
-    public static final int PASSWORD_MAX_LENGTH = 100;
-
-    @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
-    private String password;
     
     @Size(min = 6, max = 6)
     private String vcode;
@@ -25,13 +19,6 @@ public class RUserVM {
 		this.mobilePhone = mobilePhone;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getVcode() {
 		return vcode;

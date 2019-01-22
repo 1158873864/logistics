@@ -5,6 +5,7 @@ import com.wl.app.domain.UserDdnFavorites;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -37,6 +38,7 @@ public interface UserDdnFavoritesService {
      */
     Optional<UserDdnFavorites> findOne(Long id);
 
+    List<UserDdnFavorites> findByUserId(long user_id);
     /**
      * Delete the "id" userDdnFavorites.
      *

@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -72,6 +73,13 @@ public class UserDdnFavoritesServiceImpl implements UserDdnFavoritesService {
     public Optional<UserDdnFavorites> findOne(Long id) {
         log.debug("Request to get UserDdnFavorites : {}", id);
         return userDdnFavoritesRepository.findById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<UserDdnFavorites> findByUserId(long user_id) {
+        log.debug("Request to get UserDdnFavorites : {}", user_id);
+        return userDdnFavoritesRepository.getUserDdnFavoritesByUserInfoId(user_id);
     }
 
     /**

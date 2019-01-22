@@ -1,11 +1,17 @@
 package com.wl.app.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.wl.app.domain.LogisticsDdn;
 import com.wl.app.domain.UserDdnFavorites;
+import com.wl.app.domain.UserInfo;
+import com.wl.app.service.LogisticsDdnService;
 import com.wl.app.service.UserDdnFavoritesService;
+import com.wl.app.service.UserInfoService;
 import com.wl.app.web.rest.errors.BadRequestAlertException;
+import com.wl.app.web.rest.errors.ResultGenerator;
 import com.wl.app.web.rest.util.HeaderUtil;
 import com.wl.app.web.rest.util.PaginationUtil;
+import com.wl.app.web.rest.vm.UserDdnFavoritesVM;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +26,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
@@ -41,6 +49,7 @@ public class UserDdnFavoritesResource {
 
     public UserDdnFavoritesResource(UserDdnFavoritesService userDdnFavoritesService) {
         this.userDdnFavoritesService = userDdnFavoritesService;
+
     }
 
     /**
@@ -62,6 +71,8 @@ public class UserDdnFavoritesResource {
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+
+
 
     /**
      * PUT  /user-ddn-favorites : Updates an existing userDdnFavorites.
