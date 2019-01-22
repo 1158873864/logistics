@@ -1,49 +1,48 @@
-
 {
-    "wlApp": {
-        "sysRecruitmentInformation" : {
-            "home": {
-                "title": "招聘信息",
-                "createLabel": "创建",
-                "createOrEditLabel": "招聘信息",
-                "search": "请输入关键字"
-            },
-            "created": "创建成功",
-            "updated": "更新成功",
-            "deleted": "删除成功",
-            "delete": {
-                "question": "你确定要删除吗？"
-            },
-            "detail": {
-                "title": "招聘信息"
-            },
-            "category": "职位类别",
-            "categoryName": "职位名称",
-            "nature": "工作性质",
-            "salaryStart": "月薪范围",
-            "salaryEnd": "月薪范围",
-            "addrCity": "工作城市",
-            "experience": "工作经验",
-            "education": "最低学历",
-            "peopleCount": "招聘人数",
-            "description": "职位描述",
-            "status": "状态",
-            "createdBy": "Created By",
-            "lastModifiedBy": "Last Modified By",
-            "createdDate": "Created Date",
-            "lastModifiedDate": "Last Modified Date",
-            "help": {
-                "category": "职位类别",
-                "categoryName": "职位名称",
-                "nature": "工作性质 全职 实习",
-                "salaryStart": "月薪范围 开始",
-                "salaryEnd": "月薪范围 结束",
-                "addrCity": "工作城市",
-                "experience": "工作经验",
-                "education": "最低学历",
-                "peopleCount": "招聘人数",
-                "description": "职位描述"
-            }
-        }
+  "wlApp": {
+    "sysRecruitmentInformation": {
+      "home": {
+        "title": "招聘信息",
+        "createLabel": "创建",
+        "createOrEditLabel": "招聘信息",
+        "search": "请输入关键词"
+      },
+      "created": "创建成功",
+      "updated": "更新成功",
+      "deleted": "删除成功",
+      "delete": {
+        "question": "你确定要删除吗？"
+      },
+      "detail": {
+        "title": "招聘信息"
+      },
+      "category": "职位类别",
+      "categoryName": "职位名称",
+      "nature": "工作性质",
+      "salaryStart": "月薪范围",
+      "salaryEnd": "月薪范围",
+      "addrCity": "工作城市",
+      "experience": "工作经验",
+      "education": "最低学历",
+      "peopleCount": "招聘人数",
+      "description": "职位描述",
+      "status": "状态",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "help": {
+        "category": "职位类别",
+        "categoryName": "职位名称",
+        "nature": "工作性质 全职 实习",
+        "salaryStart": "月薪范围 开始",
+        "salaryEnd": "月薪范围 结束",
+        "addrCity": "工作城市",
+        "experience": "工作经验",
+        "education": "最低学历",
+        "peopleCount": "招聘人数",
+        "description": "职位描述"
+      }
     }
+  }
 }

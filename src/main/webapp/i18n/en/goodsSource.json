@@ -1,52 +1,51 @@
-
 {
-    "wlApp": {
-        "goodsSource" : {
-            "home": {
-                "title": "货源管理",
-                "createLabel": "创建",
-                "createOrEditLabel": "货源信息",
-                "search": "请输入关键字"
-            },
-            "created": "创建成功",
-            "updated": "更新成功",
-            "deleted": "删除成功",
-            "delete": {
-                "question": "你确定要删除吗？"
-            },
-            "detail": {
-                "title": "货源信息"
-            },
-            "name": "名称",
-            "start": "路线起始",
-            "end": "路线终点",
-            "ton": "吨数（吨）",
-            "volume": "体积（m³）",
-            "goodsSourcePacking": "包装",
-            "mobilePhone": "手机号码",
-            "goodsSourceFreight": "运价",
-            "goodsSourceProperty": "属性",
-            "effectiveDate": "有效时间",
-            "layTime": "装货时间",
-            "status": "状态",
-            "createdBy": "Created By",
-            "lastModifiedBy": "Last Modified By",
-            "createdDate": "Created Date",
-            "lastModifiedDate": "Last Modified Date",
-            "userInfo": "发布用户",
-            "help": {
-                "name": "货源名称",
-                "start": "货源路线起始",
-                "end": "货源路线终点",
-                "ton": "吨数（吨）",
-                "volume": "体积（m³）",
-                "goodsSourcePacking": "包装",
-                "mobilePhone": "发布人手机号码",
-                "goodsSourceFreight": "运价",
-                "goodsSourceProperty": "货源属性",
-                "effectiveDate": "货源有效时间",
-                "layTime": "装货时间"
-            }
-        }
+  "wlApp": {
+    "goodsSource": {
+      "home": {
+        "title": "货源管理",
+        "createLabel": "创建",
+        "createOrEditLabel": "货源信息",
+        "search": "请输入关键词"
+      },
+      "created": "创建成功",
+      "updated": "更新成功",
+      "deleted": "删除成功",
+      "delete": {
+        "question": "你确定要删除吗？"
+      },
+      "detail": {
+        "title": "货源信息"
+      },
+      "name": "名称",
+      "start": "路线起始",
+      "end": "路线终点",
+      "ton": "吨数（吨）",
+      "volume": "体积（m³）",
+      "goodsSourcePacking": "包装",
+      "mobilePhone": "手机号码",
+      "goodsSourceFreight": "运价",
+      "goodsSourceProperty": "属性",
+      "effectiveDate": "有效时间",
+      "layTime": "装货时间",
+      "status": "状态",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "userInfo": "发布用户",
+      "help": {
+        "name": "货源名称",
+        "start": "货源路线起始",
+        "end": "货源路线终点",
+        "ton": "吨数（吨）",
+        "volume": "体积（m³）",
+        "goodsSourcePacking": "包装",
+        "mobilePhone": "发布人手机号码",
+        "goodsSourceFreight": "运价",
+        "goodsSourceProperty": "货源属性",
+        "effectiveDate": "货源有效时间",
+        "layTime": "装货时间"
+      }
     }
+  }
 }

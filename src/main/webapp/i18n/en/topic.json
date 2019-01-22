@@ -1,47 +1,46 @@
-
 {
-    "wlApp": {
-        "topic" : {
-            "home": {
-                "title": "话题",
-                "createLabel": "创建",
-                "createOrEditLabel": "话题信息",
-                "search": "请输入关键字"
-            },
-            "created": "创建成功",
-            "updated": "更新成功",
-            "deleted": "删除成功",
-            "delete": {
-                "question": "你确定要删除吗？"
-            },
-            "detail": {
-                "title": "话题信息"
-            },
-            "title": "话题标题",
-            "content": "话题内容",
-            "published": "发布时间",
-            "fabulousCount": "点赞",
-            "commentCount": "评论",
-            "forwardCount": "转发",
-            "viewedCount": "浏览",
-            "forwarded": "是否转发",
-            "status": "状态",
-            "createdBy": "Created By",
-            "lastModifiedBy": "Last Modified By",
-            "createdDate": "Created Date",
-            "lastModifiedDate": "Last Modified Date",
-            "userInfo": "发布人",
-            "source": "转发源",
-            "help": {
-                "title": "话题标题",
-                "content": "话题内容",
-                "published": "发布时间",
-                "fabulousCount": "点赞",
-                "commentCount": "评论",
-                "forwardCount": "转发",
-                "viewedCount": "浏览",
-                "forwarded": "是否转发"
-            }
-        }
+  "wlApp": {
+    "topic": {
+      "home": {
+        "title": "话题",
+        "createLabel": "创建",
+        "createOrEditLabel": "话题信息",
+        "search": "请输入关键词"
+      },
+      "created": "创建成功",
+      "updated": "更新成功",
+      "deleted": "删除成功",
+      "delete": {
+        "question": "你确定要删除吗？"
+      },
+      "detail": {
+        "title": "话题信息"
+      },
+      "title": "话题标题",
+      "content": "话题内容",
+      "published": "发布时间",
+      "fabulousCount": "点赞",
+      "commentCount": "评论",
+      "forwardCount": "转发",
+      "viewedCount": "浏览",
+      "forwarded": "是否转发",
+      "status": "状态",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "userInfo": "发布人",
+      "source": "转发源",
+      "help": {
+        "title": "话题标题",
+        "content": "话题内容",
+        "published": "发布时间",
+        "fabulousCount": "点赞",
+        "commentCount": "评论",
+        "forwardCount": "转发",
+        "viewedCount": "浏览",
+        "forwarded": "是否转发"
+      }
     }
+  }
 }

@@ -99,6 +99,44 @@ export class LogisticsDdnPicComponent implements OnInit, OnDestroy {
         this.loadAll();
     }
 
+  importPicsData(obj) {
+    const uploader = window['WebUploader'].create({
+      multiple: true,
+      server: '/api/logistics-ddns/batch-import-pics',
+      pick: '.batch-upload-pics',
+      auto: true,
+      resize: false,
+      fileNumLimit: 30,
+      accept: {
+        title: '专线图片',
+        extensions: 'gif,jpg,jpeg,bmp,png'
+      }
+    });
+    uploader.on('uploadBeforeSend', function(file, data, headers) {
+      const token = obj.localStorage.retrieve('authenticationToken') || obj.sessionStorage.retrieve('authenticationToken');
+      headers['Authorization'] = 'Bearer ' + token;
+    });
+    uploader.on('uploadSuccess', function(file, ret) {
+      // 上传成功 ...
+      // alert('导入成功');
+      //obj.loadAll();
+      //uploader.destroy();
+      //obj.importPicsData(obj);
+    });
+    uploader.on('uploadFinished', function(file, ret) {
+      // 上传成功 ...
+      alert('全部上传成功');
+      obj.loadAll();
+      uploader.destroy();
+      obj.importPicsData(obj);
+    });
+    uploader.on('uploadError', function(file, ret) {
+      alert('导入失败');
+      uploader.destroy();
+      obj.importPicsData(obj);
+    });
+  }
+
     clear() {
         this.page = 0;
         this.currentSearch = '';
@@ -134,6 +172,7 @@ export class LogisticsDdnPicComponent implements OnInit, OnDestroy {
         this.principal.identity().then(account => {
             this.currentAccount = account;
         });
+        this.importPicsData(this);
         this.registerChangeInLogisticsDdnPics();
     }
 
