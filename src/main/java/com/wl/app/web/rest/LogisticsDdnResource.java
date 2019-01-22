@@ -1,13 +1,15 @@
 package com.wl.app.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.wl.app.domain.LogisticsDdn;
-import com.wl.app.service.LogisticsDdnService;
-import com.wl.app.service.StorageService;
-import com.wl.app.web.rest.errors.BadRequestAlertException;
-import com.wl.app.web.rest.util.HeaderUtil;
-import com.wl.app.web.rest.util.PaginationUtil;
-import io.github.jhipster.web.util.ResponseUtil;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,13 +17,27 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.*;
+import com.codahale.metrics.annotation.Timed;
+import com.wl.app.domain.LogisticsDdn;
+import com.wl.app.service.LogisticsDdnService;
+import com.wl.app.service.StorageService;
+import com.wl.app.web.rest.errors.BadRequestAlertException;
+import com.wl.app.web.rest.util.HeaderUtil;
+import com.wl.app.web.rest.util.PaginationUtil;
+
+import io.github.jhipster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing LogisticsDdn.
@@ -38,7 +54,7 @@ public class LogisticsDdnResource {
     
     private final StorageService storageService;
 
-    public LogisticsDdnResource(LogisticsDdnService logisticsDdnService, StorageService storageService) {
+    public LogisticsDdnResource(LogisticsDdnService logisticsDdnService,StorageService storageService) {
         this.logisticsDdnService = logisticsDdnService;
         this.storageService = storageService;
     }
@@ -159,7 +175,7 @@ public class LogisticsDdnResource {
     
     @PostMapping("/logistics-ddns/batch-import-pics")
 	@ResponseBody
-	public ResponseEntity<Boolean> uploadBatchImportPics(@RequestParam("files") MultipartFile[] files) {
+	public ResponseEntity<Boolean> uploadBatchImportPics(@RequestParam("file") MultipartFile[] files) {
     	Boolean isSuccess = false;
 
 //		String path = storageService.store("logistics-ddns",file);
