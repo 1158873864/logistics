@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.wl.app.domain.UserInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -76,7 +77,7 @@ public class AppResource {
 
 	/**
 	 * 始发城市列表
-	 * 
+	 *
 	 * @return
 	 */
 	@GetMapping("/start-citys")
@@ -94,29 +95,29 @@ public class AppResource {
 
 	/**
 	 * 最新查找 和 收藏 的专线 以及banner
-	 * 
+	 *
 	 * @return
 	 */
 	@GetMapping("/latest-search-and-favorites-ddns-and-banner")
 	@Timed
 	public ResponseEntity<Result> getLatestSearchAndFavoritesDdnAndBanner() {
-		
+
 		SearchAndFavoritesDdnAndBannerDTO searchAndFavoritesDdnAndBannerDTO = new SearchAndFavoritesDdnAndBannerDTO();
-		
+
 		List<DdnBannerDTO> ddnBanners = new ArrayList<>();
-		
+
 		List<LogisticsDdn> banners = logisticsDdnService.findAllByBanner(true);
-		
+
 		if(banners!=null && !banners.isEmpty()) {
 			for(LogisticsDdn logisticsDdn : banners) {
 				ddnBanners.add(new DdnBannerDTO(logisticsDdn.getId(),logisticsDdn.getPic()));
 			}
 		}
-		
+
 		searchAndFavoritesDdnAndBannerDTO.setDdnBanners(ddnBanners);
 		List<SearchAndFavoritesDdnDTO> searchAndFavoritesDdns = new ArrayList<>();
 		List<LogisticsDdn> homes = logisticsDdnService.findAllByHome(true);
-		
+
 		if(homes!=null && !homes.isEmpty()) {
 			for(LogisticsDdn logisticsDdn : homes) {
 				searchAndFavoritesDdns.add(new SearchAndFavoritesDdnDTO(logisticsDdn.getId(), logisticsDdn.getTitle(),logisticsDdn.getManagerMobilePhone() ,logisticsDdn.getLocationCity(), logisticsDdn.getThroughCity(), logisticsDdn.getManagerFullname(), logisticsDdn.isVip()));
@@ -128,7 +129,7 @@ public class AppResource {
 
 	/**
 	 * 获取专线详情
-	 * 
+	 *
 	 * @param id 专线ID
 	 * @return
 	 */
@@ -145,7 +146,7 @@ public class AppResource {
 		}
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 	}
-	
+
 //	/**
 //	 * 获取banner列表信息
 //	 * @return
@@ -168,7 +169,7 @@ public class AppResource {
 		listActivitys.add(new ListActivityDTO(1l, "快邀好友，赚18元红包", "http://pic19.nipic.com/20120210/7827303_221233267358_2.jpg"));
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(listActivitys), HttpStatus.OK);
 	}
-	
+
 	/**
 	 * 活动详情
 	 * @return
@@ -192,23 +193,23 @@ public class AppResource {
     		@RequestParam(value = "endLine")String endLine,Pageable pageable) {
         Page<LogisticsDdn> page = logisticsDdnService.findAll(startLine,endLine,pageable);
         return new ResponseEntity<>(ResultGenerator.genSuccessResult(page), HttpStatus.OK);
-        
+
     }
-	
+
 	@GetMapping("/area/province")
     @Timed
     public ResponseEntity<Result> getAreaProvince() {
         List<Area> list = areaRepository.findByParentId(0);
         return new ResponseEntity<>(ResultGenerator.genSuccessResult(list), HttpStatus.OK);
     }
-	
+
 	@GetMapping("/area/city-and-county")
     @Timed
     public ResponseEntity<Result> getCityAndCounty(@RequestParam(value = "parentId")Integer parentId) {
         List<Area> list = areaRepository.findByParentId(parentId);
         return new ResponseEntity<>(ResultGenerator.genSuccessResult(list), HttpStatus.OK);
     }
-	
+
 	/**
 	 * 发送短信验证码
 	 * @param mobilePhone
@@ -223,16 +224,18 @@ public class AppResource {
 			result.put("result", true);
 			result.put("msg", "短信验证码发送成功!");
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+		}else {
+			result.put("result", false);
+			result.put("msg", "短信验证码发送失败!");
+			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}
-		result.put("result", false);
-		result.put("msg", "短信验证码发送失败!");
-		return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 	}
-	
+
     @PostMapping("/register")
     @Timed
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Result> registerAccount(@Valid @RequestBody RUserVM userVM) {
+
 		Map<String, Object> result = new HashMap<>();
 		Optional<User> existingUser = userRepository.findOneByLogin(userVM.getMobilePhone());
 		if (existingUser.isPresent()) {
@@ -263,16 +266,20 @@ public class AppResource {
 	@Timed
 	public ResponseEntity<Result> login(@Valid @RequestBody RUserVM userVM){
 		Map<String, Object> result = new HashMap<>();
-		Optional<User> existingUser = userRepository.findOneByLogin(userVM.getMobilePhone());
-		if (!existingUser.isPresent()) {
-			result.put("result", false);
-			result.put("msg", "手机号码未注册使用!");
-			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
-		}
+//		Optional<User> existingUser = userRepository.findOneByLogin(userVM.getMobilePhone());
+//		if (!existingUser.isPresent()) {
+//			result.put("result", false);
+//			result.put("msg", "手机号码未注册使用!");
+//			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+//		}
+		System.out.println("login");
 		boolean isSuccess = Sms.me().checkVerificationCode(userVM.getMobilePhone(), userVM.getVcode());
 		if (isSuccess) {
 			result.put("result", true);
 			result.put("msg", "登陆成功");
+			UserInfo userInfo=new UserInfo();
+			userInfo.setMobilePhone(userVM.getMobilePhone());
+            result.put("userInfo",userInfo);
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}else {
 			result.put("result", false);
@@ -280,10 +287,10 @@ public class AppResource {
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}
 	}
-    
+
     /**
 	 * 发送业务短信
-	 * 
+	 *
 	 * @param mobilePhone
 	 * @return
 	 */
@@ -307,7 +314,7 @@ public class AppResource {
 		result.put("result", false);
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 	}
-    
+
 
     private static boolean checkPasswordLength(String password) {
         return !StringUtils.isEmpty(password) &&
