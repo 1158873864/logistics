@@ -281,6 +281,7 @@ public class AppResource {
             if(optionalUserInfo.isPresent()) {
                 userInfo=optionalUserInfo.get();
 				userInfo.setLastLoginedDate(Instant.now());
+				userInfoService.save(userInfo);
             }else {
             	userInfo.setFullname("");
             	userInfo.setGoodsSourceCount(0);
@@ -293,8 +294,9 @@ public class AppResource {
             	userInfo.setStatus(Status.ENABLE);
             	userInfo.setRegisterSum("");
                 userInfo.setMobilePhone(userVM.getMobilePhone());
+				userService.registerUser(userVM,"123456");
             }
-            userInfoService.save(userInfo);
+
             result.put("userInfo",userInfo);
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}else {
