@@ -167,6 +167,7 @@ public class LogisticsDdnResource {
     	Boolean isSuccess = null;
 
 		String path = storageService.store("logistics-ddns",file);
+		System.out.println(path);
 		if (!path.equals("error")) {
 			isSuccess = logisticsDdnService.batchImportDDN(path);
 		} 

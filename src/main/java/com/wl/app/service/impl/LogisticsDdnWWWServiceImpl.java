@@ -1,5 +1,6 @@
 package com.wl.app.service.impl;
 
+import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
 import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 import java.io.File;
@@ -123,6 +124,7 @@ public class LogisticsDdnWWWServiceImpl implements LogisticsDdnWWWService {
 
 	@Override
 	public boolean batchImportDDN(String path) {
+    	List<LogisticsDdnWWW> logisticsDdnWWWS=logisticsDdnWWWRepository.findAll();
 		ImportParams params = new ImportParams();
 		List<LogisticsDdnWwwImportDTO> logisticsDdnWwwImportList = ExcelImportUtil.importExcel(
 				new File(applicationProperties.getStaticResourcePath() + "/" + path), LogisticsDdnWwwImportDTO.class,
@@ -130,27 +132,45 @@ public class LogisticsDdnWWWServiceImpl implements LogisticsDdnWWWService {
 		List<String> errors = new ArrayList<>();
 		for (LogisticsDdnWwwImportDTO logisticsDdnWwwImportDTO : logisticsDdnWwwImportList) {
 			if (logisticsDdnWwwImportDTO.getTitle() != null && logisticsDdnWwwImportDTO.getManagerFullname() != null) {
-				try {
-					List<LogisticsDdn> logisticsDdnList = logisticsDdnRepository
-							.findAllByTitleAndManagerFullname(logisticsDdnWwwImportDTO.getTitle().trim(),logisticsDdnWwwImportDTO.getManagerFullname().trim());
-
-					if (logisticsDdnList != null && !logisticsDdnList.isEmpty()) {
-						LogisticsDdn logisticsDdn = logisticsDdnList.get(0);
-						LogisticsDdnWWW logisticsDdnWWW = new LogisticsDdnWWW();
-						logisticsDdnWWW.setLogisticsDdn(logisticsDdn);
-						logisticsDdnWWW.setContacts(logisticsDdnWwwImportDTO.getContacts());
-						logisticsDdnWWW.setMobilePhone(cNULL(logisticsDdnWwwImportDTO.getＭobilePhone()));
-						logisticsDdnWWW.setName(cNULL(logisticsDdnWwwImportDTO.getName()));
-						logisticsDdnWWW.setPhone(cNULL(logisticsDdnWwwImportDTO.getPhone()));
-						logisticsDdnWWW.setRemark(cNULL(logisticsDdnWwwImportDTO.getRemark()));
-						logisticsDdnWWW.setStatus(logisticsDdnWwwImportDTO.getStatusEnum());
-						this.save(logisticsDdnWWW);
-					}else {
-						errors.add(logisticsDdnWwwImportDTO.getTitle().trim()+"_"+logisticsDdnWwwImportDTO.getManagerFullname().trim());
+				boolean is=false;
+				for(int i=0;i<logisticsDdnWWWS.size();i++){
+//					if(logisticsDdnWWWS.get(i).getMobilePhone()!=null&&logisticsDdnWwwImportDTO.getＭobilePhone()!=null&&logisticsDdnWWWS.get(i).getMobilePhone().trim().equals(logisticsDdnWwwImportDTO.getＭobilePhone().trim())&&logisticsDdnWWWS.get(i).getName().trim().equals(logisticsDdnWwwImportDTO.getName().trim())&&logisticsDdnWWWS.get(i).getLogisticsDdn().getTitle().trim().equals(logisticsDdnWwwImportDTO.getTitle().trim())){
+//						is=true;
+//						break;
+//					}
+//					if((logisticsDdnWWWS.get(i).getMobilePhone()==null||logisticsDdnWwwImportDTO.getＭobilePhone()==null)&&logisticsDdnWWWS.get(i).getName().trim().equals(logisticsDdnWwwImportDTO.getName().trim())&&logisticsDdnWWWS.get(i).getLogisticsDdn().getTitle().trim().equals(logisticsDdnWwwImportDTO.getTitle().trim())){
+//						is=true;
+//						break;
+//					}
+					if(logisticsDdnWWWS.get(i).getLogisticsDdn().getManagerFullname().trim().equals(logisticsDdnWwwImportDTO.getManagerFullname())&&logisticsDdnWWWS.get(i).getName().trim().equals(logisticsDdnWwwImportDTO.getName().trim())&&logisticsDdnWWWS.get(i).getLogisticsDdn().getTitle().trim().equals(logisticsDdnWwwImportDTO.getTitle().trim())){
+						is=true;
+						break;
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
-					continue;
+				}
+				if(!is) {
+					try {
+						List<LogisticsDdn> logisticsDdnList = logisticsDdnRepository
+								.findAllByTitleAndManagerFullname(logisticsDdnWwwImportDTO.getTitle().trim(), logisticsDdnWwwImportDTO.getManagerFullname().trim());
+
+						if (logisticsDdnList != null && !logisticsDdnList.isEmpty()) {
+							LogisticsDdn logisticsDdn = logisticsDdnList.get(0);
+
+							LogisticsDdnWWW logisticsDdnWWW = new LogisticsDdnWWW();
+							logisticsDdnWWW.setLogisticsDdn(logisticsDdn);
+							logisticsDdnWWW.setContacts(logisticsDdnWwwImportDTO.getContacts());
+							logisticsDdnWWW.setMobilePhone(cNULL(logisticsDdnWwwImportDTO.getＭobilePhone()));
+							logisticsDdnWWW.setName(cNULL(logisticsDdnWwwImportDTO.getName()));
+							logisticsDdnWWW.setPhone(cNULL(logisticsDdnWwwImportDTO.getPhone()));
+							logisticsDdnWWW.setRemark(cNULL(logisticsDdnWwwImportDTO.getRemark()));
+							logisticsDdnWWW.setStatus(logisticsDdnWwwImportDTO.getStatusEnum());
+							this.save(logisticsDdnWWW);
+						} else {
+							errors.add(logisticsDdnWwwImportDTO.getTitle().trim() + "_" + logisticsDdnWwwImportDTO.getManagerFullname().trim());
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+						continue;
+					}
 				}
 			}
 		}

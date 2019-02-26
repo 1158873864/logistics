@@ -21,7 +21,7 @@ public interface LogisticsDdnService {
      */
     LogisticsDdn save(LogisticsDdn logisticsDdn);
 
-    /**
+     /**
      * Get all the logisticsDdns.
      *
      * @param pageable the pagination information
@@ -29,8 +29,8 @@ public interface LogisticsDdnService {
      */
     Page<LogisticsDdn> findAll(Pageable pageable);
     
-    Page<LogisticsDdn> findAll(String startLine,String endLine,Pageable pageable);
-
+    //Page<LogisticsDdn> findAll(String startLine,String endLine,Pageable pageable);
+    List<LogisticsDdn> findAll(String startLine,String endLine,Pageable pageable);
     /**
      * Get the "id" logisticsDdn.
      *
@@ -54,8 +54,8 @@ public interface LogisticsDdnService {
      * @param pageable the pagination information
      * @return the list of entities
      */
+    //List<LogisticsDdn> search(String query, Pageable pageable);
     Page<LogisticsDdn> search(String query, Pageable pageable);
-    
     boolean batchImportDDN(String path);
     boolean importDDNPics(String ddmTitle,String managerFullname,String path,boolean isCover);
     

@@ -3,17 +3,15 @@ package com.wl.app.web.rest;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import javax.validation.Valid;
 
+import com.github.mustachejava.Code;
 import com.wl.app.domain.*;
 import com.wl.app.service.*;
 import com.wl.app.service.impl.UserInfoServiceImpl;
+import com.wl.app.web.rest.errors.*;
 import com.wl.app.web.rest.util.HeaderUtil;
 import com.wl.app.web.rest.vm.UserDdnFavoritesVM;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -36,11 +34,6 @@ import com.wl.app.service.dto.PreferentialActivitiesDTO;
 import com.wl.app.service.dto.SearchAndFavoritesDdnAndBannerDTO;
 import com.wl.app.service.dto.SearchAndFavoritesDdnDTO;
 import com.wl.app.service.dto.StartCityDTO;
-import com.wl.app.web.rest.errors.EmailAlreadyUsedException;
-import com.wl.app.web.rest.errors.InvalidPasswordException;
-import com.wl.app.web.rest.errors.LoginAlreadyUsedException;
-import com.wl.app.web.rest.errors.Result;
-import com.wl.app.web.rest.errors.ResultGenerator;
 import com.wl.app.web.rest.vm.ManagedUserVM;
 import com.wl.app.web.rest.vm.RUserVM;
 
@@ -190,9 +183,8 @@ public class AppResource {
     @Timed
     public ResponseEntity<Result> getAllLogisticsDdns(@RequestParam(value = "startLine")String startLine,
     		@RequestParam(value = "endLine")String endLine,Pageable pageable) {
-        Page<LogisticsDdn> page = logisticsDdnService.findAll(startLine,endLine,pageable);
+        List<LogisticsDdn> page = logisticsDdnService.findAll(startLine,endLine,pageable);
         return new ResponseEntity<>(ResultGenerator.genSuccessResult(page), HttpStatus.OK);
-
     }
 
 	@GetMapping("/area/province")
@@ -220,13 +212,9 @@ public class AppResource {
 		Map<String, Object> result = new HashMap<>();
 		String code = Sms.me().sendVerificationCode(mobilePhone);
 		if (code.equals(Sms.SEND_SUCCESS)) {
-			result.put("result", true);
-			result.put("msg", "短信验证码发送成功!");
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}else {
-			result.put("result", false);
-			result.put("msg", "短信验证码发送失败!");
-			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+			return new ResponseEntity<>(ResultGenerator.genFailResult(ResultCode.FAIL,"短信验证码发送失败!"), HttpStatus.OK);
 		}
 	}
 
@@ -263,7 +251,7 @@ public class AppResource {
 
     @PostMapping("/login")
 	@Timed
-	public ResponseEntity<Result> login(@Valid @RequestBody RUserVM userVM){
+	public ResponseEntity<Result> login(@RequestParam(required = true) String mobilePhone,@RequestParam(required = true) String vcode){
 		Map<String, Object> result = new HashMap<>();
 //		Optional<User> existingUser = userRepository.findOneByLogin(userVM.getMobilePhone());
 //		if (!existingUser.isPresent()) {
@@ -272,12 +260,10 @@ public class AppResource {
 //			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 //		}
 		System.out.println("login");
-		boolean isSuccess = Sms.me().checkVerificationCode(userVM.getMobilePhone(), userVM.getVcode());
+		boolean isSuccess = Sms.me().checkVerificationCode(mobilePhone, vcode);
 		if (isSuccess) {
-			result.put("result", true);
-			result.put("msg", "登陆成功");
             UserInfo userInfo=new UserInfo();
-			Optional<UserInfo> optionalUserInfo= userInfoService.findOneByMobilePhone(userVM.getMobilePhone());
+			Optional<UserInfo> optionalUserInfo= userInfoService.findOneByMobilePhone(mobilePhone);
             if(optionalUserInfo.isPresent()) {
                 userInfo=optionalUserInfo.get();
 				userInfo.setLastLoginedDate(Instant.now());
@@ -293,16 +279,17 @@ public class AppResource {
             	userInfo.setRegisterDate(Instant.now());
             	userInfo.setStatus(Status.ENABLE);
             	userInfo.setRegisterSum("");
-                userInfo.setMobilePhone(userVM.getMobilePhone());
+                userInfo.setMobilePhone(mobilePhone);
+                RUserVM userVM=new RUserVM();
+                userVM.setMobilePhone(mobilePhone);
+                userVM.setVcode(vcode);
 				userService.registerUser(userVM,"123456");
             }
 
             result.put("userInfo",userInfo);
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}else {
-			result.put("result", false);
-			result.put("msg", "验证码超时或者错误，请重试！");
-			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+			return new ResponseEntity<>(ResultGenerator.genFailResult(ResultCode.FAIL,"验证码超时或者错误，请重试！"), HttpStatus.OK);
 		}
 	}
 
@@ -319,14 +306,10 @@ public class AppResource {
 		// 校验手机号是否已经注册
 		 Optional<User> existingUser = userRepository.findOneByLogin(mobilePhone);
 	        if (!existingUser.isPresent()) {
-	            result.put("result", false);
-				result.put("msg", "手机号码不存在!");
-				return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
+				return new ResponseEntity<>(ResultGenerator.genFailResult(ResultCode.FAIL,"手机号码不存在!"), HttpStatus.OK);
 	        }
 		String code = Sms.me().sendContact(mobilePhone);
 		if (code.equals(Sms.SEND_SUCCESS)) {
-			result.put("result", true);
-			result.put("msg", "短信发送成功!");
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}
 		result.put("result", false);
@@ -342,34 +325,29 @@ public class AppResource {
 
 	@PostMapping("/user-ddn-favorites")
 	@Timed
-	public ResponseEntity<Result> addUserDdnFavorites(@Valid @RequestBody UserDdnFavoritesVM userDdnFavoritesvm) throws URISyntaxException {
+	public ResponseEntity<Result> addUserDdnFavorites(@RequestParam(required = true) long user_id,@RequestParam(required = true) long ddn_id) throws URISyntaxException {
 		Map<String, Object> re = new HashMap<>();
 		UserDdnFavorites userDdnFavorites=new UserDdnFavorites();
 		LogisticsDdn logisticsDdn=null;
 		UserInfo userInfo=null;
-		Optional<LogisticsDdn> optionalLogisticsDdn=logisticsDdnService.findOne(userDdnFavoritesvm.getDdn_id());
+		Optional<LogisticsDdn> optionalLogisticsDdn=logisticsDdnService.findOne(ddn_id);
 		if(optionalLogisticsDdn.isPresent()){
 			logisticsDdn=optionalLogisticsDdn.get();
 		}
 		else{
-			re.put("result",false);
-			re.put("msg","专线不存在");
-			return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+			return new ResponseEntity<>(ResultGenerator.genFailResult(ResultCode.FAIL,"专线不存在"), HttpStatus.OK);
 		}
-		Optional<UserInfo> optionalUserInfoService=userInfoService.findOne(userDdnFavoritesvm.getUser_id());
+		Optional<UserInfo> optionalUserInfoService=userInfoService.findOne(user_id);
 		if(optionalUserInfoService.isPresent()){
 			userInfo=optionalUserInfoService.get();
 		}
 		else{
-			re.put("result",false);
-			re.put("msg","用户不存在");
-			return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+
+			return new ResponseEntity<>(ResultGenerator.genFailResult(ResultCode.FAIL,"用户不存在"), HttpStatus.OK);
 		}
 		userDdnFavorites.setDdn(logisticsDdn);
 		userDdnFavorites.setUserInfo(userInfo);
 		userDdnFavoritesService.save(userDdnFavorites);
-        re.put("result",true);
-        re.put("msg","收藏成功");
         re.put("userDdnFavorites",userDdnFavorites);
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
 	}
@@ -398,9 +376,23 @@ public class AppResource {
 	public ResponseEntity<Result> deleteUserDdnFavorites(@PathVariable Long id) {
 		userDdnFavoritesService.delete(id);
 		Map<String, Object> re = new HashMap<>();
-		re.put("msg","删除成功");
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
 	}
 
 
+	@GetMapping("/isFavorite")
+	@Timed
+	public ResponseEntity<Result> isFavorite(@RequestParam(required = true) long user_id,@RequestParam(required = true) long ddn_id) throws URISyntaxException {
+		Map<String, Object> re = new HashMap<>();
+		boolean is=false;
+		List<UserDdnFavorites> list=userDdnFavoritesService.findByUserId(user_id);
+		for(int i=0;i<list.size();i++){
+			if(list.get(i).getDdn().getId()==ddn_id){
+				is=true;
+				break;
+			}
+		}
+		re.put("result",is);
+		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+	}
 }

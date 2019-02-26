@@ -1,43 +1,44 @@
+
 {
-  "wlApp": {
-    "goodsExchange": {
-      "home": {
-        "title": "商品兑换记录",
-        "createLabel": "创建",
-        "createOrEditLabel": "兑换信息",
-        "search": "请输入关键词"
-      },
-      "created": "创建成功",
-      "updated": "更新成功",
-      "deleted": "删除成功",
-      "delete": {
-        "question": "你确定要删除吗？"
-      },
-      "detail": {
-        "title": "兑换信息"
-      },
-      "mobilePhone": "收货人手机",
-      "fullname": "收货人昵称",
-      "address": "收货人地址",
-      "oddNumbers": "发货单号",
-      "exchangeCount": "兑换数量",
-      "exchangeStatus": "兑换状态",
-      "remark": "备注说明",
-      "createdBy": "Created By",
-      "lastModifiedBy": "Last Modified By",
-      "createdDate": "Created Date",
-      "lastModifiedDate": "Last Modified Date",
-      "goods": "兑换商品",
-      "userInfo": "兑换用户",
-      "help": {
-        "mobilePhone": "收货人手机",
-        "fullname": "收货人昵称",
-        "address": "收货人地址",
-        "oddNumbers": "发货单号",
-        "exchangeCount": "兑换数量",
-        "exchangeStatus": "兑换状态",
-        "remark": "备注说明"
-      }
+    "wlApp": {
+        "goodsExchange" : {
+            "home": {
+                "title": "商品兑换记录",
+                "createLabel": "创建",
+                "createOrEditLabel": "兑换信息",
+                "search": "请输入关键词"
+            },
+            "created": "创建成功",
+            "updated": "更新成功",
+            "deleted": "删除成功",
+            "delete": {
+                "question": "你确定要删除吗？"
+            },
+            "detail": {
+                "title": "兑换信息"
+            },
+            "mobilePhone": "收货人手机",
+            "fullname": "收货人昵称",
+            "address": "收货人地址",
+            "oddNumbers": "发货单号",
+            "exchangeCount": "兑换数量",
+            "exchangeStatus": "兑换状态",
+            "remark": "备注说明",
+            "createdBy": "Created By",
+            "lastModifiedBy": "Last Modified By",
+            "createdDate": "Created Date",
+            "lastModifiedDate": "Last Modified Date",
+            "goods": "兑换商品",
+            "userInfo": "兑换用户",
+            "help": {
+                "mobilePhone": "收货人手机",
+                "fullname": "收货人昵称",
+                "address": "收货人地址",
+                "oddNumbers": "发货单号",
+                "exchangeCount": "兑换数量",
+                "exchangeStatus": "兑换状态",
+                "remark": "备注说明"
+            }
+        }
     }
-  }
 }

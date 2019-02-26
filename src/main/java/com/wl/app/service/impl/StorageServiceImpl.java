@@ -27,10 +27,7 @@ public class StorageServiceImpl implements StorageService {
 			return "error";
 		}
 
-		String id = UUID.randomUUID().toString().replaceAll("-", "");
-		int index = file.getOriginalFilename().lastIndexOf(".");
-		String suffix = file.getOriginalFilename().substring(index);
-		String filename = id + suffix;
+		String filename = file.getOriginalFilename();
 		try {
 			Path path = Paths.get(applicationProperties.getStaticResourcePath() + "/"+saveDir, filename);
 			if (!Files.exists(path)) {

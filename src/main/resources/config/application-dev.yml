@@ -116,4 +116,4 @@ jhipster:
             queue-size: 512
 
 application: 
-    staticResourcePath: /iwork/docker/project/wl/data/upload
+    staticResourcePath: /Users/xulei/Documents/GitHub/logistics/data/upload
