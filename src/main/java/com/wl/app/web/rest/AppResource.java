@@ -301,14 +301,11 @@ public class AppResource {
 	 */
 	@PostMapping("/msg/send-contact")
 	@Timed
-	public ResponseEntity<Result> sendContact(@RequestParam(required = true) String mobilePhone) {
+	public ResponseEntity<Result> sendContact(@RequestParam(required = true) String mobilePhone,@RequestParam(required = true) String userMobilePhone) {
 		Map<String, Object> result = new HashMap<>();
 		// 校验手机号是否已经注册
-		 Optional<User> existingUser = userRepository.findOneByLogin(mobilePhone);
-	        if (!existingUser.isPresent()) {
-				return new ResponseEntity<>(ResultGenerator.genFailResult(ResultCode.FAIL,"手机号码不存在!"), HttpStatus.OK);
-	        }
-		String code = Sms.me().sendContact(mobilePhone);
+		//Optional<User> existingUser = userRepository.findOneByLogin(mobilePhone);
+		String code = Sms.me().sendContact(mobilePhone,userMobilePhone);
 		if (code.equals(Sms.SEND_SUCCESS)) {
 			return new ResponseEntity<>(ResultGenerator.genSuccessResult(result), HttpStatus.OK);
 		}

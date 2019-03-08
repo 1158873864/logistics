@@ -9,7 +9,7 @@ public class Sms {
 	
 	public final static String SMS_SIGN = "专线邦";
 	public final static String ALIYUN_SMS_VCODE_TEMPLATE_CODE = "SMS_153327832";
-	public final static String ALIYUN_SMS_CONTACT_TEMPLATE_CODE = "SMS_153327848";
+	public final static String ALIYUN_SMS_CONTACT_TEMPLATE_CODE = "SMS_159627336";
 	public final static String SEND_SUCCESS = "999999";
 	public final static String SEND_ERROR = "100000";
 	
@@ -51,10 +51,11 @@ public class Sms {
 	 * @param mobilePhone
 	 * @return
 	 */
-	public String sendContact(String mobilePhone) {
+	public String sendContact(String mobilePhone,String userMobilePhone) {
 		SendSmsResponse response = null;
 		try {
-			response = AliyunSms.sendSmsVcode(mobilePhone, SMS_SIGN, ALIYUN_SMS_CONTACT_TEMPLATE_CODE, mobilePhone);
+			response = AliyunSms.sendSmsContact(mobilePhone, SMS_SIGN, ALIYUN_SMS_CONTACT_TEMPLATE_CODE, userMobilePhone);
+			System.out.println(response.getMessage());
 			if(response.getCode().equals("OK")) {
 				return SEND_SUCCESS;
 			}

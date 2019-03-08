@@ -18,4 +18,5 @@ import com.wl.app.domain.enumeration.Status;
 public interface LogisticsDdnWWWRepository extends JpaRepository<LogisticsDdnWWW, Long> {
 
 	List<LogisticsDdnWWW> findAllByLogisticsDdnIdAndStatus(long logisticsDdnId,Status status);
+	void deleteByLogisticsDdnId(long id);
 }

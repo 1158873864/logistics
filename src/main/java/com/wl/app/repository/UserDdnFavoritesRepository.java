@@ -14,4 +14,5 @@ import java.util.List;
 @Repository
 public interface UserDdnFavoritesRepository extends JpaRepository<UserDdnFavorites, Long> {
     List<UserDdnFavorites> getUserDdnFavoritesByUserInfoId(long user_id);
+    void deleteByDdnId(long id);
 }
