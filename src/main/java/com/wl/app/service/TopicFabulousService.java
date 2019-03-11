@@ -1,7 +1,9 @@
 package com.wl.app.service;
 
+import com.wl.app.domain.Topic;
 import com.wl.app.domain.TopicFabulous;
 
+import com.wl.app.domain.UserInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -53,4 +55,5 @@ public interface TopicFabulousService {
      * @return the list of entities
      */
     Page<TopicFabulous> search(String query, Pageable pageable);
+    TopicFabulous findTopicFabulousByUserInfoAndTopic(UserInfo userInfo, Topic topic);
 }

@@ -7,6 +7,8 @@ import com.wl.app.repository.search.GoodsSourceSearchRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -98,4 +100,10 @@ public class GoodsSourceServiceImpl implements GoodsSourceService {
     public Page<GoodsSource> search(String query, Pageable pageable) {
         log.debug("Request to search for a page of GoodsSources for query {}", query);
         return goodsSourceSearchRepository.search(queryStringQuery(query), pageable);    }
+
+    @Override
+    public Page<GoodsSource> findall(Pageable pageable, GoodsSource goodsSource) {
+        Example<GoodsSource> goodsSourceExample = Example.of(goodsSource);
+        return goodsSourceRepository.findAll(goodsSourceExample,pageable);
+    }
 }

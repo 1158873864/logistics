@@ -2,8 +2,11 @@ package com.wl.app.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.wl.app.domain.GoodsSource;
+import com.wl.app.domain.enumeration.GoodsSourceProperty;
 import com.wl.app.service.GoodsSourceService;
 import com.wl.app.web.rest.errors.BadRequestAlertException;
+import com.wl.app.web.rest.errors.Result;
+import com.wl.app.web.rest.errors.ResultGenerator;
 import com.wl.app.web.rest.util.HeaderUtil;
 import com.wl.app.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -20,7 +23,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
@@ -144,5 +149,4 @@ public class GoodsSourceResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/goods-sources");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-
 }

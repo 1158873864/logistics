@@ -53,4 +53,5 @@ public interface GoodsSourceService {
      * @return the list of entities
      */
     Page<GoodsSource> search(String query, Pageable pageable);
+    Page<GoodsSource> findall( Pageable pageable,GoodsSource goodsSource);
 }

@@ -1,5 +1,6 @@
 package com.wl.app.service.impl;
 
+import com.wl.app.domain.Topic;
 import com.wl.app.service.TopicCommentService;
 import com.wl.app.domain.TopicComment;
 import com.wl.app.repository.TopicCommentRepository;
@@ -98,4 +99,16 @@ public class TopicCommentServiceImpl implements TopicCommentService {
     public Page<TopicComment> search(String query, Pageable pageable) {
         log.debug("Request to search for a page of TopicComments for query {}", query);
         return topicCommentSearchRepository.search(queryStringQuery(query), pageable);    }
+
+    @Override
+    public Page<TopicComment> findbyTopic(Pageable pageable, Topic topic) {
+        topicCommentRepository.findTopicCommentByTopic(topic,pageable);
+        return null;
+    }
+
+    @Override
+    public TopicComment findTopicCommentsById(long id) {
+        topicCommentRepository.findTopicCommentsById(id);
+        return null;
+    }
 }

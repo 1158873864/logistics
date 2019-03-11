@@ -1,5 +1,7 @@
 package com.wl.app.service.impl;
 
+import com.wl.app.domain.Topic;
+import com.wl.app.domain.UserInfo;
 import com.wl.app.service.TopicFabulousService;
 import com.wl.app.domain.TopicFabulous;
 import com.wl.app.repository.TopicFabulousRepository;
@@ -98,4 +100,10 @@ public class TopicFabulousServiceImpl implements TopicFabulousService {
     public Page<TopicFabulous> search(String query, Pageable pageable) {
         log.debug("Request to search for a page of TopicFabulous for query {}", query);
         return topicFabulousSearchRepository.search(queryStringQuery(query), pageable);    }
+
+    @Override
+    public TopicFabulous findTopicFabulousByUserInfoAndTopic(UserInfo userInfo, Topic topic) {
+        topicFabulousRepository.findTopicFabulousByUserInfoAndTopic(userInfo,topic);
+        return null;
+    }
 }

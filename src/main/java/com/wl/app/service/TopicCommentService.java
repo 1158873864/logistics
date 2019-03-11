@@ -1,5 +1,6 @@
 package com.wl.app.service;
 
+import com.wl.app.domain.Topic;
 import com.wl.app.domain.TopicComment;
 
 import org.springframework.data.domain.Page;
@@ -53,4 +54,6 @@ public interface TopicCommentService {
      * @return the list of entities
      */
     Page<TopicComment> search(String query, Pageable pageable);
+    Page<TopicComment> findbyTopic(Pageable pageable, Topic topic);
+    TopicComment findTopicCommentsById(long id);
 }
