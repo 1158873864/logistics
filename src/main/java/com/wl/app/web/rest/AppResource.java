@@ -21,6 +21,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,8 @@ import com.wl.app.service.dto.SearchAndFavoritesDdnDTO;
 import com.wl.app.service.dto.StartCityDTO;
 import com.wl.app.web.rest.vm.ManagedUserVM;
 import com.wl.app.web.rest.vm.RUserVM;
+
+import static org.springframework.data.domain.PageRequest.of;
 
 
 /**
@@ -414,7 +417,17 @@ public class AppResource {
 	 */
 	@GetMapping("/lineSource")
 	@Timed
-	public ResponseEntity<Result> lineSource(Pageable pageable,@RequestParam(required = false) String start,@RequestParam(required = false) String end,@RequestParam(required = false) String goodsSourceProperty){
+	public ResponseEntity<Result> lineSource(String size,String page,@RequestParam(required = false) String start,@RequestParam(required = false) String end,@RequestParam(required = false) String goodsSourceProperty){
+		int pageInt = 0;//默认页数0
+		int sizeInt = 10;//默认每页条数10条
+
+		if (!StringUtils.isBlank(page) && StringUtils.isNumeric(page)) {//页数不为空
+			pageInt = Integer.parseInt(page);
+		}
+		if (!StringUtils.isBlank(size) && StringUtils.isNumeric(size)) {//每页条数不为空
+			sizeInt = Integer.parseInt(size);
+		}
+		Pageable pageable = of(pageInt, sizeInt);
 		GoodsSource goodsSource=new GoodsSource();
 		goodsSource.setStart(start);
 		goodsSource.setEnd(end);
@@ -502,35 +515,55 @@ public class AppResource {
 	}
 	/**
 	 * 获取物流圈列表
-	 * @param pageable
+	 * @param
 	 * @return
 	 */
 	@GetMapping("/topics")
 	@Timed
-	public ResponseEntity<Result> getAllTopics(Pageable pageable) {
-		Page<Topic> page = topicService.findAll(pageable);
+	public ResponseEntity<Result> getAllTopics(String size,String page) {
+		int pageInt = 0;//默认页数0
+		int sizeInt = 10;//默认每页条数10条
+
+		if (!StringUtils.isBlank(page) && StringUtils.isNumeric(page)) {//页数不为空
+			pageInt = Integer.parseInt(page);
+		}
+		if (!StringUtils.isBlank(size) && StringUtils.isNumeric(size)) {//每页条数不为空
+			sizeInt = Integer.parseInt(size);
+		}
+		Pageable pageable = of(pageInt, sizeInt);
+		Page<Topic> pages = topicService.findAll(pageable);
 		Map<String, Object> re = new HashMap<>();
-		re.put("Topic",page);
+		re.put("Topic",pages);
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
 	}
 
 	/**
 	 * 获取当前话题的评论
-	 * @param pageable
+	 * @param
 	 * @param
 	 * @return
 	 */
 	@GetMapping("/topicsComment/{id}")
 	@Timed
-	public ResponseEntity<Result> getAllTopicComment(Pageable pageable,@PathVariable Long id){
+	public ResponseEntity<Result> getAllTopicComment(String size,String page,@PathVariable Long id){
 		if (id == null) {
 			throw new BadRequestAlertException("Invalid id", "TopicComment", "idnull");
 		}
+		int pageInt = 0;//默认页数0
+		int sizeInt = 10;//默认每页条数10条
+
+		if (!StringUtils.isBlank(page) && StringUtils.isNumeric(page)) {//页数不为空
+			pageInt = Integer.parseInt(page);
+		}
+		if (!StringUtils.isBlank(size) && StringUtils.isNumeric(size)) {//每页条数不为空
+			sizeInt = Integer.parseInt(size);
+		}
+		Pageable pageable = of(pageInt, sizeInt);
 		Topic topic=new Topic();
 		topic.setId(id);
-		Page<TopicComment> page=topicCommentService.findbyTopic(pageable,topic);
+		Page<TopicComment> pages=topicCommentService.findbyTopic(pageable,topic);
 		Map<String, Object> re = new HashMap<>();
-		re.put("TopicComment",page);
+		re.put("TopicComment",pages);
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
 	}
 
