@@ -1,28 +1,18 @@
 package com.wl.app.web.rest;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Instant;
 import java.util.*;
 
 import javax.validation.Valid;
 
-import com.github.mustachejava.Code;
 import com.wl.app.domain.*;
-import com.wl.app.domain.enumeration.GoodsSourcePacking;
 import com.wl.app.domain.enumeration.GoodsSourceProperty;
 import com.wl.app.service.*;
-import com.wl.app.service.impl.UserInfoServiceImpl;
 import com.wl.app.web.rest.errors.*;
-import com.wl.app.web.rest.util.HeaderUtil;
-import com.wl.app.web.rest.util.PaginationUtil;
-import com.wl.app.web.rest.vm.UserDdnFavoritesVM;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -408,6 +398,19 @@ public class AppResource {
 			}
 		}
 		re.put("result",is);
+		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
+	}
+
+	/**
+	 * 获取货源列表
+	 * @return
+	 */
+	@GetMapping("/allSource")
+	@Timed
+	public ResponseEntity<Result> allSource(Pageable pageable){
+		Page<GoodsSource> page = goodsSourceService.findAll(pageable);
+		Map<String, Object> re = new HashMap<>();
+		re.put("goodsSourcePage",page.getContent());
 		return new ResponseEntity<>(ResultGenerator.genSuccessResult(re), HttpStatus.OK);
 	}
 
