@@ -31,8 +31,8 @@ public class TopicComment implements Serializable {
     private Long id;
 
     @NotNull
-    @Size(max = 500)
-    @Column(name = "content", length = 500, nullable = false)
+    @Size(max = 5000)
+    @Column(name = "content", length = 5000, nullable = false)
     private String content;
 
     @NotNull

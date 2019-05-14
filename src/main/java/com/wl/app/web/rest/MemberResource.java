@@ -21,7 +21,7 @@ import java.util.stream.StreamSupport;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
-/**
+/**对会员的管理
  * REST controller for managing Member.
  */
 @RestController

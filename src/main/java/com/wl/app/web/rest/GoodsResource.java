@@ -33,7 +33,7 @@ import com.wl.app.web.rest.util.PaginationUtil;
 
 import io.github.jhipster.web.util.ResponseUtil;
 
-/**
+/**商品的增删改查
  * REST controller for managing Goods.
  */
 @RestController

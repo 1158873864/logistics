@@ -44,6 +44,7 @@ public class CacheConfiguration {
             cm.createCache(com.wl.app.domain.GoodsSource.class.getName(), jcacheConfiguration);
             cm.createCache(com.wl.app.domain.UserInfo.class.getName(), jcacheConfiguration);
             cm.createCache(com.wl.app.domain.Member.class.getName(), jcacheConfiguration);
+            cm.createCache(com.wl.app.domain.MemberTwo.class.getName(), jcacheConfiguration);
             cm.createCache(com.wl.app.domain.IntegralRule.class.getName(), jcacheConfiguration);
             cm.createCache(com.wl.app.domain.IntegralChangeRecord.class.getName(), jcacheConfiguration);
             cm.createCache(com.wl.app.domain.Goods.class.getName(), jcacheConfiguration);
@@ -57,6 +58,7 @@ public class CacheConfiguration {
             cm.createCache(com.wl.app.domain.TopicViewed.class.getName(), jcacheConfiguration);
             cm.createCache(com.wl.app.domain.UserDdnFavorites.class.getName(), jcacheConfiguration);
             cm.createCache(com.wl.app.domain.Area.class.getName(), jcacheConfiguration);
+            cm.createCache(com.wl.app.domain.Version.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

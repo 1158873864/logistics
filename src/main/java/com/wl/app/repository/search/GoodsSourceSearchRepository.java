@@ -7,4 +7,6 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  * Spring Data Elasticsearch repository for the GoodsSource entity.
  */
 public interface GoodsSourceSearchRepository extends ElasticsearchRepository<GoodsSource, Long> {
+
 }
+

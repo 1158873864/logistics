@@ -52,18 +52,18 @@ public class GoodsSource extends AbstractAuditingEntity implements Serializable 
      * 货源路线起始
      */
     @NotNull
-    @Size(max = 20)
+    @Size(max = 80)
     @ApiModelProperty(value = "货源路线起始", required = true)
-    @Column(name = "jhi_start", length = 20, nullable = false)
+    @Column(name = "jhi_start", length = 80, nullable = false)
     private String start;
 
     /**
      * 货源路线终点
      */
     @NotNull
-    @Size(max = 20)
+    @Size(max = 80)
     @ApiModelProperty(value = "货源路线终点", required = true)
-    @Column(name = "jhi_end", length = 20, nullable = false)
+    @Column(name = "jhi_end", length = 80, nullable = false)
     private String end;
 
     /**
@@ -107,9 +107,8 @@ public class GoodsSource extends AbstractAuditingEntity implements Serializable 
      */
     @NotNull
     @ApiModelProperty(value = "运价", required = true)
-    @Enumerated(EnumType.STRING)
     @Column(name = "goods_source_freight", nullable = false)
-    private GoodsSourceFreight goodsSourceFreight;
+    private String goodsSourceFreight;
 
     /**
      * 货源属性
@@ -245,16 +244,16 @@ public class GoodsSource extends AbstractAuditingEntity implements Serializable 
         this.mobilePhone = mobilePhone;
     }
 
-    public GoodsSourceFreight getGoodsSourceFreight() {
+    public String getGoodsSourceFreight() {
         return goodsSourceFreight;
     }
 
-    public GoodsSource goodsSourceFreight(GoodsSourceFreight goodsSourceFreight) {
+    public GoodsSource goodsSourceFreight(String goodsSourceFreight) {
         this.goodsSourceFreight = goodsSourceFreight;
         return this;
     }
 
-    public void setGoodsSourceFreight(GoodsSourceFreight goodsSourceFreight) {
+    public void setGoodsSourceFreight(String goodsSourceFreight) {
         this.goodsSourceFreight = goodsSourceFreight;
     }
 

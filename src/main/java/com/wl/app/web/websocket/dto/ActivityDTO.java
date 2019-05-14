@@ -1,6 +1,7 @@
 package com.wl.app.web.websocket.dto;
 
-import java.time.Instant;
+import org.joda.time.Instant;
+
 
 /**
  * DTO for storing a user's activity.

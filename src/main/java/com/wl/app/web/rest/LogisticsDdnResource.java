@@ -40,6 +40,7 @@ import com.wl.app.web.rest.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 
 /**
+ * 这是对对物流专线的管理
  * REST controller for managing LogisticsDdn.
  */
 @RestController
@@ -203,5 +204,7 @@ public class LogisticsDdnResource {
 		
 		return ResponseUtil.wrapOrNotFound(Optional.of(isSuccess));
 	}
+
+
 
 }

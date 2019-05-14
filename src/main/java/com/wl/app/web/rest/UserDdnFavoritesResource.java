@@ -35,6 +35,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 对用户专线收藏的管理
  * REST controller for managing UserDdnFavorites.
  */
 @RestController

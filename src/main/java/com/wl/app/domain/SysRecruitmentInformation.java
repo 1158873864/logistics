@@ -1,5 +1,6 @@
 package com.wl.app.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
@@ -49,10 +50,10 @@ public class SysRecruitmentInformation extends AbstractAuditingEntity implements
     private String categoryName;
 
     /**
-     * 工作性质 全职 实习
+     * 公司名称
      */
     @NotNull
-    @ApiModelProperty(value = "工作性质 全职 实习", required = true)
+    @ApiModelProperty(value = "公司名称", required = true)
     @Column(name = "nature", nullable = false)
     private String nature;
 
@@ -76,7 +77,7 @@ public class SysRecruitmentInformation extends AbstractAuditingEntity implements
      * 工作城市
      */
     @NotNull
-    @ApiModelProperty(value = "工作城市", required = true)
+    @ApiModelProperty(value = "工作地点", required = true)
     @Column(name = "addr_city", nullable = false)
     private String addrCity;
 
@@ -105,7 +106,7 @@ public class SysRecruitmentInformation extends AbstractAuditingEntity implements
     private Integer peopleCount;
 
     /**
-     * 职位描述
+     * 职位描述(福利待遇)
      */
     @NotNull
     @ApiModelProperty(value = "职位描述", required = true)
@@ -117,7 +118,30 @@ public class SysRecruitmentInformation extends AbstractAuditingEntity implements
     @Column(name = "status", nullable = false)
     private Status status;
 
+   /*
+    *//**
+     * 发布人
+     *//*
+    @ApiModelProperty(value = "发布人")
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private UserInfo userInfo;
+*/
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+   /* public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public SysRecruitmentInformation userInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+        return this;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }*/
+
     public Long getId() {
         return id;
     }

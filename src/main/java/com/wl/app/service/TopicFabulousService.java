@@ -7,6 +7,7 @@ import com.wl.app.domain.UserInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -29,7 +30,6 @@ public interface TopicFabulousService {
      * @return the list of entities
      */
     Page<TopicFabulous> findAll(Pageable pageable);
-
 
     /**
      * Get the "id" topicFabulous.
@@ -56,4 +56,5 @@ public interface TopicFabulousService {
      */
     Page<TopicFabulous> search(String query, Pageable pageable);
     TopicFabulous findTopicFabulousByUserInfoAndTopic(UserInfo userInfo, Topic topic);
+    List<TopicFabulous> findTopicFabulousByUserinfoID(Long id);
 }

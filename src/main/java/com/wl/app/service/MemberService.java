@@ -1,6 +1,8 @@
 package com.wl.app.service;
 
 import com.wl.app.domain.Member;
+import com.wl.app.domain.MemberTwo;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -48,5 +50,11 @@ public interface MemberService {
      * 
      * @return the list of entities
      */
-    List<Member> search(String query);
+     List<Member> search(String query);
+
+     Member input(Member member);
+
+     MemberTwo inputMemberTwo(MemberTwo member);
+    //List<Member> queryMember(String query);
+    public Member inputmember(Member member);
 }

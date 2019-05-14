@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -87,6 +88,38 @@ public class TopicCommentServiceImpl implements TopicCommentService {
         topicCommentSearchRepository.deleteById(id);
     }
 
+    //删除话题01（话题ID）
+    @Override
+    public void deleteAll(Long id) {
+        topicCommentRepository.deleteAllByTopicId(id);
+    }
+
+    //删除话题02话题ID）
+    @Override
+    public void deleteComment(Long id) {
+        topicCommentRepository.deleteTopicCommentByTopicId(id);
+    }
+
+    //删除话题03
+    @Override
+    public void deleteCommentone(Long id) {
+        topicCommentRepository.deleteByTopicId(id);
+    }
+
+
+    //删除话题04（话题）
+    @Override
+    public void deleteCommenttwo(Topic topic) {
+        topicCommentRepository.deleteByTopic(topic);
+    }
+
+    //删除话题05(话题)
+    @Override
+    public void deleteCommentsan(Topic topic) {
+        topicCommentRepository.deleteTopicCommentByTopic(topic);
+    }
+
+
     /**
      * Search for the topicComment corresponding to the query.
      *
@@ -100,15 +133,29 @@ public class TopicCommentServiceImpl implements TopicCommentService {
         log.debug("Request to search for a page of TopicComments for query {}", query);
         return topicCommentSearchRepository.search(queryStringQuery(query), pageable);    }
 
-    @Override
+    @Override//
     public Page<TopicComment> findbyTopic(Pageable pageable, Topic topic) {
-        topicCommentRepository.findTopicCommentByTopic(topic,pageable);
-        return null;
+        return  topicCommentRepository.findTopicCommentByTopic(topic,pageable);
+    }
+
+    @Override
+    public List<TopicComment> findTopicCommentbyTopic(Topic topic) {
+        return  topicCommentRepository.findTopicCommentByTopic(topic);
     }
 
     @Override
     public TopicComment findTopicCommentsById(long id) {
-        topicCommentRepository.findTopicCommentsById(id);
-        return null;
+        return topicCommentRepository.findTopicCommentsById(id);
+
+    }
+
+    /**
+     * 通过UserinfoID来查询该用户的全部评论
+     * @param id
+     * @return
+     */
+     @Override
+    public List<TopicComment> findAllTopicCommentByUserID(Long id) {
+        return topicCommentRepository.findAllByUserInfoId(id);
     }
 }

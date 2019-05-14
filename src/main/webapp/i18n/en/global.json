@@ -14,6 +14,7 @@
                 "userInfo": "用户管理",
                 "integralRule": "积分规则",
                 "integralChangeRecord": "积分记录",
+                "version": "app版本管理",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

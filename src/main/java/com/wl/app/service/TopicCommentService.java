@@ -6,6 +6,7 @@ import com.wl.app.domain.TopicComment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,8 +44,12 @@ public interface TopicCommentService {
      *
      * @param id the id of the entity
      */
-    void delete(Long id);
-
+    void delete(Long id);//
+    public void deleteAll(Long id);
+    public void deleteComment(Long id);
+    public void deleteCommentone(Long id);
+    public void deleteCommenttwo(Topic topic);
+    public void deleteCommentsan(Topic topic);
     /**
      * Search for the topicComment corresponding to the query.
      *
@@ -56,4 +61,8 @@ public interface TopicCommentService {
     Page<TopicComment> search(String query, Pageable pageable);
     Page<TopicComment> findbyTopic(Pageable pageable, Topic topic);
     TopicComment findTopicCommentsById(long id);
+    List<TopicComment> findAllTopicCommentByUserID(Long id);
+     List<TopicComment> findTopicCommentbyTopic(Topic topic);
+
+
 }

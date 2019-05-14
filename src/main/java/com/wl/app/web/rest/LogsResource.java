@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
+/**查看和管理日志
  * Controller for view and managing Log Level at runtime.
  */
 @RestController

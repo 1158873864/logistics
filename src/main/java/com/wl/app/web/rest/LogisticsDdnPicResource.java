@@ -27,6 +27,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 这个类写的是对物流专线图片的管理
  * REST controller for managing LogisticsDdnPic.
  */
 @RestController

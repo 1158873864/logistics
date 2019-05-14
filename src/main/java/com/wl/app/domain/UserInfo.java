@@ -24,6 +24,7 @@ import com.wl.app.domain.enumeration.Status;
 @Table(name = "user_info")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "userinfo")
+
 public class UserInfo extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

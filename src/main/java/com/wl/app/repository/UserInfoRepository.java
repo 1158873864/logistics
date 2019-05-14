@@ -5,6 +5,7 @@ import com.wl.app.domain.UserInfo;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -14,5 +15,6 @@ import java.util.Optional;
 @SuppressWarnings("unused")
 @Repository
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
-      Optional<UserInfo> getUserInfoByMobilePhone(String mobilePhone);
+      Optional<UserInfo> findUserInfoByMobilePhone(String mobilePhone);
+      List<UserInfo> findAllByNickName(String nickName);
 }

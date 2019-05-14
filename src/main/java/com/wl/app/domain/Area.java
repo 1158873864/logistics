@@ -30,17 +30,15 @@ public class Area implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     /**
      * 父ID
      */
     @NotNull
-    @Size(max = 500)
     @ApiModelProperty(value = "父ID", required = true)
     @Column(name = "parentid", nullable = false)
-    private Integer parentId;
+    private int parentId;
     
     /**
      * 名称
@@ -51,6 +49,18 @@ public class Area implements Serializable {
     @Column(name = "city", nullable = false)
     private String city;
 
+	public Area() {
+	}
+
+	public Area(Long id, @NotNull int parentId, @NotNull @Size(max = 500) String city) {
+		this.id = id;
+		this.parentId = parentId;
+		this.city = city;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 
 	public Long getId() {
 		return id;
@@ -60,11 +70,11 @@ public class Area implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getParentId() {
+	public int getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(Integer parentId) {
+	public void setParentId(int parentId) {
 		this.parentId = parentId;
 	}
 
@@ -76,3 +86,4 @@ public class Area implements Serializable {
 		this.city = city;
 	}
 }
+

@@ -5,6 +5,7 @@ import com.wl.app.domain.Topic;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,7 +28,7 @@ public interface TopicService {
      * @return the list of entities
      */
     Page<Topic> findAll(Pageable pageable);
-
+    Page<Topic> findAllTopic(int size,int page);
 
     /**
      * Get the "id" topic.
@@ -43,6 +44,10 @@ public interface TopicService {
      * @param id the id of the entity
      */
     void delete(Long id);
+    public void deleteone(Long id);
+    public void deletetwo(Long id);
+    public void deleteThree(Long id);
+    public void deletefree(Long id);
 
     /**
      * Search for the topic corresponding to the query.
@@ -53,4 +58,5 @@ public interface TopicService {
      * @return the list of entities
      */
     Page<Topic> search(String query, Pageable pageable);
+    List<Topic> findAllTopicById(Long id);
 }

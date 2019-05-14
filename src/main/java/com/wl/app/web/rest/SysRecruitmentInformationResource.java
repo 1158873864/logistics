@@ -27,6 +27,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 对招聘信息的管理
  * REST controller for managing SysRecruitmentInformation.
  */
 @RestController
@@ -55,14 +56,14 @@ public class SysRecruitmentInformationResource {
     public ResponseEntity<SysRecruitmentInformation> createSysRecruitmentInformation(@Valid @RequestBody SysRecruitmentInformation sysRecruitmentInformation) throws URISyntaxException {
         log.debug("REST request to save SysRecruitmentInformation : {}", sysRecruitmentInformation);
         if (sysRecruitmentInformation.getId() != null) {
-            throw new BadRequestAlertException("A new sysRecruitmentInformation cannot already have an ID", ENTITY_NAME, "idexists");
-        }
         SysRecruitmentInformation result = sysRecruitmentInformationService.save(sysRecruitmentInformation);
         return ResponseEntity.created(new URI("/api/sys-recruitment-informations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
+            throw new BadRequestAlertException("A new sysRecruitmentInformation cannot already have an ID", ENTITY_NAME, "idexists");
+}
     /**
      * PUT  /sys-recruitment-informations : Updates an existing sysRecruitmentInformation.
      *

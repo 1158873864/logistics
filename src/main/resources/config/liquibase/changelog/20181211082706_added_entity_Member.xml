@@ -45,6 +45,7 @@
             <column name="last_modified_date" type="datetime">
                 <constraints nullable="false" />
             </column>
+            
             <column name="user_info_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_member_user_info_id" />
             </column>

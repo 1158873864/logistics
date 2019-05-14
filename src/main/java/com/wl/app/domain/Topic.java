@@ -46,9 +46,9 @@ public class Topic extends AbstractAuditingEntity implements Serializable {
      * 话题内容
      */
     @NotNull
-    @Size(max = 500)
+    @Size(max = 5000)
     @ApiModelProperty(value = "话题内容", required = true)
-    @Column(name = "content", length = 500, nullable = false)
+    @Column(name = "content", length = 5000, nullable = false)
     private String content;
 
     /**

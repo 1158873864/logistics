@@ -7,7 +7,7 @@
         Added the constraints for entity GoodsSource.
     -->
     <changeSet id="20181211082704-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="user_info_id"
                                  baseTableName="goods_source"
                                  constraintName="fk_goods_source_user_info_id"

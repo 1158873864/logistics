@@ -31,6 +31,7 @@
     <include file="config/liquibase/changelog/20181211082706_added_entity_constraints_Member.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181211082708_added_entity_constraints_IntegralChangeRecord.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181211082710_added_entity_constraints_GoodsExchange.xml" relativeToChangelogFile="false"/>
+    <!--<include file="config/liquibase/changelog/20181211082711_added_entity_constraints_SysRecruitementlnformation.xml" relativeToChangelogFile="false"/>-->
     <include file="config/liquibase/changelog/20181211082713_added_entity_constraints_Topic.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181211082714_added_entity_constraints_TopicFabulous.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20181211082715_added_entity_constraints_TopicComment.xml" relativeToChangelogFile="false"/>

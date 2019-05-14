@@ -5,6 +5,7 @@ import com.wl.app.domain.SysRecruitmentInformation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -27,7 +28,8 @@ public interface SysRecruitmentInformationService {
      * @return the list of entities
      */
     Page<SysRecruitmentInformation> findAll(Pageable pageable);
-
+    Page<SysRecruitmentInformation> findAllByTIME(int size,int page);
+    public List<SysRecruitmentInformation> findAllSys();
 
     /**
      * Get the "id" sysRecruitmentInformation.
@@ -53,4 +55,8 @@ public interface SysRecruitmentInformationService {
      * @return the list of entities
      */
     Page<SysRecruitmentInformation> search(String query, Pageable pageable);
+
+    //通过ID查询出所有的招聘信息
+    List<SysRecruitmentInformation> QuereySysRecruitemByUserID(Long UserInfoId,Pageable pageable);
+    List<SysRecruitmentInformation> QuereySysRecruitemByUserIDAndIDdesc(Long UserInfoId,int size,int page);
 }

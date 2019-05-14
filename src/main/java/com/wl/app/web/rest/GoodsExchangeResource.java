@@ -26,7 +26,7 @@ import java.util.stream.StreamSupport;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
-/**
+/**商品交换
  * REST controller for managing GoodsExchange.
  */
 @RestController

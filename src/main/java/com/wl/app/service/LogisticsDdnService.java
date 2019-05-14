@@ -2,6 +2,7 @@ package com.wl.app.service;
 
 import com.wl.app.domain.LogisticsDdn;
 
+import com.wl.app.web.rest.errors.LoginAlreadyUsedException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -20,6 +21,7 @@ public interface LogisticsDdnService {
      * @return the persisted entity
      */
     LogisticsDdn save(LogisticsDdn logisticsDdn);
+
 
      /**
      * Get all the logisticsDdns.
@@ -63,4 +65,10 @@ public interface LogisticsDdnService {
     
     List<LogisticsDdn> findAllByHome(boolean isHome);
     List<LogisticsDdn> findAllByBanner(boolean isBanner);
+    LogisticsDdn findAllByPhoneNumber(String PhoneNumber);
+    //LogisticsDdn UpadateByNumber(LogisticsDdn logisticsDdn);
+
+    List<LogisticsDdn> findAllByspecialTransport(boolean specialTransport);
+
+    List<LogisticsDdn> findAllBygood(boolean good);
 }

@@ -27,6 +27,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 对优惠活动的管理
  * REST controller for managing PreferentialActivities.
  */
 @RestController

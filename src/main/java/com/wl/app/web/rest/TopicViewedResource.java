@@ -27,6 +27,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 对话题浏览的管理
  * REST controller for managing TopicViewed.
  */
 @RestController
@@ -144,5 +145,6 @@ public class TopicViewedResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/topic-vieweds");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
 
 }

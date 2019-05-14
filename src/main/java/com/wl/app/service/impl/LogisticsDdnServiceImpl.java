@@ -84,6 +84,7 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 		return result;
 	}
 
+
 	/**
 	 * Get all the logisticsDdns.
 	 *
@@ -186,9 +187,9 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 //			public void addContent(LogisticsDdn logisticsDdn) {
 //				list.add(logisticsDdn);
 //			}
+//				return false;
 //			@Override
 //			public boolean hasContent() {
-//				return false;
 //			}
 //
 //			@Override
@@ -307,29 +308,52 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 	public List<LogisticsDdn> findAll(String startLine, String endLine, Pageable pageable) {
 		List<LogisticsDdn> logisticsDdnList=new ArrayList<>();
 		List<LogisticsDdn> sortedList=new ArrayList<>();
-		String province=findProvinceByCity(endLine);
+		String province="";
+		province=findProvinceByCity(endLine);
+		System.out.println(province);
 		List<LogisticsDdn> logisticsDdns=logisticsDdnRepository.findAll();
 		List<LogisticsDdn> result=new ArrayList<>();
-		endLine=endLine.trim();
-		if (endLine.trim().startsWith("北京")||endLine.trim().startsWith("天津")||endLine.trim().startsWith("重庆")||endLine.trim().startsWith("上海")) {
+		if (province.equals("")) {
 			endLine=endLine.substring(0,2);
-		}
-		for(int i=0;i<logisticsDdns.size();i++){
-			LogisticsDdn logisticsDdn=logisticsDdns.get(i);
-			if(logisticsDdn.getLocationCity().equals(startLine)&&(logisticsDdn.getCoverCity().indexOf(endLine)!=(-1)||logisticsDdn.getThroughCity().indexOf(endLine)!=(-1)||logisticsDdn.getCoverCity().indexOf(province)!=(-1)||logisticsDdn.getCoverCity().indexOf(province)!=(-1))){
-				logisticsDdnList.add(logisticsDdn);
+			for(int i=0;i<logisticsDdns.size();i++){
+				LogisticsDdn logisticsDdn=logisticsDdns.get(i);
+				if(logisticsDdn.getLocationCity().equals(startLine)&&(logisticsDdn.getCoverCity().indexOf(endLine)!=(-1)||logisticsDdn.getThroughCity().indexOf(endLine)!=(-1))){
+					logisticsDdnList.add(logisticsDdn);
+				}
+			}
+
+			for(int i=0;i<logisticsDdnList.size();i++){
+				if(logisticsDdnList.get(i).getThroughCity().indexOf(endLine)!=(-1)){
+					sortedList.add(logisticsDdnList.get(i));
+				}
+			}
+			for(int i=0;i<logisticsDdnList.size();i++){
+				if(logisticsDdnList.get(i).getCoverCity().indexOf(endLine)!=(-1)&&logisticsDdnList.get(i).getThroughCity().indexOf(endLine)==(-1)){
+					sortedList.add(logisticsDdnList.get(i));
+				}
 			}
 		}
-		for(int i=0;i<logisticsDdnList.size();i++){
-			if(logisticsDdnList.get(i).getThroughCity().indexOf(endLine)!=(-1)){
-				sortedList.add(logisticsDdnList.get(i));
+		else{
+
+			for(int i=0;i<logisticsDdns.size();i++){
+				LogisticsDdn logisticsDdn=logisticsDdns.get(i);
+				if(logisticsDdn.getLocationCity().equals(startLine)&&(logisticsDdn.getCoverCity().indexOf(endLine)!=(-1)||logisticsDdn.getThroughCity().indexOf(endLine)!=(-1)||logisticsDdn.getThroughCity().indexOf(province)!=(-1)||logisticsDdn.getCoverCity().indexOf(province)!=(-1))){
+					logisticsDdnList.add(logisticsDdn);
+				}
+			}
+			for(int i=0;i<logisticsDdnList.size();i++){
+				if(logisticsDdnList.get(i).getThroughCity().indexOf(endLine)!=(-1)||logisticsDdnList.get(i).getThroughCity().indexOf(province)!=(-1)){
+					sortedList.add(logisticsDdnList.get(i));
+				}
+			}
+			for(int i=0;i<logisticsDdnList.size();i++){
+				if((logisticsDdnList.get(i).getCoverCity().indexOf(endLine)!=(-1)||logisticsDdnList.get(i).getCoverCity().indexOf(province)!=(-1))&&logisticsDdnList.get(i).getThroughCity().indexOf(endLine)==(-1)&&logisticsDdnList.get(i).getThroughCity().indexOf(province)==(-1)){
+					sortedList.add(logisticsDdnList.get(i));
+				}
 			}
 		}
-		for(int i=0;i<logisticsDdnList.size();i++){
-			if(logisticsDdnList.get(i).getThroughCity().indexOf(endLine)==(-1)){
-				sortedList.add(logisticsDdnList.get(i));
-			}
-		}
+
+
 		int pageNum=pageable.getPageNumber();
 		int pageSize=pageable.getPageSize();
 		int max=(sortedList.size()<(pageNum*pageSize))?sortedList.size():pageNum*pageSize;
@@ -339,6 +363,7 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 		return result;
 	}
 
+	//这是进行判断的
 	public String findProvinceByCity(String city){
 		String result="";
 		List<Area> areaList = areaRepository.findByParentId(0);
@@ -419,4 +444,29 @@ public class LogisticsDdnServiceImpl implements LogisticsDdnService {
 		}
 		return true;
 	}
+
+	@Override
+	public LogisticsDdn findAllByPhoneNumber(String PhoneNumber){
+		return logisticsDdnRepository.findLogisticsDdnByManagerMobilePhone(PhoneNumber);
+
+	}
+
+	@Override
+	public List<LogisticsDdn> findAllByspecialTransport(boolean specialTransport) {
+		System.out.println("specialTransport====="+specialTransport+"==========");
+		return logisticsDdnRepository.findAllBySpecialTransport(specialTransport);
+	}
+
+	@Override
+	public List<LogisticsDdn> findAllBygood(boolean isgood) {
+		System.out.println("specialTransport====="+isgood+"==========");
+		return	logisticsDdnRepository.findAllByGood(isgood);
+	}
+
+	/*@Override
+	public LogisticsDdn UpadateByNumber(LogisticsDdn logisticsDdn){
+
+	}
+	*/
+	
 }

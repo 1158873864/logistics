@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -103,7 +104,12 @@ public class TopicFabulousServiceImpl implements TopicFabulousService {
 
     @Override
     public TopicFabulous findTopicFabulousByUserInfoAndTopic(UserInfo userInfo, Topic topic) {
-        topicFabulousRepository.findTopicFabulousByUserInfoAndTopic(userInfo,topic);
-        return null;
+        return topicFabulousRepository.findTopicFabulousByUserInfoAndTopic(userInfo,topic);
+
+    }
+
+    @Override
+    public List<TopicFabulous> findTopicFabulousByUserinfoID(Long id) {
+        return topicFabulousRepository.findAllByUserInfoId(id);
     }
 }

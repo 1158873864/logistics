@@ -26,7 +26,7 @@ import java.util.stream.StreamSupport;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
-/**
+/**积分改变的记录
  * REST controller for managing IntegralChangeRecord.
  */
 @RestController
@@ -144,5 +144,7 @@ public class IntegralChangeRecordResource {
         HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/integral-change-records");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
+
+
 
 }

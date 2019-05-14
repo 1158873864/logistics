@@ -27,6 +27,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 对话题点赞的管理
  * REST controller for managing TopicFabulous.
  */
 @RestController

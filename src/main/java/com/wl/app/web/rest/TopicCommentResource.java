@@ -27,6 +27,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 对话题评论的管理
  * REST controller for managing TopicComment.
  */
 @RestController

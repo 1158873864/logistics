@@ -29,6 +29,7 @@ import java.util.stream.StreamSupport;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
+ * 这个类是对物流专线网点的管理
  * REST controller for managing LogisticsDdnWWW.
  */
 @RestController

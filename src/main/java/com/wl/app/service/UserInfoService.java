@@ -5,6 +5,7 @@ import com.wl.app.domain.UserInfo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -63,4 +64,11 @@ public interface UserInfoService {
      * @return the list of entities
      */
     Page<UserInfo> search(String query, Pageable pageable);
+
+    /**
+     *昵称的搜索，检测唯一性
+     */
+     List<UserInfo> FindUserInfoBynickName(String nickName);
+
+
 }

@@ -24,4 +24,7 @@ public interface LogisticsDdnRepository extends JpaRepository<LogisticsDdn, Long
 	
 	List<LogisticsDdn> findAllByHome(boolean isHome);
 	List<LogisticsDdn> findAllByBanner(boolean isBanner);
+	LogisticsDdn findLogisticsDdnByManagerMobilePhone(String managerMobilePhone);
+	List<LogisticsDdn> findAllBySpecialTransport(boolean SpecialTransport);
+    List<LogisticsDdn> findAllByGood(boolean Good);
 }

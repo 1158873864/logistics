@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.elasticsearch.index.query.QueryBuilders.*;
@@ -71,14 +72,16 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(readOnly = true)
     public Optional<UserInfo> findOne(Long id) {
         log.debug("Request to get UserInfo : {}", id);
+
         return userInfoRepository.findById(id);
     }
 
     @Override
     public Optional<UserInfo> findOneByMobilePhone(String mobilePhone) {
         log.debug("Request to get UserInfo : {}", mobilePhone);
-        return userInfoRepository.getUserInfoByMobilePhone(mobilePhone);
+        return userInfoRepository.findUserInfoByMobilePhone(mobilePhone);
     }
+
 
     /**
      * Delete the userInfo by id.
@@ -103,5 +106,14 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Transactional(readOnly = true)
     public Page<UserInfo> search(String query, Pageable pageable) {
         log.debug("Request to search for a page of UserInfos for query {}", query);
-        return userInfoSearchRepository.search(queryStringQuery(query), pageable);    }
+        return userInfoSearchRepository.search(queryStringQuery(query), pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<UserInfo> FindUserInfoBynickName(String nickName) {
+        return   userInfoRepository.findAllByNickName(nickName);
+    }
+
+
 }
